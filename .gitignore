@@ -1,0 +1,7 @@
+controllers/**/*
+!controllers/**/*.cpp
+!controllers/**/*.hpp
+!controllers/Makefile
+protos/icon
+protos/*.cache
+worlds/
