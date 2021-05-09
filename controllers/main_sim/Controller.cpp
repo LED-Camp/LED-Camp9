@@ -1,5 +1,5 @@
 #include "Controller.hpp"
-
+#include "CommonDefine.hpp"
 using namespace webots;
 
 Controller* Controller::_instance = 0;
@@ -20,14 +20,10 @@ Controller::Controller() {
 Controller::~Controller(void) {
 }
 
-
 void Controller::changeDriveMode(Mode mode, int pwmDuty) {
     twinWheelDriver->changeDriveMode(mode, pwmDuty);
 }
 
-Robot* Controller::getRobot() {
-    return this->robot;
+bool Controller::clockForward() {
+    return this->robot->step(TIME_STEP) != -1;
 }
-
-
-

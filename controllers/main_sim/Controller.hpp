@@ -19,7 +19,7 @@ public:
     static Controller* getInstance();
     // twinWheelDriver系
     void changeDriveMode(Mode mode, int voltage_level);
-    Robot* getRobot();
+    bool clockForward();
 };
 
 #endif
