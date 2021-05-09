@@ -23,8 +23,8 @@ TwinWheelDriver::TwinWheelDriver(Robot* robot, std::string motor_nameL, std::str
 
 void TwinWheelDriver::changeDriveMode(Mode mode, int voltage_level) {
     //voltage_level : 0〜100
-    double l = ((double) voltage_level * MAX_SPEED / 80.0) * (L_MOTOR_COFF / 100) ;
-    double r = ((double) voltage_level * MAX_SPEED / 80.0) * (R_MOTOR_COFF / 100) ;
+    double l = ((double) voltage_level * MAX_SPEED / 100.0) * (L_MOTOR_COFF / 100) ;
+    double r = ((double) voltage_level * MAX_SPEED / 100.0) * (R_MOTOR_COFF / 100) ;
 
     if (mode == STOP) {
         motorL->setVelocity(0.0);
