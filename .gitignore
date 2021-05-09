@@ -1,7 +1,6 @@
-controllers/**/*
-!controllers/**/*.cpp
-!controllers/**/*.hpp
-!controllers/Makefile
+controllers/main_sim/build
+controllers/main_sim/.vscode
+controllers/main_sim/main_sim
 protos/icon
 protos/*.cache
 worlds/

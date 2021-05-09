@@ -1,5 +1,5 @@
-#include "Controller.hpp"
-#include "CommonDefine.hpp"
+#include "includes/Controller.hpp"
+#include "includes/CommonDefine.hpp"
 using namespace webots;
 
 Controller* Controller::_instance = 0;
