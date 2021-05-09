@@ -1,12 +1,19 @@
 #include <stdio.h>
 #include "Event.hpp"
 #include "LEDTank.hpp"
+#include "CommonDefine.hpp"
 #include <unistd.h>
 
 LEDTank::LEDTank(Controller *controller){
   this->state = _STATE_INITIAL;
   this->controller = controller;
 }
+
+int LEDTank::getTimeStep(){
+  return controller->getRobot()->step(TIME_STEP);
+}
+
+
 void LEDTank::execState(){
   switch(this->_state){
   case STATE_FORWARD:

@@ -29,10 +29,8 @@ int main(int argc, char **argv) {
   Controller *controller;
   LEDTank *lEDTank;
   Event *event;
-  Robot *robot;
   // create the Robot instance.
-  robot = new Robot();
-  controller = Controller::getInstance(robot);
+  controller = Controller::getInstance();
   lEDTank = new LEDTank(controller);
   event = new Event(controller);
 
@@ -47,7 +45,7 @@ int main(int argc, char **argv) {
 
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
-  while (robot->step(TIME_STEP) != -1) {
+  while (lEDTank->getTimeStep() != -1) {
     if(event->updateEvent() < 0){
         printf("STOP\n");
         controller->changeDriveMode(STOP, 0);

@@ -12,15 +12,14 @@ private:
     TwinWheelDriver* twinWheelDriver;
     Robot* robot;
 protected:
-    Controller(Robot* robot);
+    Controller();
     ~Controller(void);
-
 public:
     static Controller* _instance;
-
-    static Controller* getInstance(Robot* robot);
+    static Controller* getInstance();
     // twinWheelDriver系
     void changeDriveMode(Mode mode, int voltage_level);
+    Robot* getRobot();
 };
 
 #endif

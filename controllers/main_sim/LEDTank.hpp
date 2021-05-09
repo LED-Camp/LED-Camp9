@@ -17,6 +17,7 @@ class LEDTank{
   LEDTank(Controller *controller);
   void execState();
   void doTransition(unsigned long event);
+  int getTimeStep();
   unsigned long _state;
  private:
    Controller *controller;
