@@ -1,4 +1,5 @@
 controllers/main_sim/build
 controllers/main_sim/.vscode
 controllers/main_sim/main_sim
+controllers/main_sim/main_sim.exe
 worlds/
