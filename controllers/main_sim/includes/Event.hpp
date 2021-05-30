@@ -34,6 +34,8 @@ private:
     Keyboard keyboard;
     int old_key;
     unsigned long event;
+    float distanceOld;
+    float angleOld;
 };
 
 #endif

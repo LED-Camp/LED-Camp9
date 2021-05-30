@@ -5,6 +5,7 @@
 #include "drivers/includes/TwinWheelDriver.hpp"
 #include <webots/Robot.hpp>
 #include <webots/DistanceSensor.hpp>
+#include "drivers/includes/Position.hpp"
 
 using namespace webots;
 class Controller {
@@ -16,6 +17,7 @@ private:
     DistanceSensor* lineSensorCenter; 
     DistanceSensor* lineSensorRight;
     DistanceSensor* lineSensorLeft;
+    PositionSensor* position;
 protected:
     Controller();
     ~Controller(void);
@@ -28,4 +30,12 @@ public:
     
     void outputSensorValues(); // センサ値出力(開発用)
     };
+
+    Position *position;
+    // Position系
+    void positionReset(void);
+    void getPosition(float* distance, float* angle);
+  
+};
+
 #endif
