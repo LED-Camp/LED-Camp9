@@ -1,5 +1,10 @@
 SRC_DIR := .
-CXX_SOURCES=$(shell find $(SRC_DIR) -name "*.cpp")
+
+CXX_SOURCES += $(SRC_DIR)/main_sim.cpp
+CXX_SOURCES += $(SRC_DIR)/Event.cpp
+CXX_SOURCES += $(SRC_DIR)/Controller.cpp
+CXX_SOURCES += $(SRC_DIR)/LEDTank.cpp
+CXX_SOURCES += $(SRC_DIR)/drivers/TwinWheelDriver.cpp
 # TODO 実験モードと本番モードで切り替える方法
 #CFLAGS := -Wall -O0
 CFLAGS := -Wall -O0 -D 'EXPERIMENTAL_USE' -D 'SIM_USE'
