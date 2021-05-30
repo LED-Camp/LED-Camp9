@@ -4,12 +4,18 @@
 #include <cstdint>
 #include "drivers/includes/TwinWheelDriver.hpp"
 #include <webots/Robot.hpp>
+#include <webots/DistanceSensor.hpp>
 
 using namespace webots;
 class Controller {
 private:
     TwinWheelDriver* twinWheelDriver;
     Robot* robot;
+    DistanceSensor* rangeSensor;
+    DistanceSensor* colorSensor;
+    DistanceSensor* lineSensorCenter; 
+    DistanceSensor* lineSensorRight;
+    DistanceSensor* lineSensorLeft;
 protected:
     Controller();
     ~Controller(void);
@@ -19,6 +25,7 @@ public:
     // twinWheelDriver系
     void changeDriveMode(Mode mode, int voltage_level);
     bool clockForward();
-};
-
+    
+    void outputSensorValues(); // センサ値出力(開発用)
+    };
 #endif

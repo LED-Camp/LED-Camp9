@@ -4,8 +4,8 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation 0.01676537864602499 0.9883429145677473 -0.15131822528230338 2.9636228414086134
-  position 0.030054843046436835 0.006278463991932853 -0.24240819555778062
+  orientation -0.06899018052529801 0.9889034033386302 0.13156904596583907 2.8951588338914984
+  position 0.12393072223639502 0.2006251753428976 -0.5647833719806652
 }
 TexturedBackground {
 }
@@ -101,36 +101,21 @@ Robot {
       rotation 1 0 0 1.5708
       children [
         DistanceSensor {
-          translation -0.06 -6.11772e-08 0
-          rotation 0 0 1 -1.5707953071795862
+          translation -0.06 -6.21882e-08 1.45658e-07
+          rotation 0.5773509358554485 -0.5773509358554485 0.5773489358556708 -2.094395307179586
           name "LineSensorRight"
-          lookupTable [
-            0 0 0
-            0.1 0 0.1
-            1 10 0.1
-            1.1 9999 0
-          ]
+          type "infra-red"
         }
         DistanceSensor {
-          rotation 0 0 1 -1.5707953071795862
-          name "LinceSensorCenter"
-          lookupTable [
-            0 0 0
-            0.1 0 0.1
-            1 10 0.1
-            1.1 9999 0
-          ]
-        }
-        DistanceSensor {
-          translation 0.06 6.11772e-08 0
-          rotation 0 0 1 -1.5707953071795862
+          translation 0.06 6.21882e-08 -1.45658e-07
+          rotation 0.5773509358554485 -0.5773509358554485 0.5773489358556708 -2.094395307179586
           name "LineSensorLeft"
-          lookupTable [
-            0 0 0
-            0.1 0 0.1
-            1 10 0.1
-            1.1 9999 0
-          ]
+          type "infra-red"
+        }
+        DistanceSensor {
+          rotation 0.5773509358554485 -0.5773509358554485 0.5773489358556708 -2.094395307179586
+          name "LineSensorCenter"
+          type "infra-red"
         }
         Shape {
           appearance Appearance {
@@ -158,7 +143,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.06 0.068 -0.04
-        rotation -1.4992230391936262e-07 -1.4992215105636377e-07 -0.9999999999999775 1.5707953071796048
+        rotation -1.4992230391936284e-07 -1.499221510563638e-07 -0.9999999999999775 1.5707953071796015
         children [
           DEF WHEEL_RR Shape {
             geometry Cylinder {
@@ -213,8 +198,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 0.05999999999999993 0.068 -0.04
-        rotation 2.2430638226614242e-07 2.2430615356003634e-07 -0.9999999999999497 1.5707953071796332
+        translation 0.05999999999999968 0.068 -0.04
+        rotation 2.243063822661431e-07 2.2430615356003637e-07 -0.9999999999999497 1.570795307179633
         children [
           DEF WHEEL_RL Shape {
             geometry Cylinder {
@@ -242,7 +227,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.06 -0.015 -0.04
-        rotation -0.42815598474459954 -0.428155548190421 -0.7958424965287682 1.7971901941703934
+        rotation -0.42815598474459965 -0.42815554819042095 -0.795842496528768 1.7971901941703932
         children [
           DEF WHEEL_FR Shape {
             geometry Cylinder {
@@ -1399,4 +1384,7 @@ Robot {
     ]
   }
   controller "main_sim"
+}
+RectangleArena {
+  floorSize 2 2
 }
