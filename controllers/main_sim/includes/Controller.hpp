@@ -10,7 +10,7 @@
 using namespace webots;
 class Controller {
 private:
-    TwinWheelDriver* twinWheelDriver;
+    TwinWheelDriver* twinWheelDriver;  
     Robot* robot;
     DistanceSensor* rangeSensor;
     DistanceSensor* colorSensor;
@@ -23,6 +23,12 @@ protected:
 public:
     static Controller* _instance;
     static Controller* getInstance();
+
+    Position *position;
+    // Position系
+    void positionReset(void);
+    void getPosition(float* distance, float* angle);
+  
     // twinWheelDriver系
     void changeDriveMode(Mode mode, int voltage_level);
     bool clockForward();
