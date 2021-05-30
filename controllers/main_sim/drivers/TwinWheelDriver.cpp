@@ -6,25 +6,25 @@ using namespace webots;
 
 TwinWheelDriver* TwinWheelDriver::_instance = 0;
 
-TwinWheelDriver* TwinWheelDriver::getInstance(Robot* robot, std::string motor_nameL, std::string motor_nameR) {
+TwinWheelDriver* TwinWheelDriver::getInstance(Robot* robot, std::string motorNameL, std::string motorNameR) {
     if (_instance == 0) {
-      _instance = new TwinWheelDriver(robot, motor_nameL, motor_nameR);
+      _instance = new TwinWheelDriver(robot, motorNameL, motorNameR);
     }
 
     return _instance;
 }
 
-TwinWheelDriver::TwinWheelDriver(Robot* robot, std::string motor_nameL, std::string motor_nameR) {
-  this->motorL = robot->getMotor(motor_nameL);
+TwinWheelDriver::TwinWheelDriver(Robot* robot, std::string motorNameL, std::string motorNameR) {
+  this->motorL = robot->getMotor(motorNameL);
   motorL->setPosition(INFINITY);
-  this->motorR = robot->getMotor(motor_nameR);
+  this->motorR = robot->getMotor(motorNameR);
   motorR->setPosition(INFINITY);
 }
 
-void TwinWheelDriver::changeDriveMode(Mode mode, int voltage_level) {
+void TwinWheelDriver::changeDriveMode(Mode mode, int voltageLevel) {
     //voltage_level : 0〜100
-    double l = ((double) voltage_level * MAX_SPEED / 100.0) * (L_MOTOR_COFF / 100) ;
-    double r = ((double) voltage_level * MAX_SPEED / 100.0) * (R_MOTOR_COFF / 100) ;
+    double l = ((double) voltageLevel * MAX_SPEED / 100.0) * (L_MOTOR_COFF / 100) ;
+    double r = ((double) voltageLevel * MAX_SPEED / 100.0) * (R_MOTOR_COFF / 100) ;
 
     if (mode == STOP) {
         motorL->setVelocity(0.0);
