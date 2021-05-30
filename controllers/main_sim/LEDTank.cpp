@@ -81,24 +81,24 @@ void LEDTank::doTransition(unsigned long event){
     }
     else if(((event & E_LEFT) != 0) ){
       this->state = STATE_LEFT;
-      controller->changeDriveMode(CW, OUTPUT_);
+      controller->changeDriveMode(CCW, OUTPUT_);
       printf("LEFT\n");
     }
     else if(((event & E_RIGHT) != 0) ){
       this->state = STATE_RIGHT;
-      controller->changeDriveMode(CCW, OUTPUT_);
+      controller->changeDriveMode(CW, OUTPUT_);
       printf("RIGHT\n");
     }
     break;
   case STATE_BACKWARD:
     if(((event & E_RIGHT) != 0) ){
       this->state = STATE_RIGHT;
-      controller->changeDriveMode(CCW, OUTPUT_);
+      controller->changeDriveMode(CW, OUTPUT_);
       printf("RIGHT\n");
     }
     else if(((event & E_LEFT) != 0) ){
       this->state = STATE_LEFT;
-      controller->changeDriveMode(CW, OUTPUT_);
+      controller->changeDriveMode(CCW, OUTPUT_);
       printf("LEFT\n");
     }
     else if(((event & E_UP) != 0) ){
@@ -154,12 +154,12 @@ void LEDTank::doTransition(unsigned long event){
     }
     else if(((event & E_RIGHT) != 0) ){
       this->state = STATE_RIGHT;
-      controller->changeDriveMode(CCW, OUTPUT_);
+      controller->changeDriveMode(CW, OUTPUT_);
       printf("RIGHT\n");
     }
     else if(((event & E_LEFT) != 0) ){
       this->state = STATE_LEFT;
-      controller->changeDriveMode(CW, OUTPUT_);
+      controller->changeDriveMode(CCW, OUTPUT_);
       printf("LEFT\n");
     }
     break;
@@ -192,24 +192,24 @@ void LEDTank::doTransition(unsigned long event){
     }
     else if(((event & E_LEFT) != 0) ){
       this->state = STATE_LEFT;
-      controller->changeDriveMode(CW, OUTPUT_);
+      controller->changeDriveMode(CCW, OUTPUT_);
       printf("LEFT\n");
     }
     else if(((event & E_RIGHT) != 0) ){
       this->state = STATE_RIGHT;
-      controller->changeDriveMode(CCW, OUTPUT_);
+      controller->changeDriveMode(CW, OUTPUT_);
       printf("RIGHT\n");
     }
     break;
   case STATE_BACKWARD:
     if(((event & E_RIGHT) != 0) ){
       this->state = STATE_RIGHT;
-      controller->changeDriveMode(CCW, OUTPUT_);
+      controller->changeDriveMode(CW, OUTPUT_);
       printf("RIGHT\n");
     }
     else if(((event & E_LEFT) != 0) ){
       this->state = STATE_LEFT;
-      controller->changeDriveMode(CW, OUTPUT_);
+      controller->changeDriveMode(CCW, OUTPUT_);
       printf("LEFT\n");
     }
     else if(((event & E_UP) != 0) ){
@@ -265,12 +265,12 @@ void LEDTank::doTransition(unsigned long event){
     }
     else if(((event & E_RIGHT) != 0) ){
       this->state = STATE_RIGHT;
-      controller->changeDriveMode(CCW, OUTPUT_);
+      controller->changeDriveMode(CW, OUTPUT_);
       printf("RIGHT\n");
     }
     else if(((event & E_LEFT) != 0) ){
       this->state = STATE_LEFT;
-      controller->changeDriveMode(CW, OUTPUT_);
+      controller->changeDriveMode(CCW, OUTPUT_);
       printf("LEFT\n");
     }
     break;
