@@ -18,8 +18,7 @@ Position* Position::getInstance(Robot* robot, std::string psNameL, std::string p
     return _instance;
 }
 
-Position::Position(Robot* robot, std::string psNameL, std::string psNameR) :
-        angle(0.0F), distance(0.0F) {
+Position::Position(Robot* robot, std::string psNameL, std::string psNameR) {
     this->positionSensorL = robot->getPositionSensor(psNameL);
     positionSensorL->enable(TIME_STEP);
     this->positionSensorR = robot->getPositionSensor(psNameR);

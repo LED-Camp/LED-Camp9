@@ -9,10 +9,6 @@
 using namespace webots;
 
 class Position {
-private:    
-  float angle;
-  float distance;
-    
 protected:
   Position(Robot* robot, std::string psNameL, std::string psNameR);
 
