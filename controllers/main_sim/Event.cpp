@@ -15,14 +15,26 @@ Event::Event(Controller *controller) {
     this->keyboard = Keyboard();
     this->old_key = -1;
     keyboard.enable(100);
+    this->distanceOld = 0.0F;
+    this->angleOld = 0.0F;
 }
 
 int Event::updateEvent() {
     int key = keyboard.getKey();
+    float distance;
+    float angle;
+
+    float absDistanceDiff;
+    float absAngleDiff;
+    
     if(key == 'Q'){
         return -1;
     }
 
+    controller->getPosition(&distance, &angle);
+    absDistanceDiff = ABS_FLOAT(this->distanceOld - distance);
+    absAngleDiff = ABS_FLOAT(this->angleOld - angle);
+    
     // E_UPイベント判定
     if (key == 'W') {
         this->event |= E_UP;
@@ -51,6 +63,24 @@ int Event::updateEvent() {
         this->event &= ~E_RIGHT;
     }
     key = -1;
+
+
+    if (absDistanceDiff > 0.005) {
+        this->event |= E_CHANGE_DISTANCE;
+    } else {
+        this->event &= ~E_CHANGE_DISTANCE;
+    }
+
+    if (absAngleDiff > 0.01) {
+        this->event |= E_CHANGE_ANGLE;
+    } else {
+        this->event &= ~E_CHANGE_ANGLE;
+    }
+
+    this->distanceOld = distance;
+    this->angleOld = angle;
+    printf("distance=%f,angle=%f\n", distance, angle);
+    
     return 0;
 }
 

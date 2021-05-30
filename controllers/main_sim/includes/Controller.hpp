@@ -26,6 +26,11 @@ public:
     void changeDriveMode(Mode mode, int voltage_level);
     bool clockForward();
     
+    Position *position;
+    // Position系
+    void positionReset(void);
+    void getPosition(float* distance, float* angle);
+    
     void outputSensorValues(); // センサ値出力(開発用)
     };
 #endif

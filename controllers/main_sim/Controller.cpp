@@ -27,10 +27,19 @@ Controller::Controller() {
     lineSensorRight->enable(TIME_STEP);
     this->lineSensorLeft = robot->getDistanceSensor("LineSensorLeft");
     lineSensorLeft->enable(TIME_STEP);
+    position = Position::getInstance(robot, "psL", "psR");
     twinWheelDriver = TwinWheelDriver::getInstance(robot, "motorL", "motorR");
 }
 
 Controller::~Controller(void) {
+}
+
+void Controller::positionReset(void) {
+    position->reset();
+}
+
+void Controller::getPosition(float* distance, float* angle) {
+    position->getPosition(distance, angle);
 }
 
 void Controller::changeDriveMode(Mode mode, int pwmDuty) {
