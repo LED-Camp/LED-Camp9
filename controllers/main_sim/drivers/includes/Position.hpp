@@ -3,9 +3,9 @@
 
 #ifndef __POSITION_H__
 #define __POSITION_H__
-#define L 0.03F * 3.1415926535897932384626433F
+#define L 0.015
 #define DEPTH 0.12
-#define DOUBLE_PI 3.1415926535897932384626433F * 2
+#define PI 3.1415926535897932384626433F
 using namespace webots;
 
 class Position {
