@@ -1313,6 +1313,7 @@ Robot {
     centerOfMass [
       0 0 0
     ]
+    mass 1.5
   }
   controller "main_sim"
 }
