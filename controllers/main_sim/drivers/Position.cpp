@@ -12,15 +12,9 @@ static float referPositionR;
 /*******************************************/
 Position* Position::_instance = 0;
 
-<<<<<<< HEAD
 Position* Position::getInstance(Robot* robot, std::string psNameL, std::string psNameR) {
     if (_instance == 0) {
         _instance = new Position(robot, psNameL, psNameR);
-=======
-Position* Position::getInstance(Robot* robot, std::string ps_nameL, std::string ps_nameR) {
-    if (_instance == 0) {
-        _instance = new Position(robot, ps_nameL, ps_nameR);
->>>>>>> edit: Positionセンサから値取得・表示・APIで距離角度を取得できるようにした
     }
 
     return _instance;
