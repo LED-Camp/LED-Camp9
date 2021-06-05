@@ -6,6 +6,7 @@ using namespace webots;
 
 static float referPosL;
 static float referPosR;
+#define ABS_FUNC(x) ((x) < 0 ? -(x) : (x))
 
 /*******************************************/
 Position* Position::_instance = 0;
@@ -40,12 +41,13 @@ void Position::getPosition(float* distance, float* angle) {
 
     radNowL = psL->getValue();
     radNowR = psR->getValue();
-    l = (radNowL - referPosL)/DOUBLE_PI * L;
-    r = (radNowR - referPosR)/DOUBLE_PI * L;
-    
+    //l = (radNowL - referPosL)/DOUBLE_PI * L;
+    //r = (radNowR - referPosR)/DOUBLE_PI * L;
+    l = (radNowL - referPosL) * L;
+    r = (radNowR - referPosR) * L;
     printf(">>>>>>>>>%f, %f\n", radNowL, radNowR);
 
     distanceTemp = (l + r) / 2.0;
-    *angle = (( l - r ) / DEPTH) * 180.0 / 3.141592653589793F;
+    *angle = ((( l - r ) / DEPTH) * 180.0) / PI;
     *distance = distanceTemp;
 }
