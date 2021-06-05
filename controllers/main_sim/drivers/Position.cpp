@@ -4,6 +4,7 @@
 #include "../includes/CommonDefine.hpp"
 using namespace webots;
 
+
 static float referPositionL;
 static float referPositionR;
 
