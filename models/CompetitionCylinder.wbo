@@ -23,4 +23,5 @@ Solid {
     physics Physics {
         mass 0.6
     }
+    name "Competition Cylinder"
 }
