@@ -3,15 +3,15 @@
 
 #ifndef __POSITION_H__
 #define __POSITION_H__
-#define L 0.015
-#define DEPTH 0.12
+#define RADIUS 0.015
+#define L 0.12
 #define PI 3.1415926535897932384626433F
 using namespace webots;
 
 class Position {
 private:    
-    float angle;
-    float distance;
+  float angle;
+  float distance;
     
 protected:
   Position(Robot* robot, std::string ps_nameL, std::string ps_nameR);
