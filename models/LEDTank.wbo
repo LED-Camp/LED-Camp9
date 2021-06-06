@@ -107,7 +107,6 @@ Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 1.8153539538228048e-09
         anchor 0 0.068 -0.04
       }
       device [
@@ -117,8 +116,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation -0.06 0.068 -0.04
-        rotation 9.076779023937477e-10 9.07676976911346e-10 -0.9999999999999999 1.570795307179577
+        translation -0.059999999999999984 0.068 -0.04
+        rotation 2.6203758272902524e-22 -1.8716970194930372e-23 -0.9999999999999999 1.5707953071795828
         children [
           DEF WHEEL_RR Shape {
             geometry Cylinder {
@@ -141,6 +140,9 @@ Robot {
         anchor 0.06 -0.015 -0.04
       }
       device [
+        PositionSensor {
+          name "psL"
+        }
         RotationalMotor {
           name "motorL"
           maxVelocity 100
@@ -148,7 +150,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0.06 -0.015 -0.04
-        rotation 0.6583861495049298 0.6583854782046679 -0.3647687489756802 2.442050445884074
+        rotation 3.9252331478238725e-17 -3.9252331478238725e-17 -0.9999999999999999 1.570795307179577
         children [
           DEF WHEEL_FL Shape {
             geometry Cylinder {
@@ -167,7 +169,6 @@ Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 7.200984496874698e-07
         anchor 0 0.068 -0.04
       }
       device [
@@ -177,8 +178,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 0.05999999999999955 0.068 -0.04
-        rotation 3.600495919555964e-07 3.6004922484370383e-07 -0.9999999999998702 1.570795307179709
+        translation 0.059999999999999096 0.068 -0.04
+        rotation 2.0588667214423413e-21 -7.486788077972148e-23 -0.9999999999999999 1.5707953071795828
         children [
           DEF WHEEL_RL Shape {
             geometry Cylinder {
@@ -201,6 +202,9 @@ Robot {
         anchor -0.06 -0.015 -0.04
       }
       device [
+        PositionSensor {
+          name "psR"
+        }
         RotationalMotor {
           name "motorR"
           maxVelocity 100
@@ -208,7 +212,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.06 -0.015 -0.04
-        rotation -0.46983018068739185 -0.46982970164158516 -0.7473417242270312 1.8579963950061829
+        rotation 0 0 -0.9999999999999999 1.570795307179577
         children [
           DEF WHEEL_FR Shape {
             geometry Cylinder {
