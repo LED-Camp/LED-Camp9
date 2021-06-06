@@ -12,8 +12,17 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 RectangleArena {
-  floorSize 5 5
-  floorTileSize 1 1
+  floorSize 2.5 2.5
+  floorTileSize 2.5 2.5
+  floorAppearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "../imgs/ledcamp_field_prod.png"
+      ]
+    }
+    roughness 1
+  }
+  name "Competition Arena"
 }
 Robot {
   translation -0.0951553023089044 0.053908332094003364 0.07619237292696579

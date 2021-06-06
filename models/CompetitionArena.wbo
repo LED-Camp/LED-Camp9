@@ -1,0 +1,14 @@
+#VRML_OBJ R2021a utf8
+RectangleArena {
+  floorSize 2.5 2.5
+  floorTileSize 2.5 2.5
+  floorAppearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "../imgs/ledcamp_field_prod.png"
+      ]
+    }
+    roughness 1
+  }
+  name "Competition Arena"
+}
