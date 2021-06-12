@@ -8,6 +8,7 @@
 LEDTank::LEDTank(Controller *controller){
   this->state = _STATE_INITIAL;
   this->controller = controller;
+  this->rangeDistance = 0;
 }
 
 #ifdef EXPERIMENTAL_USE

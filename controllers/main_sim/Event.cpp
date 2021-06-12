@@ -13,14 +13,25 @@ Event::Event(Controller *controller) {
     this->event = 0;
     this->controller = controller;
     this->keyboard = Keyboard();
-    this->old_key = -1;
+    this->oldKey = -1;
+    this->rangeDistanceOld = 0;
     keyboard.enable(100);
 }
 
 int Event::updateEvent() {
     int key = keyboard.getKey();
+    float rangeDistance;
+
+    rangeDistance = controller->getRange();
     if(key == 'Q'){
         return -1;
+    }
+
+    // TODO 測距センサの誤差で実質ここ常に発火してしまう
+    if(rangeDistance != this->rangeDistanceOld){
+        this->event |= E_CHANGE_RANGING;
+    }else{
+        this->event &= ~E_CHANGE_RANGING;
     }
 
     // E_UPイベント判定
@@ -51,6 +62,10 @@ int Event::updateEvent() {
         this->event &= ~E_RIGHT;
     }
     key = -1;
+
+    this->rangeDistanceOld = rangeDistance;
+    printf("range=%f\n", rangeDistance);
+
     return 0;
 }
 

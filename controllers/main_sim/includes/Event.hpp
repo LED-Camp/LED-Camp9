@@ -32,7 +32,8 @@ class Event {
 private:
     Controller* controller;
     Keyboard keyboard;
-    int old_key;
+    int oldKey;
+    float rangeDistanceOld;
     unsigned long event;
 };
 
