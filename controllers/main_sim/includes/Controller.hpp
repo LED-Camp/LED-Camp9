@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include "drivers/includes/TwinWheelDriver.hpp"
+#include "drivers/includes/RangeSensor.hpp"
 #include <webots/Robot.hpp>
 #include <webots/DistanceSensor.hpp>
 #include "drivers/includes/Position.hpp"
@@ -10,11 +11,11 @@
 using namespace webots;
 class Controller {
 private:
-    TwinWheelDriver* twinWheelDriver;
     Robot* robot;
-    DistanceSensor* rangeSensor;
+    RangeSensor* rangeSensor;
+    TwinWheelDriver* twinWheelDriver;
     DistanceSensor* colorSensor;
-    DistanceSensor* lineSensorCenter; 
+    DistanceSensor* lineSensorCenter;
     DistanceSensor* lineSensorRight;
     DistanceSensor* lineSensorLeft;
 protected:
