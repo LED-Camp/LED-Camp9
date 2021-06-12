@@ -34,15 +34,18 @@ Controller::~Controller(void) {
 }
 
 void Controller::changeDriveMode(Mode mode, int pwmDuty) {
-    twinWheelDriver->changeDriveMode(mode, pwmDuty);
+    this->twinWheelDriver->changeDriveMode(mode, pwmDuty);
 }
 
 bool Controller::clockForward() {
     return this->robot->step(TIME_STEP) != -1;
 }
 
+float Controller::getRange() {
+    return this->rangeSensor->getRange();
+}
+
 void Controller::outputSensorValues() { //センサ値の取得・出力コード（開発用）
-  std::cout << "distance:" << rangeSensor->getRange() << "cm" << std::endl;
   std::cout << "color value:" << colorSensor->getValue() << std::endl;
   std::cout << "line left:" << lineSensorLeft->getValue()
     << " center:" << lineSensorCenter->getValue()

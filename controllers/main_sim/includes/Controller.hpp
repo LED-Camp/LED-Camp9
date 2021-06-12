@@ -25,8 +25,8 @@ public:
     static Controller* getInstance();
     // twinWheelDriver系
     void changeDriveMode(Mode mode, int voltage_level);
+    float getRange();
     bool clockForward();
-    
     void outputSensorValues(); // センサ値出力(開発用)
     };
 #endif
