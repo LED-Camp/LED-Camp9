@@ -14,9 +14,8 @@ Controller* Controller::getInstance() {
 
 Controller::Controller() {
     this->robot = new Robot();
-    //距離センサ初期化
-    this->rangeSensor = robot->getDistanceSensor("RangeSensor");
-    rangeSensor->enable(TIME_STEP);
+    // 測距センサ初期化
+    this->rangeSensor = RangeSensor::getInstance(robot, "RangeSensor", TIME_STEP);
     //カラーセンサ初期化
     this->colorSensor = robot->getDistanceSensor("ColorSensor");
     colorSensor->enable(TIME_STEP);
@@ -27,6 +26,7 @@ Controller::Controller() {
     lineSensorRight->enable(TIME_STEP);
     this->lineSensorLeft = robot->getDistanceSensor("LineSensorLeft");
     lineSensorLeft->enable(TIME_STEP);
+    // モータドライバ初期化
     twinWheelDriver = TwinWheelDriver::getInstance(robot, "motorL", "motorR");
 }
 
@@ -42,10 +42,10 @@ bool Controller::clockForward() {
 }
 
 void Controller::outputSensorValues() { //センサ値の取得・出力コード（開発用）
-  std::cout << "distance:" << rangeSensor->getValue() << "cm" << std::endl;
+  std::cout << "distance:" << rangeSensor->getRange() << "cm" << std::endl;
   std::cout << "color value:" << colorSensor->getValue() << std::endl;
-  std::cout << "line left:" << lineSensorLeft->getValue() 
-    << " center:" << lineSensorCenter->getValue() 
-    << " right:" << lineSensorRight->getValue() 
-    << std::endl; 
+  std::cout << "line left:" << lineSensorLeft->getValue()
+    << " center:" << lineSensorCenter->getValue()
+    << " right:" << lineSensorRight->getValue()
+    << std::endl;
 };
