@@ -17,7 +17,6 @@ private:
     DistanceSensor* lineSensorCenter; 
     DistanceSensor* lineSensorRight;
     DistanceSensor* lineSensorLeft;
-    PositionSensor* position;
 protected:
     Controller();
     ~Controller(void);

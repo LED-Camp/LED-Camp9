@@ -8,6 +8,8 @@
 LEDTank::LEDTank(Controller *controller){
   this->state = _STATE_INITIAL;
   this->controller = controller;
+  this->distance = 0.0F;
+  this->angle = 0.0F;
 }
 
 #ifdef EXPERIMENTAL_USE
@@ -15,6 +17,7 @@ LEDTank::LEDTank(Controller *controller){
  * 実験用
  */
 void LEDTank::execState(){
+  controller->getPosition(&distance, &angle);
   switch(this->_state){
   case STATE_FORWARD:
     break;
@@ -68,6 +71,7 @@ void LEDTank::doTransition(unsigned long event){
     this->state = STATE_STOP;
 
     //entry
+    controller->positionReset();
     controller->changeDriveMode(STOP, 0);
 
     printf("STOP\n");

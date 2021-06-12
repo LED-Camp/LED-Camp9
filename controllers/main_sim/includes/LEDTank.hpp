@@ -23,6 +23,8 @@ class LEDTank{
    Controller *controller;
    unsigned long _beforeState;
    unsigned long state;
+   float distance;
+   float angle;
 };
 
 #endif
