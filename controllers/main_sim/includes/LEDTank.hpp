@@ -26,5 +26,4 @@ class LEDTank{
    float distance;
    float angle;
 };
-
 #endif
