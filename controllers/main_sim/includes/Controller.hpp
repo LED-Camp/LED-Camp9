@@ -10,7 +10,7 @@
 using namespace webots;
 class Controller {
 private:
-    TwinWheelDriver* twinWheelDriver;  
+    TwinWheelDriver* twinWheelDriver;
     Robot* robot;
     DistanceSensor* rangeSensor;
     DistanceSensor* colorSensor;

@@ -5,6 +5,7 @@
 using namespace webots;
 
 
+
 static float referPositionL;
 static float referPositionR;
 
@@ -18,6 +19,7 @@ Position* Position::getInstance(Robot* robot, std::string psNameL, std::string p
 
     return _instance;
 }
+
 
 Position::Position(Robot* robot, std::string psNameL, std::string psNameR) {
     this->positionSensorL = robot->getPositionSensor(psNameL);
