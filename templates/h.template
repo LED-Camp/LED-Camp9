@@ -1,0 +1,32 @@
+#ifndef __${u.name}__
+#define __${u.name}__
+
+#include "includes/Controller.hpp"
+
+#define _STATE_INITIAL 0x00000000
+<% def stateNo = 0x00000001 %>\
+<% for(state in u.states){ %>\
+#define STATE_${state.name} ((unsigned long)${stateNo})
+<% stateNo += 1 %>\
+<% } %>\
+
+class ${u.name}{
+ public:
+  ${u.name}(Controller *controller);
+  void execState();
+  void doTransition(unsigned long event);
+  unsigned long _state;
+
+ private:
+   Controller *controller;
+   unsigned long _beforeState;
+   unsigned long state;
+<% for(var in u.iclass.getAttributes()){%>\
+<% if(var.getAssociation() == null){%>\
+  ${var.getType()} ${var.getName()};
+<%}%>\
+<%}%>\
+
+};
+
+#endif
