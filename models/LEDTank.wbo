@@ -1,16 +1,22 @@
 #VRML_OBJ R2021a utf8
 Robot {
-  translation 0 0.23 0
-  rotation -0.577349935856137 0.577349935856137 0.5773509358560258 2.09439
+  translation 1.1199317423845856 0.054541237442853205 0.08302394128649326
+  rotation 0.5750413347912737 0.5819406555674752 0.5750413347570482 -2.087523209194689
   children [
     Solid {
       translation 0 -0.115 -0.04
       children [
+        DistanceSensor {
+          rotation 0 1 0 1.5708
+          name "ColorSensor"
+          type "infra-red"
+        }
         SpotLight {
           attenuation 1 1 2
           beamWidth 0.1
           direction 0 1 -1
           location 0 -0.005 0
+          on FALSE
           radius 0.2
         }
         Camera {
@@ -37,7 +43,7 @@ Robot {
           }
         }
       ]
-      name "solid(7)"
+      name "solid(8)"
     }
     Solid {
       translation 0 -0.13 0.017
@@ -48,8 +54,8 @@ Robot {
           lookupTable [
             0 0 0
             0.1 0 0.1
-            1 10 0.1
-            1.1 9999 0
+            5 500 0.7
+            5.1 9999 0
           ]
         }
         Shape {
@@ -65,9 +71,44 @@ Robot {
       ]
       name "solid(6)"
     }
+    Solid {
+      translation 0 -0.07 -0.043
+      rotation 1 0 0 1.5708
+      children [
+        DistanceSensor {
+          translation -0.06 -6.21882e-08 1.45658e-07
+          rotation 0.5773509358554485 -0.5773509358554485 0.5773489358556708 -2.094395307179586
+          name "LineSensorRight"
+          type "infra-red"
+        }
+        DistanceSensor {
+          translation 0.06 6.21882e-08 -1.45658e-07
+          rotation 0.5773509358554485 -0.5773509358554485 0.5773489358556708 -2.094395307179586
+          name "LineSensorLeft"
+          type "infra-red"
+        }
+        DistanceSensor {
+          rotation 0.5773509358554485 -0.5773509358554485 0.5773489358556708 -2.094395307179586
+          name "LineSensorCenter"
+          type "infra-red"
+        }
+        Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.2 0.2 0.2
+            }
+          }
+          geometry Box {
+            size 0.13 0.001 0.015
+          }
+        }
+      ]
+      name "solid(9)"
+    }
     HingeJoint {
       jointParameters HingeJointParameters {
-        anchor 0.0 0.068 -0.04
+        position 1.8153539538228048e-09
+        anchor 0 0.068 -0.04
       }
       device [
         RotationalMotor {
@@ -77,7 +118,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.06 0.068 -0.04
-        rotation 1.4856595092225975e-22 -9.358485097465182e-24 -0.9999999999999999 1.570795307179583
+        rotation 9.076779023937477e-10 9.07676976911346e-10 -0.9999999999999999 1.570795307179577
         children [
           DEF WHEEL_RR Shape {
             geometry Cylinder {
@@ -90,10 +131,13 @@ Robot {
         boundingObject USE WHEEL_RR
         physics Physics {
         }
+        linearVelocity 9.052288405389738e-08 2.412129946924737e-07 -2.378978392961328e-12
+        angularVelocity 4.9270578978222783e-11 2.80116816784653e-11 2.54126951220165e-06
       }
     }
     HingeJoint {
       jointParameters HingeJointParameters {
+        position -8882.294303689125
         anchor 0.06 -0.015 -0.04
       }
       device [
@@ -104,7 +148,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0.06 -0.015 -0.04
-        rotation -1.8950932322367052e-22 1.8716970194930422e-23 -0.9999999999999999 1.570795307179577
+        rotation 0.6583861495049298 0.6583854782046679 -0.3647687489756802 2.442050445884074
         children [
           DEF WHEEL_FL Shape {
             geometry Cylinder {
@@ -117,11 +161,14 @@ Robot {
         boundingObject USE WHEEL_FL
         physics Physics {
         }
+        linearVelocity 9.296879251427735e-08 3.518985753469615e-08 -7.202701119842423e-14
+        angularVelocity -2.58702495596671e-12 -5.106848587487996e-10 -9.99999637706505
       }
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        anchor 0.0 0.068 -0.04
+        position 7.200984496874698e-07
+        anchor 0 0.068 -0.04
       }
       device [
         RotationalMotor {
@@ -130,8 +177,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 0.06 0.068 -0.04
-        rotation 1.6962254239155647e-22 1.871697019493037e-23 -0.9999999999999999 1.5707953071795828
+        translation 0.05999999999999955 0.068 -0.04
+        rotation 3.600495919555964e-07 3.6004922484370383e-07 -0.9999999999998702 1.570795307179709
         children [
           DEF WHEEL_RL Shape {
             geometry Cylinder {
@@ -144,10 +191,13 @@ Robot {
         boundingObject USE WHEEL_RL
         physics Physics {
         }
+        linearVelocity 9.052624498513526e-08 2.4120707713305745e-07 -2.3790695265035054e-12
+        angularVelocity 4.961579958280039e-11 2.7984596745080604e-11 2.4063937147605376e-06
       }
     }
     HingeJoint {
       jointParameters HingeJointParameters {
+        position 8317.814881684299
         anchor -0.06 -0.015 -0.04
       }
       device [
@@ -158,7 +208,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.06 -0.015 -0.04
-        rotation -9.358485097465211e-23 -9.358485097465211e-23 -0.9999999999999999 1.5707953071795775
+        rotation -0.46983018068739185 -0.46982970164158516 -0.7473417242270312 1.8579963950061829
         children [
           DEF WHEEL_FR Shape {
             geometry Cylinder {
@@ -171,6 +221,8 @@ Robot {
         boundingObject USE WHEEL_FR
         physics Physics {
         }
+        linearVelocity 9.296267778665841e-08 3.519566062612023e-08 -8.783112952932916e-14
+        angularVelocity -3.303126790512406e-12 -5.02921876396123e-10 -9.99999637706493
       }
     }
     Solid {
@@ -1310,10 +1362,12 @@ Robot {
     size 0.1430723372032522 0.26130810687567646 0.1
   }
   physics Physics {
+    mass 1.5
     centerOfMass [
       0 0 0
     ]
-    mass 1.5
   }
   controller "main_sim"
+  linearVelocity -6.26334526494306e-09 5.906629938533204e-08 1.6090965977856263e-12
+  angularVelocity 4.924760136845352e-11 2.800115277600826e-11 2.473831589772249e-06
 }
