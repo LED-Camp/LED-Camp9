@@ -1,4 +1,3 @@
-
 #include "includes/Controller.hpp"
 #include "includes/CommonDefine.hpp"
 using namespace webots;
