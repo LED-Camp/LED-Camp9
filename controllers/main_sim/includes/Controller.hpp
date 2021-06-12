@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include "drivers/includes/TwinWheelDriver.hpp"
+#include "drivers/includes/Position.hpp"
 #include <webots/Robot.hpp>
 #include <webots/DistanceSensor.hpp>
 

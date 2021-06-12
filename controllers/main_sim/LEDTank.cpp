@@ -8,8 +8,8 @@
 LEDTank::LEDTank(Controller *controller){
   this->state = _STATE_INITIAL;
   this->controller = controller;
-  this->distance = 0;
-  this->angle = 0;
+  this->distance = 0.0F;
+  this->angle = 0.0F;
 }
 
 #ifdef EXPERIMENTAL_USE

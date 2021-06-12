@@ -117,7 +117,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.059999999999999984 0.068 -0.04
-        rotation 2.6203758272902524e-22 -1.8716970194930372e-23 -0.9999999999999999 1.5707953071795828
+        rotation 2.620375827290254e-22 -1.8716970194930372e-23 -0.9999999999999999 1.5707953071795828
         children [
           DEF WHEEL_RR Shape {
             geometry Cylinder {
@@ -141,7 +141,7 @@ Robot {
       }
       device [
         PositionSensor {
-          name "psL"
+          name "positionSensorL"
         }
         RotationalMotor {
           name "motorL"
@@ -179,7 +179,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0.059999999999999096 0.068 -0.04
-        rotation 2.0588667214423413e-21 -7.486788077972148e-23 -0.9999999999999999 1.5707953071795828
+        rotation 2.0588667214423424e-21 -7.486788077972148e-23 -0.9999999999999999 1.5707953071795828
         children [
           DEF WHEEL_RL Shape {
             geometry Cylinder {
@@ -203,7 +203,7 @@ Robot {
       }
       device [
         PositionSensor {
-          name "psR"
+          name "positionSensorR"
         }
         RotationalMotor {
           name "motorR"
@@ -1372,6 +1372,4 @@ Robot {
     ]
   }
   controller "main_sim"
-  linearVelocity -6.26334526494306e-09 5.906629938533204e-08 1.6090965977856263e-12
-  angularVelocity 4.924760136845352e-11 2.800115277600826e-11 2.473831589772249e-06
 }

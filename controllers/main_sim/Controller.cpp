@@ -27,7 +27,7 @@ Controller::Controller() {
     lineSensorRight->enable(TIME_STEP);
     this->lineSensorLeft = robot->getDistanceSensor("LineSensorLeft");
     lineSensorLeft->enable(TIME_STEP);
-    position = Position::getInstance(robot, "psL", "psR");
+    position = Position::getInstance(robot, "positionSensorL", "positionSensorR");
     twinWheelDriver = TwinWheelDriver::getInstance(robot, "motorL", "motorR");
 }
 

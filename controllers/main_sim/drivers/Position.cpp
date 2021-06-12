@@ -4,31 +4,31 @@
 #include "../includes/CommonDefine.hpp"
 using namespace webots;
 
-static float referPosL;
-static float referPosR;
+static float referPositionL;
+static float referPositionR;
 
 /*******************************************/
 Position* Position::_instance = 0;
 
-Position* Position::getInstance(Robot* robot, std::string ps_nameL, std::string ps_nameR) {
+Position* Position::getInstance(Robot* robot, std::string psNameL, std::string psNameR) {
     if (_instance == 0) {
-        _instance = new Position(robot, ps_nameL, ps_nameR);
+        _instance = new Position(robot, psNameL, psNameR);
     }
 
     return _instance;
 }
 
-Position::Position(Robot* robot, std::string ps_nameL, std::string ps_nameR) :
+Position::Position(Robot* robot, std::string psNameL, std::string psNameR) :
         angle(0.0F), distance(0.0F) {
-    this->psL = robot->getPositionSensor(ps_nameL);
-    psL->enable(TIME_STEP);
-    this->psR = robot->getPositionSensor(ps_nameR);
-    psR->enable(TIME_STEP);
+    this->positionSensorL = robot->getPositionSensor(psNameL);
+    positionSensorL->enable(TIME_STEP);
+    this->positionSensorR = robot->getPositionSensor(psNameR);
+    positionSensorR->enable(TIME_STEP);
 }
 
 void Position::reset(void) {
-    referPosL  = psL->getValue();
-    referPosR  = psR->getValue();
+    referPositionL  = positionSensorL->getValue();
+    referPositionR  = positionSensorR->getValue();
 }
 
 void Position::getPosition(float* distance, float* angle) {
@@ -38,12 +38,12 @@ void Position::getPosition(float* distance, float* angle) {
     float radNowR;
     float distanceTemp;
 
-    radNowL = psL->getValue();
-    radNowR = psR->getValue();
-    l = (radNowL - referPosL) * RADIUS;
-    r = (radNowR - referPosR) * RADIUS;
+    radNowL = positionSensorL->getValue();
+    radNowR = positionSensorR->getValue();
+    l = (radNowL - referPositionL) * RADIUS;
+    r = (radNowR - referPositionR) * RADIUS;
 
     distanceTemp = (l + r) / 2.0;
-    *angle = (( l - r ) / L) * 180.0 / PI;
+    *angle = (( l - r ) / TREAD) * 180.0 / PI;
     *distance = distanceTemp;
 }
