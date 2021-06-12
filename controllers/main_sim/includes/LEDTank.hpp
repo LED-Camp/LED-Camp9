@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #ifndef __LEDTank__
 #define __LEDTank__
 
@@ -26,7 +25,6 @@ class LEDTank{
    unsigned long state;
 };
 
-=======
 #ifndef __LEDTank__
 #define __LEDTank__
 
@@ -55,5 +53,4 @@ private:
     float rangeDistance;
 };
 
->>>>>>> modify: Event, LEDTankに距離センサ計測値のプロパティを追加
 #endif
