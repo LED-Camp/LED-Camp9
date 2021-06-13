@@ -73,30 +73,10 @@ DEF TANK Robot {
       boundingObject Group {
         children [
           Transform {
-            translation 0.071 -0.049 0
-            rotation 1 0 0 -1.5707953071795862
-            children [
-              Cylinder {
-                height 0.03
-                radius 0.03
-              }
-            ]
-          }
-          Transform {
             translation 0.01 -0.054 0
             children [
               Box {
                 size 0.126 0.05 0.03
-              }
-            ]
-          }
-          Transform {
-            translation -0.051 -0.049 0
-            rotation 1 0 0 -1.5707953071795862
-            children [
-              Cylinder {
-                height 0.03
-                radius 0.03
               }
             ]
           }
@@ -195,30 +175,10 @@ DEF TANK Robot {
       boundingObject Group {
         children [
           Transform {
-            translation 0.071 -0.049 0
-            rotation 1 0 0 -1.5707953071795862
-            children [
-              Cylinder {
-                height 0.03
-                radius 0.03
-              }
-            ]
-          }
-          Transform {
             translation 0.01 -0.054 0
             children [
               Box {
                 size 0.126 0.05 0.03
-              }
-            ]
-          }
-          Transform {
-            translation -0.051 -0.049 0
-            rotation 1 0 0 -1.5707953071795862
-            children [
-              Cylinder {
-                height 0.03
-                radius 0.03
               }
             ]
           }
