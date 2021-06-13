@@ -3,7 +3,7 @@
 #include "includes/LEDTank.hpp"
 #include "includes/CommonDefine.hpp"
 #include <unistd.h>
-#define OUTPUT_ 100
+#define OUTPUT_ 1
 
 LEDTank::LEDTank(Controller *controller){
   this->state = _STATE_INITIAL;
