@@ -26,5 +26,6 @@ public:
     unsigned long state;
     float distance;
     float angle;
+    float rangeDistance;
 };
 #endif

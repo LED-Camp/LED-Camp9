@@ -14,7 +14,7 @@ Event::Event(Controller *controller) {
     this->controller = controller;
     this->keyboard = Keyboard();
     this->oldKey = -1;
-    this->rangeDistanceOld = 0;
+    this->rangeDistanceOld = 0.0F;
     keyboard.enable(100);
     this->distanceOld = 0.0F;
     this->angleOld = 0.0F;
