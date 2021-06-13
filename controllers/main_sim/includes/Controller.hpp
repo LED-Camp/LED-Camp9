@@ -23,18 +23,12 @@ protected:
 public:
     static Controller* _instance;
     static Controller* getInstance();
-
-    Position *position;
-    // Position系
-    void positionReset(void);
-    void getPosition(float* distance, float* angle);
   
     // twinWheelDriver系
     void changeDriveMode(Mode mode, int voltage_level);
     bool clockForward();
     
     void outputSensorValues(); // センサ値出力(開発用)
-    };
 
     Position *position;
     // Position系
