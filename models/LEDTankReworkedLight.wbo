@@ -10,62 +10,18 @@ DEF TANK Robot {
         TrackWheel {
           position 0.071 -0.057
           radius 0.014
-          children [
-            Shape {
-              appearance Appearance {
-                material Material {
-                }
-              }
-              geometry Box {
-                size 0.035 0.035 0.03
-              }
-            }
-          ]
         }
         TrackWheel {
           position -0.049 -0.057
           radius 0.014
-          children [
-            Shape {
-              appearance Appearance {
-                material Material {
-                }
-              }
-              geometry Box {
-                size 0.035 0.035 0.03
-              }
-            }
-          ]
         }
         TrackWheel {
           position -0.112 0
           radius 0.03
-          children [
-            Shape {
-              appearance Appearance {
-                material Material {
-                }
-              }
-              geometry Box {
-                size 0.035 0.035 0.03
-              }
-            }
-          ]
         }
         TrackWheel {
           position 0.136 0
           radius 0.03
-          children [
-            Shape {
-              appearance Appearance {
-                material Material {
-                }
-              }
-              geometry Box {
-                size 0.035 0.035 0.03
-              }
-            }
-          ]
         }
       ]
       name "track(2)"
@@ -112,62 +68,18 @@ DEF TANK Robot {
         TrackWheel {
           position 0.071 -0.057
           radius 0.014
-          children [
-            Shape {
-              appearance Appearance {
-                material Material {
-                }
-              }
-              geometry Box {
-                size 0.035 0.035 0.03
-              }
-            }
-          ]
         }
         TrackWheel {
           position -0.049 -0.057
           radius 0.014
-          children [
-            Shape {
-              appearance Appearance {
-                material Material {
-                }
-              }
-              geometry Box {
-                size 0.035 0.035 0.03
-              }
-            }
-          ]
         }
         TrackWheel {
           position -0.112 0
           radius 0.03
-          children [
-            Shape {
-              appearance Appearance {
-                material Material {
-                }
-              }
-              geometry Box {
-                size 0.035 0.035 0.03
-              }
-            }
-          ]
         }
         TrackWheel {
           position 0.136 0
           radius 0.03
-          children [
-            Shape {
-              appearance Appearance {
-                material Material {
-                }
-              }
-              geometry Box {
-                size 0.035 0.035 0.03
-              }
-            }
-          ]
         }
       ]
       name "track(1)"
