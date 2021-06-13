@@ -13,12 +13,13 @@
 class PreController;
 
 class LEDTank{
- public:
+public:
     LEDTank(Controller *controller);
     void execState();
     void doTransition(unsigned long event);
     bool clockForward();
     unsigned long _state;
+
  private:
     Controller *controller;
     unsigned long _beforeState;
