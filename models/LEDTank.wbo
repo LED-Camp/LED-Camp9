@@ -141,9 +141,6 @@ Robot {
         anchor 0.06 -0.015 -0.04
       }
       device [
-        PositionSensor {
-          name "positionSensorL"
-        }
         RotationalMotor {
           name "motorL"
           maxVelocity 100
@@ -204,9 +201,6 @@ Robot {
         anchor -0.06 -0.015 -0.04
       }
       device [
-        PositionSensor {
-          name "positionSensorR"
-        }
         RotationalMotor {
           name "motorR"
           maxVelocity 100
@@ -1368,7 +1362,7 @@ Robot {
     size 0.1430723372032522 0.26130810687567646 0.1
   }
   physics Physics {
-    mass 1.5
+    mass 0.7
     centerOfMass [
       0 0 0
     ]
