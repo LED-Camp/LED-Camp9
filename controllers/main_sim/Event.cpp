@@ -1,5 +1,4 @@
 #include "includes/Event.hpp"
-
 #include "iostream"
 #include "includes/Controller.hpp"
 #include "includes/CommonDefine.hpp"
@@ -18,6 +17,10 @@ Event::Event(Controller *controller) {
     keyboard.enable(100);
     this->distanceOld = 0.0F;
     this->angleOld = 0.0F;
+    this->colorOld = 0.0F;
+    this->lineLeftOld = 0.0F;
+    this->lineCenterOld = 0.0F;
+    this->lineRightOld = 0.0F;
 }
 
 int Event::updateEvent() {
@@ -30,7 +33,19 @@ int Event::updateEvent() {
 
     float rangeDistance;
 
+    float color;
+
+    float lineLeft;
+    float lineCenter;
+    float lineRight;
+
     rangeDistance = controller->getRange();
+    color = controller->getColorValue();
+    controller->getLineValue(&lineLeft, &lineCenter, &lineRight);
+    bool lineSensorChanged =
+        (lineLeft != this->lineLeftOld) ||
+        (lineCenter != this->lineCenterOld) ||
+        (lineRight != this->lineRightOld);
 
     if(key == 'Q'){
         return -1;
@@ -45,6 +60,19 @@ int Event::updateEvent() {
         this->event |= E_CHANGE_RANGING;
     }else{
         this->event &= ~E_CHANGE_RANGING;
+    }
+
+    if(color != this->colorOld){
+        this->event |= E_CHANGE_COLOR;
+    }else{
+
+        this->event &= ~E_CHANGE_COLOR;
+    }
+
+    if(lineSensorChanged){
+        this->event |= E_CHANGE_AREA;
+    }else{
+        this->event &= ~E_CHANGE_AREA;
     }
 
     // E_UPイベント判定
@@ -91,10 +119,15 @@ int Event::updateEvent() {
     this->distanceOld = distance;
     this->angleOld = angle;
     this->rangeDistanceOld = rangeDistance;
+    this->colorOld = color;
+    this->lineLeftOld = lineLeft;
+    this->lineCenterOld = lineCenter;
+    this->lineRightOld = lineRight;
 
     printf("distance=%f,angle=%f\n", distance, angle);
     printf("range=%f\n", rangeDistance);
-
+    printf("color=%f\n", color);
+    printf("line:l=%f, line:c=%f, line:r=%f\n", lineLeft, lineCenter, lineRight);
     return 0;
 }
 

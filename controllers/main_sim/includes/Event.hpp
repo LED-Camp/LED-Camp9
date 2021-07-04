@@ -37,6 +37,10 @@ private:
     unsigned long event;
     float distanceOld;
     float angleOld;
+    float colorOld;
+    float lineLeftOld;
+    float lineCenterOld;
+    float lineRightOld;
 };
 
 #endif
