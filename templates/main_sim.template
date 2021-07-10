@@ -1,0 +1,37 @@
+<%def className = u.classes.findAll{it.stereotypes.length==0}[0] %>\
+
+#include <iostream>
+#include <webots/Robot.hpp>
+#include <webots/DistanceSensor.hpp>
+#include "includes/Event.hpp"
+#include "includes/Controller.hpp"
+#include "${className}.h"
+
+using namespace webots;
+
+/**
+ * simmain
+ */
+int main(int argc, char **argv) {
+  Controller *controller;
+  ${className} *lEDTank;
+  Event *event;
+
+  controller = Controller::getInstance();
+  lEDTank = new ${className}(controller);
+  event = new Event(controller);
+
+  while (controller->clockForward()) {
+    if(event->updateEvent() < 0){
+        controller->changeDriveMode(STOP, 0);
+        break;
+     }
+    lEDTank->execState();
+    lEDTank->doTransition(event->getEvent());
+    //controller->outputSensorValues(); //
+  };
+
+  delete lEDTank;
+  delete event;
+  return 0;
+}
