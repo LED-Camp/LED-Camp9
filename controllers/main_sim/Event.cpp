@@ -1,6 +1,6 @@
 #include "includes/Event.hpp"
-#include "iostream"
 #include "includes/Controller.hpp"
+#include "iostream"
 #include "includes/CommonDefine.hpp"
 #include <fcntl.h>
 
@@ -18,9 +18,9 @@ Event::Event(Controller *controller) {
     this->distanceOld = 0.0F;
     this->angleOld = 0.0F;
     this->colorOld = 0.0F;
-    this->lineLeftOld = "";
-    this->lineCenterOld = "";
-    this->lineRightOld = "";
+    this->lineLeftOld = 0;
+    this->lineCenterOld = 0;
+    this->lineRightOld = 0;
 }
 
 int Event::updateEvent() {
@@ -35,9 +35,9 @@ int Event::updateEvent() {
 
     float color;
 
-    std::string lineLeft;
-    std::string  lineCenter;
-    std::string  lineRight;
+    int lineLeft;
+    int lineCenter;
+    int lineRight;
 
     rangeDistance = controller->getRange();
     color = controller->getColorValue();

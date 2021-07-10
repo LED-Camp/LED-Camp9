@@ -54,4 +54,8 @@ typedef enum _enMsgId_t {
 /* *** マクロ関数 *** */
 #define ARRAY_SIZE(x)      (sizeof(x) / sizeof(x[0]))
 
+/* ラインセンサの白黒判定値 */
+#define LINE_SENSOR_VALUE_BLACK 0
+#define LINE_SENSOR_VALUE_WHITE 1
+
 #endif /* __COMMON_DEFINE_H__ */

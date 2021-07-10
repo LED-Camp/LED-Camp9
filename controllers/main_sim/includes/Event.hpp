@@ -3,7 +3,8 @@
 
 #include <cstdint>
 #include <webots/Keyboard.hpp> //キー受け付け; シミュレータ
-#include <string> 
+#include "includes/CommonDefine.hpp"
+#include <string>
 
 class Controller;
 using namespace webots;
@@ -39,9 +40,9 @@ private:
     float distanceOld;
     float angleOld;
     float colorOld;
-    std::string lineLeftOld;
-    std::string lineCenterOld;
-    std::string lineRightOld;
+    int lineLeftOld;
+    int lineCenterOld;
+    int lineRightOld;
 };
 
 #endif

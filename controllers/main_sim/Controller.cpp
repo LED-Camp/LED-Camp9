@@ -1,5 +1,6 @@
 #include "includes/Controller.hpp"
 #include "includes/CommonDefine.hpp"
+
 using namespace webots;
 
 Controller* Controller::_instance = 0;
@@ -59,6 +60,6 @@ float Controller::getColorValue() {
     return this->colorSensor->getColorValue();
 }
 
-void Controller::getLineValue(std::string* left, std::string* center, std::string* right) {
+void Controller::getLineValue(int* left, int* center, int* right) {
     this->lineSensor->getLineValue(left, center, right);
 }

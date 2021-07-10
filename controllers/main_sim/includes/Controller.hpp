@@ -38,7 +38,7 @@ public:
     // Color系
     float getColorValue();
     //LineSensor系
-    void getLineValue(std::string* left, std::string* center, std::string* right);
+    void getLineValue(int* left, int* center, int* right);
 };
 
 #endif

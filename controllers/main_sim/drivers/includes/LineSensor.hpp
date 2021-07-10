@@ -30,7 +30,7 @@ public:
         std::string sensorNameRight,
         int timeStep
     );
-    void getLineValue(std::string* left, std::string* center, std::string* right);
+    void getLineValue(int* left, int* center, int* right);
 };
 
 #endif
