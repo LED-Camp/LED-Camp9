@@ -10,7 +10,7 @@
 using namespace webots;
 
 /**
- * sim用main
+ * simmain
  */
 int main(int argc, char **argv) {
   Controller *controller;
@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
      }
     lEDTank->execState();
     lEDTank->doTransition(event->getEvent());
-    //controller->outputSensorValues(); //センサ値出力（開発用）
+    //controller->outputSensorValues(); //
   };
 
   delete lEDTank;
