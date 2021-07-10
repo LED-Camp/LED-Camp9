@@ -9,6 +9,7 @@
 #include "drivers/includes/Position.hpp"
 #include "drivers/includes/ColorSensor.hpp"
 #include "drivers/includes/LineSensor.hpp"
+#include <webots/Camera.hpp>
 
 using namespace webots;
 class Controller {
@@ -18,6 +19,7 @@ private:
     TwinWheelDriver* twinWheelDriver;
     ColorSensor* colorSensor;
     LineSensor* lineSensor;
+    Camera* cam;
 protected:
     Controller();
     ~Controller(void);
