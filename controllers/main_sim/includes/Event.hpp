@@ -3,6 +3,8 @@
 
 #include <cstdint>
 #include <webots/Keyboard.hpp> //キー受け付け; シミュレータ
+#include "includes/CommonDefine.hpp"
+#include <string>
 
 class Controller;
 using namespace webots;
@@ -37,6 +39,10 @@ private:
     unsigned long event;
     float distanceOld;
     float angleOld;
+    float colorOld;
+    int lineLeftOld;
+    int lineCenterOld;
+    int lineRightOld;
 };
 
 #endif

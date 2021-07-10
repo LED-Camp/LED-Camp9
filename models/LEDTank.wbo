@@ -143,6 +143,9 @@ Robot {
         anchor 0.06 -0.015 -0.04
       }
       device [
+        PositionSensor {
+          name "positionSensorL"
+        }
         RotationalMotor {
           name "motorL"
           maxVelocity 100
@@ -203,6 +206,9 @@ Robot {
         anchor -0.06 -0.015 -0.04
       }
       device [
+        PositionSensor {
+          name "positionSensorR"
+        }
         RotationalMotor {
           name "motorR"
           maxVelocity 100

@@ -15,8 +15,7 @@
 //左エンコーダ補正値[%]
 #define L_ENCODER_COFF ((float)100.0)
 
-// カラーセンサー補正値[%]
-#define COLOR_SENSOR_RED_COFF ((double)100.0)
-#define COLOR_SENSOR_GREEN_COFF ((double)50.0)
-#define COLOR_SENSOR_BLUE_COFF ((double)100.0)
+// ラインセンサで色判定する際に使用する閾値
+#define THRESHOLD_LINE_VALUE 400.0
+
 #endif

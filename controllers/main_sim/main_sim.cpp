@@ -40,7 +40,6 @@ int main(int argc, char **argv) {
      }
     lEDTank->execState();
     lEDTank->doTransition(event->getEvent());
-    controller->outputSensorValues(); //センサ値出力（開発用）
   };
 
   delete lEDTank;
