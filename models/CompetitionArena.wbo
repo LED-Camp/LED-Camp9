@@ -5,7 +5,7 @@ RectangleArena {
   floorAppearance PBRAppearance {
     baseColorMap ImageTexture {
       url [
-        "../imgs/ledcamp_field_prod.png"
+        "../imgs/color.png"
       ]
     }
     roughness 1
