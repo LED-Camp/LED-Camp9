@@ -10,6 +10,7 @@ LEDTank::LEDTank(Controller *controller){
   this->controller = controller;
   this->distance = 0.0F;
   this->angle = 0.0F;
+  this->rangeDistance = 0.0F;
 }
 
 #ifdef EXPERIMENTAL_USE

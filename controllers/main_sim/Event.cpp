@@ -13,7 +13,8 @@ Event::Event(Controller *controller) {
     this->event = 0;
     this->controller = controller;
     this->keyboard = Keyboard();
-    this->old_key = -1;
+    this->oldKey = -1;
+    this->rangeDistanceOld = 0.0F;
     keyboard.enable(100);
     this->distanceOld = 0.0F;
     this->angleOld = 0.0F;
@@ -26,7 +27,11 @@ int Event::updateEvent() {
 
     float absDistanceDiff;
     float absAngleDiff;
-    
+
+    float rangeDistance;
+
+    rangeDistance = controller->getRange();
+
     if(key == 'Q'){
         return -1;
     }
@@ -34,7 +39,14 @@ int Event::updateEvent() {
     controller->getPosition(&distance, &angle);
     absDistanceDiff = ABS_FLOAT(this->distanceOld - distance);
     absAngleDiff = ABS_FLOAT(this->angleOld - angle);
-    
+
+    // TODO 測距センサの誤差で実質ここ常に発火してしまう
+    if(rangeDistance != this->rangeDistanceOld){
+        this->event |= E_CHANGE_RANGING;
+    }else{
+        this->event &= ~E_CHANGE_RANGING;
+    }
+
     // E_UPイベント判定
     if (key == 'W') {
         this->event |= E_UP;
@@ -64,7 +76,6 @@ int Event::updateEvent() {
     }
     key = -1;
 
-
     if (absDistanceDiff > 0.005) {
         this->event |= E_CHANGE_DISTANCE;
     } else {
@@ -79,8 +90,11 @@ int Event::updateEvent() {
 
     this->distanceOld = distance;
     this->angleOld = angle;
+    this->rangeDistanceOld = rangeDistance;
+
     printf("distance=%f,angle=%f\n", distance, angle);
-    
+    printf("range=%f\n", rangeDistance);
+
     return 0;
 }
 
