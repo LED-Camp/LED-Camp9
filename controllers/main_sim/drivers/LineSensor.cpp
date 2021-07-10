@@ -1,6 +1,7 @@
 #include "includes/LineSensor.hpp"
 #include <webots/Robot.hpp>
 #include <webots/DistanceSensor.hpp>
+#include "includes/UserDefine.hpp"
 #include <cstdint>
 
 LineSensor* LineSensor::_instance = 0;
@@ -39,8 +40,20 @@ LineSensor* LineSensor::getInstance(
     return _instance;
 }
 
-void LineSensor::getLineValue(float* left, float* center, float* right){
-    *left = this->sensorElementLeft->getValue();
-    *center = this->sensorElementCenter->getValue();
-    *right = this->sensorElementRight->getValue();
+void LineSensor::getLineValue(std::string* left, std::string* center, std::string* right){
+    if(this->sensorElementLeft->getValue() > THRESHOLD_LINE_VALUE) {
+        *left = "black";
+    } else {
+        *left = "white";
+    }
+    if(this->sensorElementCenter->getValue() > THRESHOLD_LINE_VALUE) {
+        *center = "black";
+    } else {
+        *center = "white";
+    }
+    if(this->sensorElementRight->getValue() > THRESHOLD_LINE_VALUE) {
+        *right = "black";
+    } else {
+        *right = "white";
+    }
 }

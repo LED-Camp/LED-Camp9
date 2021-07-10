@@ -59,6 +59,6 @@ float Controller::getColorValue() {
     return this->colorSensor->getColorValue();
 }
 
-void Controller::getLineValue(float* left, float* center, float* right) {
+void Controller::getLineValue(std::string* left, std::string* center, std::string* right) {
     this->lineSensor->getLineValue(left, center, right);
 }

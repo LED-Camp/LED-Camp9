@@ -1,5 +1,6 @@
 #include <webots/Robot.hpp>
 #include <webots/DistanceSensor.hpp>
+#include <string>
 #include <cstdint>
 
 #ifndef __LINE_SENSOR_H__
@@ -29,7 +30,7 @@ public:
         std::string sensorNameRight,
         int timeStep
     );
-    void getLineValue(float* left, float* center, float* right);
+    void getLineValue(std::string* left, std::string* center, std::string* right);
 };
 
 #endif

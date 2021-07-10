@@ -18,9 +18,9 @@ Event::Event(Controller *controller) {
     this->distanceOld = 0.0F;
     this->angleOld = 0.0F;
     this->colorOld = 0.0F;
-    this->lineLeftOld = 0.0F;
-    this->lineCenterOld = 0.0F;
-    this->lineRightOld = 0.0F;
+    this->lineLeftOld = "";
+    this->lineCenterOld = "";
+    this->lineRightOld = "";
 }
 
 int Event::updateEvent() {
@@ -35,9 +35,9 @@ int Event::updateEvent() {
 
     float color;
 
-    float lineLeft;
-    float lineCenter;
-    float lineRight;
+    std::string lineLeft;
+    std::string  lineCenter;
+    std::string  lineRight;
 
     rangeDistance = controller->getRange();
     color = controller->getColorValue();
@@ -124,10 +124,13 @@ int Event::updateEvent() {
     this->lineCenterOld = lineCenter;
     this->lineRightOld = lineRight;
 
-    printf("distance=%f,angle=%f\n", distance, angle);
-    printf("range=%f\n", rangeDistance);
-    printf("color=%f\n", color);
-    printf("line:l=%f, line:c=%f, line:r=%f\n", lineLeft, lineCenter, lineRight);
+    std::cout << "distance=" << distance << " "
+              << "angle=" << angle << " " << std::endl;
+    std::cout << "range=" << rangeDistance << std::endl;
+    std::cout << "color=" << color << std::endl;
+    std::cout << "line:l=" << lineLeft << " "
+              << "line:c=" << lineCenter << " "
+              << "line:r=" << lineRight << " " << std::endl;
     return 0;
 }
 

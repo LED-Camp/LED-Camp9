@@ -24,6 +24,5 @@ ColorSensor* ColorSensor::getInstance(Robot* robot, std::string sensorName, int 
 }
 
 float ColorSensor::getColorValue() {
-    return git this->sensorElement->getValue();
+    return this->sensorElement->getValue();
 }
-
