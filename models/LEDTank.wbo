@@ -1371,7 +1371,7 @@ Robot {
     size 0.1430723372032522 0.26130810687567646 0.1
   }
   physics Physics {
-    mass 0.7
+    mass 1.5
     centerOfMass [
       0 0 0
     ]
