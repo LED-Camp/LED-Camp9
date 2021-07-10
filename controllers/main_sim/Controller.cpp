@@ -83,9 +83,9 @@ void Controller::outputSensorValues() { //センサ値の取得・出力コー�
     << " right:" << lineSensorRight->getValue()
     << std::endl;
     const unsigned char *image = cam->getImage();
-    std::cout << "R: " << (unsigned int)cam->imageGetRed(image, 1,1,1) 
-        << " G: " << (unsigned int)cam->imageGetGreen(image,1,1,1)
-        << " B: " <<(unsigned int) cam->imageGetBlue(image,1,1,1)
+    std::cout << "R: " << (unsigned int)cam->imageGetRed(image, 0,0,0) 
+        << " G: " << (unsigned int)cam->imageGetGreen(image,0,0,0)
+        << " B: " <<(unsigned int) cam->imageGetBlue(image,0,0,0)
         << endl;
 };
 >>>>>>> edit: カメラの画措値を出力するように変更
