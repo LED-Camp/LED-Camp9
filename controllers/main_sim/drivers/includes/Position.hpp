@@ -9,16 +9,17 @@
 using namespace webots;
 
 class Position {
-protected:
-  Position(Robot* robot, std::string psNameL, std::string psNameR);
+  protected:
+    Position(Robot *robot, std::string psNameL, std::string psNameR);
 
-public:
-    static Position* _instance;
-    PositionSensor* positionSensorL;
-    PositionSensor* positionSensorR;
-    static Position* getInstance(Robot* robot, std::string psNameL, std::string psNameR);
+  public:
+    static Position *_instance;
+    PositionSensor *positionSensorL;
+    PositionSensor *positionSensorR;
+    static Position *getInstance(Robot *robot, std::string psNameL,
+                                 std::string psNameR);
     void reset(void);
-    void getPosition(float* distance, float* angle);
+    void getPosition(float *distance, float *angle);
 };
 
 #endif

@@ -12,15 +12,15 @@
 #define STATE_BACKWARD ((unsigned long)6)
 class PreController;
 
-class LEDTank{
-public:
+class LEDTank {
+  public:
     LEDTank(Controller *controller);
     void execState();
     void doTransition(unsigned long event);
     bool clockForward();
     unsigned long _state;
 
- private:
+  private:
     Controller *controller;
     unsigned long _beforeState;
     unsigned long state;

@@ -1,26 +1,25 @@
 #include "includes/Position.hpp"
-#include <stdio.h>
-#include "includes/UserDefine.hpp"
 #include "../includes/CommonDefine.hpp"
+#include "includes/UserDefine.hpp"
+#include <stdio.h>
 using namespace webots;
 
 static float referPositionL;
 static float referPositionR;
 
 /*******************************************/
-Position* Position::_instance = 0;
+Position *Position::_instance = 0;
 
-Position* Position::getInstance(Robot* robot, std::string psNameL, std::string psNameR) {
-    if (_instance == 0) {
+Position *Position::getInstance(Robot *robot, std::string psNameL,
+                                std::string psNameR) {
+    if(_instance == 0) {
         _instance = new Position(robot, psNameL, psNameR);
     }
 
     return _instance;
 }
 
-
-
-Position::Position(Robot* robot, std::string psNameL, std::string psNameR) {
+Position::Position(Robot *robot, std::string psNameL, std::string psNameR) {
     this->positionSensorL = robot->getPositionSensor(psNameL);
     positionSensorL->enable(TIME_STEP);
     this->positionSensorR = robot->getPositionSensor(psNameR);
@@ -28,11 +27,11 @@ Position::Position(Robot* robot, std::string psNameL, std::string psNameR) {
 }
 
 void Position::reset(void) {
-    referPositionL  = positionSensorL->getValue();
-    referPositionR  = positionSensorR->getValue();
+    referPositionL = positionSensorL->getValue();
+    referPositionR = positionSensorR->getValue();
 }
 
-void Position::getPosition(float* distance, float* angle) {
+void Position::getPosition(float *distance, float *angle) {
     float l;
     float r;
     float radNowL;
@@ -45,6 +44,6 @@ void Position::getPosition(float* distance, float* angle) {
     r = (radNowR - referPositionR) * RADIUS;
 
     distanceTemp = (l + r) / 2.0;
-    *angle = (( l - r ) / TREAD) * 180.0 / PI;
+    *angle = ((l - r) / TREAD) * 180.0 / PI;
     *distance = distanceTemp;
 }

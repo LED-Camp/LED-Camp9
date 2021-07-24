@@ -1,10 +1,10 @@
 #include "includes/Event.hpp"
+#include "includes/CommonDefine.hpp"
 #include "includes/Controller.hpp"
 #include "iostream"
-#include "includes/CommonDefine.hpp"
 #include <fcntl.h>
 
-#define ABS_FLOAT(a) ((a) < 0.0F?(a)*-1.0F:(a))
+#define ABS_FLOAT(a) ((a) < 0.0F ? (a) * -1.0F : (a))
 
 using namespace webots;
 
@@ -42,12 +42,11 @@ int Event::updateEvent() {
     rangeDistance = controller->getRange();
     color = controller->getColorValue();
     controller->getLineValue(&lineLeft, &lineCenter, &lineRight);
-    bool lineSensorChanged =
-        (lineLeft != this->lineLeftOld) ||
-        (lineCenter != this->lineCenterOld) ||
-        (lineRight != this->lineRightOld);
+    bool lineSensorChanged = (lineLeft != this->lineLeftOld) ||
+                             (lineCenter != this->lineCenterOld) ||
+                             (lineRight != this->lineRightOld);
 
-    if(key == 'Q'){
+    if(key == 'Q') {
         return -1;
     }
 
@@ -56,61 +55,61 @@ int Event::updateEvent() {
     absAngleDiff = ABS_FLOAT(this->angleOld - angle);
 
     // TODO 測距センサの誤差で実質ここ常に発火してしまう
-    if(rangeDistance != this->rangeDistanceOld){
+    if(rangeDistance != this->rangeDistanceOld) {
         this->event |= E_CHANGE_RANGING;
-    }else{
+    } else {
         this->event &= ~E_CHANGE_RANGING;
     }
 
-    if(color != this->colorOld){
+    if(color != this->colorOld) {
         this->event |= E_CHANGE_COLOR;
-    }else{
+    } else {
 
         this->event &= ~E_CHANGE_COLOR;
     }
 
-    if(lineSensorChanged){
+    if(lineSensorChanged) {
         this->event |= E_CHANGE_AREA;
-    }else{
+    } else {
         this->event &= ~E_CHANGE_AREA;
     }
 
     // E_UPイベント判定
-    if (key == 'W') {
+    if(key == 'W') {
         this->event |= E_UP;
     } else {
         this->event &= ~E_UP;
     }
 
     // E_DOWNイベント判定
-    if (key == 'S') {
+    if(key == 'S') {
         this->event |= E_DOWN;
     } else {
         this->event &= ~E_DOWN;
     }
 
     // E_LEFTイベント判定
-    if (key == 'A') {
+    if(key == 'A') {
         this->event |= E_LEFT;
     } else {
         this->event &= ~E_LEFT;
     }
 
     // E_RIGHTイベント判定
-    if (key == 'D') {
+    if(key == 'D') {
         this->event |= E_RIGHT;
     } else {
         this->event &= ~E_RIGHT;
     }
     key = -1;
 
-    if (absDistanceDiff > 0.005) {
+    if(absDistanceDiff > 0.005) {
         this->event |= E_CHANGE_DISTANCE;
     } else {
         this->event &= ~E_CHANGE_DISTANCE;
     }
 
-    if (absAngleDiff > 0.01) {
+    if(absAngleDiff > 0.01) {
         this->event |= E_CHANGE_ANGLE;
     } else {
         this->event &= ~E_CHANGE_ANGLE;
@@ -134,6 +133,4 @@ int Event::updateEvent() {
     return 0;
 }
 
-unsigned long Event::getEvent() {
-    return this->event;
-}
+unsigned long Event::getEvent() { return this->event; }

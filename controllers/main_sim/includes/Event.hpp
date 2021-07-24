@@ -1,10 +1,10 @@
 #ifndef __EVENT_H__
 #define __EVENT_H__
 
-#include <cstdint>
-#include <webots/Keyboard.hpp> //キー受け付け; シミュレータ
 #include "includes/CommonDefine.hpp"
+#include <cstdint>
 #include <string>
+#include <webots/Keyboard.hpp> //キー受け付け; シミュレータ
 
 class Controller;
 using namespace webots;
@@ -21,18 +21,17 @@ using namespace webots;
 #define E_TRUE ((unsigned long)0xFFFFFFFF)
 #define E_FALSE ((unsigned long)0x00000000)
 
-
-//extern int kbhit(void);
-//extern char getch(void);
+// extern int kbhit(void);
+// extern char getch(void);
 
 class Event {
- public:
-    Event(Controller* controller);
+  public:
+    Event(Controller *controller);
     int updateEvent();
     unsigned long getEvent();
 
-private:
-    Controller* controller;
+  private:
+    Controller *controller;
     Keyboard keyboard;
     int oldKey;
     float rangeDistanceOld;
