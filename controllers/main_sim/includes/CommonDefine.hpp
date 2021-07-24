@@ -59,3 +59,5 @@ typedef enum _enMsgId_t {
 #define LINE_SENSOR_VALUE_WHITE 1
 
 #endif /* __COMMON_DEFINE_H__ */
+
+#define COMPETITION_TIME 120.0

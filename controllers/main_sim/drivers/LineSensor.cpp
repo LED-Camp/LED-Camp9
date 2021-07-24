@@ -1,5 +1,5 @@
 #include "includes/LineSensor.hpp"
-#include <webots/Robot.hpp>
+#include <webots/Supervisor.hpp>
 #include <webots/DistanceSensor.hpp>
 #include "includes/UserDefine.hpp"
 #include "../includes/CommonDefine.hpp"
@@ -8,22 +8,22 @@
 LineSensor* LineSensor::_instance = 0;
 
 LineSensor::LineSensor(
-    Robot* robot,
+    Supervisor* supervisor,
     std::string sensorNameLeft,
     std::string sensorNameCenter,
     std::string sensorNameRight,
     int timeStep
 ) {
-    this->sensorElementLeft = robot->getDistanceSensor(sensorNameLeft);
-    this->sensorElementCenter = robot->getDistanceSensor(sensorNameCenter);
-    this->sensorElementRight = robot->getDistanceSensor(sensorNameRight);
+    this->sensorElementLeft = supervisor->getDistanceSensor(sensorNameLeft);
+    this->sensorElementCenter = supervisor->getDistanceSensor(sensorNameCenter);
+    this->sensorElementRight = supervisor->getDistanceSensor(sensorNameRight);
     this->sensorElementLeft->enable(timeStep);
     this->sensorElementCenter->enable(timeStep);
     this->sensorElementRight->enable(timeStep);
 }
 
 LineSensor* LineSensor::getInstance(
-    Robot* robot,
+    Supervisor* supervisor,
     std::string sensorNameLeft,
     std::string sensorNameCenter,
     std::string sensorNameRight,
@@ -31,7 +31,7 @@ LineSensor* LineSensor::getInstance(
 ){
     if (_instance == 0) {
         _instance = new LineSensor(
-            robot,
+            supervisor,
             sensorNameLeft,
             sensorNameCenter,
             sensorNameRight,

@@ -1,4 +1,4 @@
-#include <webots/Robot.hpp>
+#include <webots/Supervisor.hpp>
 #include <webots/DistanceSensor.hpp>
 #include <cstdint>
 
@@ -11,10 +11,10 @@ class RangeSensor {
 private:
     DistanceSensor* sensorElement;
 public:
-    RangeSensor(Robot* robot, std::string sensorName, int timeStep);
+    RangeSensor(Supervisor* supervisor, std::string sensorName, int timeStep);
     ~RangeSensor();
     static RangeSensor* _instance;
-    static RangeSensor* getInstance(Robot* robot, std::string sensorName, int timeStep);
+    static RangeSensor* getInstance(Supervisor* supervisor, std::string sensorName, int timeStep);
     float getRange();
 };
 

@@ -2,7 +2,7 @@
 #define __CONTROLLER__
 
 #include <cstdint>
-#include <webots/Robot.hpp>
+#include <webots/Supervisor.hpp>
 #include <webots/DistanceSensor.hpp>
 #include "drivers/includes/TwinWheelDriver.hpp"
 #include "drivers/includes/RangeSensor.hpp"
@@ -13,7 +13,7 @@
 using namespace webots;
 class Controller {
 private:
-    Robot* robot;
+    Supervisor* supervisor;
     RangeSensor* rangeSensor;
     TwinWheelDriver* twinWheelDriver;
     ColorSensor* colorSensor;
@@ -27,6 +27,8 @@ public:
 
     // 共通
     bool clockForward();
+    void stopSimuration();
+    bool timeUp(double limitTime);
     // twinWheelDriver系
     void changeDriveMode(Mode mode, int voltage_level);
     //  Range系
