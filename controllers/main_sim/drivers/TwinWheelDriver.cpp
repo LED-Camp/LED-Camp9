@@ -6,18 +6,18 @@ using namespace webots;
 
 TwinWheelDriver* TwinWheelDriver::_instance = 0;
 
-TwinWheelDriver* TwinWheelDriver::getInstance(Robot* robot, std::string motorNameL, std::string motorNameR) {
+TwinWheelDriver* TwinWheelDriver::getInstance(Supervisor* supervisor, std::string motorNameL, std::string motorNameR) {
     if (_instance == 0) {
-      _instance = new TwinWheelDriver(robot, motorNameL, motorNameR);
+      _instance = new TwinWheelDriver(supervisor, motorNameL, motorNameR);
     }
 
     return _instance;
 }
 
-TwinWheelDriver::TwinWheelDriver(Robot* robot, std::string motorNameL, std::string motorNameR) {
-  this->motorL = robot->getMotor(motorNameL);
+TwinWheelDriver::TwinWheelDriver(Supervisor* supervisor, std::string motorNameL, std::string motorNameR) {
+  this->motorL = supervisor->getMotor(motorNameL);
   motorL->setPosition(INFINITY);
-  this->motorR = robot->getMotor(motorNameR);
+  this->motorR = supervisor->getMotor(motorNameR);
   motorR->setPosition(INFINITY);
 }
 

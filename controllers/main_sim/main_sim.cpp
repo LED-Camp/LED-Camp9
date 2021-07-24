@@ -1,6 +1,6 @@
 #include <iostream>
 #ifdef SIM_USE
-#include <webots/Robot.hpp>
+#include <webots/Supervisor.hpp>
 #include <webots/DistanceSensor.hpp>
 #include "includes/Event.hpp"
 #include "includes/Controller.hpp"
@@ -33,15 +33,16 @@ int main(int argc, char **argv) {
     printf("Experimental use mode; w:↑, a:←, s:↓, d:→\n");
   #endif
   while (controller->clockForward()) {
-    if(event->updateEvent() < 0){
+    if(event->updateEvent() < 0 || controller->timeUp(COMPETITION_TIME)){
         printf("STOP\n");
         controller->changeDriveMode(STOP, 0);
+        controller->clockForward();
         break;
      }
     lEDTank->execState();
     lEDTank->doTransition(event->getEvent());
   };
-
+  controller->stopSimuration();
   delete lEDTank;
   delete event;
   return 0;

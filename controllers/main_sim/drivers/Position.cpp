@@ -10,9 +10,9 @@ static float referPositionR;
 /*******************************************/
 Position* Position::_instance = 0;
 
-Position* Position::getInstance(Robot* robot, std::string psNameL, std::string psNameR) {
+Position* Position::getInstance(Supervisor* supervisor, std::string psNameL, std::string psNameR) {
     if (_instance == 0) {
-        _instance = new Position(robot, psNameL, psNameR);
+        _instance = new Position(supervisor, psNameL, psNameR);
     }
 
     return _instance;
@@ -20,10 +20,10 @@ Position* Position::getInstance(Robot* robot, std::string psNameL, std::string p
 
 
 
-Position::Position(Robot* robot, std::string psNameL, std::string psNameR) {
-    this->positionSensorL = robot->getPositionSensor(psNameL);
+Position::Position(Supervisor* supervisor, std::string psNameL, std::string psNameR) {
+    this->positionSensorL = supervisor->getPositionSensor(psNameL);
     positionSensorL->enable(TIME_STEP);
-    this->positionSensorR = robot->getPositionSensor(psNameR);
+    this->positionSensorR = supervisor->getPositionSensor(psNameR);
     positionSensorR->enable(TIME_STEP);
 }
 

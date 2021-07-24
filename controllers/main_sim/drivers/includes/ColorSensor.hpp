@@ -1,4 +1,4 @@
-#include <webots/Robot.hpp>
+#include <webots/Supervisor.hpp>
 #include <webots/DistanceSensor.hpp>
 #include <cstdint>
 
@@ -11,10 +11,10 @@ class ColorSensor {
 private:
     DistanceSensor* sensorElement;
 public:
-    ColorSensor(Robot* robot, std::string sensorName, int timeStep);
+    ColorSensor(Supervisor* supervisor, std::string sensorName, int timeStep);
     ~ColorSensor();
     static ColorSensor* _instance;
-    static ColorSensor* getInstance(Robot* robot, std::string sensorName, int timeStep);
+    static ColorSensor* getInstance(Supervisor* supervisor, std::string sensorName, int timeStep);
     void Initialize();
     float getColorValue();
 };

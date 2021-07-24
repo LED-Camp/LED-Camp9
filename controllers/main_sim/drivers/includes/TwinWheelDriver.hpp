@@ -1,5 +1,5 @@
 #include <webots/Motor.hpp>
-#include <webots/Robot.hpp>
+#include <webots/Supervisor.hpp>
 
 #ifndef __TWINWHEELDRIVER__
 #define __TWINWHEELDRIVER__
@@ -18,11 +18,11 @@ private:
     Motor* motorL;
     Motor* motorR;
 protected:
-    TwinWheelDriver(Robot* robot, std::string motor_nameL, std::string motor_nameR);
+    TwinWheelDriver(Supervisor* supervisor, std::string motor_nameL, std::string motor_nameR);
 public:
     ~TwinWheelDriver();
 
-    static TwinWheelDriver* getInstance(Robot* robot, std::string motor_nameL, std::string motor_nameR);
+    static TwinWheelDriver* getInstance(Supervisor* supervisor, std::string motor_nameL, std::string motor_nameR);
     void changeDriveMode(Mode mode, int voltage_level);
 
 };

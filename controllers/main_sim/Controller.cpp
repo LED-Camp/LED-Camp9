@@ -1,5 +1,6 @@
 #include "includes/Controller.hpp"
 #include "includes/CommonDefine.hpp"
+#include <webots/Supervisor.hpp>
 
 using namespace webots;
 
@@ -14,23 +15,23 @@ Controller* Controller::getInstance() {
 }
 
 Controller::Controller() {
-    this->robot = new Robot();
+    this->supervisor = new Supervisor();
     // 測距センサ初期化
-    this->rangeSensor = RangeSensor::getInstance(robot, "RangeSensor", TIME_STEP);
+    this->rangeSensor = RangeSensor::getInstance(supervisor, "RangeSensor", TIME_STEP);
     // カラーセンサ初期化
-    this->colorSensor = ColorSensor::getInstance(robot, "ColorSensor", TIME_STEP);
+    this->colorSensor = ColorSensor::getInstance(supervisor, "ColorSensor", TIME_STEP);
     // ラインセンサ初期化
     this->lineSensor = LineSensor::getInstance(
-        robot,
+        supervisor,
         "LineSensorLeft",
         "LineSensorCenter",
         "LineSensorRight",
         TIME_STEP
     );
     // Positionセンサ初期化
-    position = Position::getInstance(robot, "positionSensorL", "positionSensorR");
+    position = Position::getInstance(supervisor, "positionSensorL", "positionSensorR");
     // モータドライバ初期化
-    twinWheelDriver = TwinWheelDriver::getInstance(robot, "motorL", "motorR");
+    twinWheelDriver = TwinWheelDriver::getInstance(supervisor, "motorL", "motorR");
 }
 
 Controller::~Controller(void) {
@@ -49,7 +50,15 @@ void Controller::changeDriveMode(Mode mode, int pwmDuty) {
 }
 
 bool Controller::clockForward() {
-    return this->robot->step(TIME_STEP) != -1;
+    return this->supervisor->step(TIME_STEP) != -1;
+}
+
+void Controller::stopSimuration() {
+    this->supervisor->simulationSetMode(supervisor->SIMULATION_MODE_PAUSE);
+}
+
+bool Controller::timeUp(double limitTime) {
+    return this->supervisor->getTime() >= limitTime;
 }
 
 float Controller::getRange() {

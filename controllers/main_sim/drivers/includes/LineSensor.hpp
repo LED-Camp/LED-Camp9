@@ -1,4 +1,4 @@
-#include <webots/Robot.hpp>
+#include <webots/Supervisor.hpp>
 #include <webots/DistanceSensor.hpp>
 #include <string>
 #include <cstdint>
@@ -15,7 +15,7 @@ private:
     DistanceSensor* sensorElementRight;
 public:
     LineSensor(
-        Robot* robot,
+        Supervisor* supervisor,
         std::string sensorNameLeft,
         std::string sensorNameCenter,
         std::string sensorNameRight,
@@ -24,7 +24,7 @@ public:
     ~LineSensor();
     static LineSensor* _instance;
     static LineSensor* getInstance(
-        Robot* robot,
+        Supervisor* supervisor,
         std::string sensorNameLeft,
         std::string sensorNameCenter,
         std::string sensorNameRight,
