@@ -32,7 +32,7 @@ Controller::Controller() {
     position = Position::getInstance(supervisor, "positionSensorL", "positionSensorR");
     // モータドライバ初期化
     twinWheelDriver = TwinWheelDriver::getInstance(supervisor, "motorL", "motorR");
-    this->cam = robot->getCamera("cam");
+    this->cam = supervisor->getCamera("cam");
     cam->enable(TIME_STEP);
 }
 
@@ -67,7 +67,6 @@ float Controller::getRange() {
     return this->rangeSensor->getRange();
 }
 
-<<<<<<< HEAD
 float Controller::getColorValue() {
     return this->colorSensor->getColorValue();
 }
@@ -75,17 +74,3 @@ float Controller::getColorValue() {
 void Controller::getLineValue(int* left, int* center, int* right) {
     this->lineSensor->getLineValue(left, center, right);
 }
-=======
-void Controller::outputSensorValues() { //センサ値の取得・出力コード（開発用）
-  std::cout << "color value:" << colorSensor->getValue() << std::endl;
-  std::cout << "line left:" << lineSensorLeft->getValue()
-    << " center:" << lineSensorCenter->getValue()
-    << " right:" << lineSensorRight->getValue()
-    << std::endl;
-    const unsigned char *image = cam->getImage();
-    std::cout << "R: " << (unsigned int)cam->imageGetRed(image, 0,0,0) 
-        << " G: " << (unsigned int)cam->imageGetGreen(image,0,0,0)
-        << " B: " <<(unsigned int) cam->imageGetBlue(image,0,0,0)
-        << endl;
-};
->>>>>>> edit: カメラの画措値を出力するように変更
