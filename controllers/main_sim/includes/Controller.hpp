@@ -9,6 +9,7 @@
 #include "drivers/includes/Position.hpp"
 #include "drivers/includes/ColorSensor.hpp"
 #include "drivers/includes/LineSensor.hpp"
+#include <webots/Camera.hpp>
 
 using namespace webots;
 class Controller {
@@ -38,7 +39,7 @@ public:
     void positionReset(void);
     void getPosition(float* distance, float* angle);
     // Color系
-    float getColorValue();
+    ColorSensor::ColorValue getColorValue();
     //LineSensor系
     void getLineValue(int* left, int* center, int* right);
 };

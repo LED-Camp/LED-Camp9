@@ -1,4 +1,5 @@
 #include "includes/Controller.hpp"
+#include "drivers/includes/ColorSensor.hpp"
 #include "includes/CommonDefine.hpp"
 #include <webots/Supervisor.hpp>
 
@@ -19,7 +20,7 @@ Controller::Controller() {
     // 測距センサ初期化
     this->rangeSensor = RangeSensor::getInstance(supervisor, "RangeSensor", TIME_STEP);
     // カラーセンサ初期化
-    this->colorSensor = ColorSensor::getInstance(supervisor, "ColorSensor", TIME_STEP);
+    this->colorSensor = ColorSensor::getInstance(supervisor, "cam", TIME_STEP);
     // ラインセンサ初期化
     this->lineSensor = LineSensor::getInstance(
         supervisor,
@@ -65,7 +66,7 @@ float Controller::getRange() {
     return this->rangeSensor->getRange();
 }
 
-float Controller::getColorValue() {
+ColorSensor::ColorValue Controller::getColorValue() {
     return this->colorSensor->getColorValue();
 }
 

@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <webots/Keyboard.hpp> //キー受け付け; シミュレータ
 #include "includes/CommonDefine.hpp"
+#include "drivers/includes/ColorSensor.hpp"
 #include <string>
 
 class Controller;
@@ -39,7 +40,7 @@ private:
     unsigned long event;
     float distanceOld;
     float angleOld;
-    float colorOld;
+    ColorSensor::ColorValue colorOld;
     int lineLeftOld;
     int lineCenterOld;
     int lineRightOld;
