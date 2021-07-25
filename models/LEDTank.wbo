@@ -1,17 +1,11 @@
-#VRML_OBJ R2021a utf8
+#VRML_OBJ R2021b utf8
 Robot {
-  supervisor TRUE
-  translation 1.1199317423845856 0.054541237442853205 0.08302394128649326
+  translation 1.27883e-06 0.0411838 -0.266976
   rotation 0.5750413347912737 0.5819406555674752 0.5750413347570482 -2.087523209194689
   children [
-    Solid {
+    DEF COLOR_SENSOR Solid {
       translation 0 -0.115 -0.04
       children [
-        DistanceSensor {
-          rotation 0 1 0 1.5708
-          name "ColorSensor"
-          type "infra-red"
-        }
         SpotLight {
           attenuation 1 1 2
           beamWidth 0.1
@@ -29,15 +23,6 @@ Robot {
             1 1 1
           ]
         }
-        LightSensor {
-          rotation -0.577349935856137 0.577349935856137 0.5773509358560258 2.09439
-          name "light_R"
-          lookupTable [
-            0 0 0
-            0.001 0 0
-            10 100 0
-          ]
-        }
         Shape {
           geometry Box {
             size 0.02 0.02 0.001
@@ -46,7 +31,7 @@ Robot {
       ]
       name "solid(8)"
     }
-    Solid {
+    DEF DISTANCE_SENSOR Solid {
       translation 0 -0.13 0.017
       children [
         DistanceSensor {
@@ -56,9 +41,9 @@ Robot {
             0 0 0
             0.1 0 0
             0.5 50 0.05
-            1.0 100 0.10
-            1.5 150 0.20
-            5.0 500 0.50
+            1 100 0.1
+            1.5 150 0.2
+            5 500 0.5
           ]
         }
         Shape {
@@ -74,7 +59,7 @@ Robot {
       ]
       name "solid(6)"
     }
-    Solid {
+    DEF LINE_SENSOR Solid {
       translation 0 -0.07 -0.043
       rotation 1 0 0 1.5708
       children [
@@ -121,7 +106,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.06 0.068 -0.04
-        rotation 9.076779023937477e-10 9.07676976911346e-10 -0.9999999999999999 1.570795307179577
+        rotation 9.076779023937477e-10 9.076769769113461e-10 -0.9999999999999999 1.570795307179577
         children [
           DEF WHEEL_RR Shape {
             geometry Cylinder {
@@ -134,8 +119,6 @@ Robot {
         boundingObject USE WHEEL_RR
         physics Physics {
         }
-        linearVelocity 9.052288405389738e-08 2.412129946924737e-07 -2.378978392961328e-12
-        angularVelocity 4.9270578978222783e-11 2.80116816784653e-11 2.54126951220165e-06
       }
     }
     HingeJoint {
@@ -167,8 +150,6 @@ Robot {
         boundingObject USE WHEEL_FL
         physics Physics {
         }
-        linearVelocity 9.296879251427735e-08 3.518985753469615e-08 -7.202701119842423e-14
-        angularVelocity -2.58702495596671e-12 -5.106848587487996e-10 -9.99999637706505
       }
     }
     HingeJoint {
@@ -183,8 +164,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 0.05999999999999955 0.068 -0.04
-        rotation 3.600495919555964e-07 3.6004922484370383e-07 -0.9999999999998702 1.570795307179709
+        translation 0.059999999999999436 0.068 -0.04
+        rotation 3.600495919555972e-07 3.600492248437039e-07 -0.9999999999998702 1.5707953071797058
         children [
           DEF WHEEL_RL Shape {
             geometry Cylinder {
@@ -197,8 +178,6 @@ Robot {
         boundingObject USE WHEEL_RL
         physics Physics {
         }
-        linearVelocity 9.052624498513526e-08 2.4120707713305745e-07 -2.3790695265035054e-12
-        angularVelocity 4.961579958280039e-11 2.7984596745080604e-11 2.4063937147605376e-06
       }
     }
     HingeJoint {
@@ -217,7 +196,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.06 -0.015 -0.04
-        rotation -0.46983018068739185 -0.46982970164158516 -0.7473417242270312 1.8579963950061829
+        rotation -0.46983018068739246 -0.4698297016415853 -0.7473417242270307 1.857996395006181
         children [
           DEF WHEEL_FR Shape {
             geometry Cylinder {
@@ -230,8 +209,6 @@ Robot {
         boundingObject USE WHEEL_FR
         physics Physics {
         }
-        linearVelocity 9.296267778665841e-08 3.519566062612023e-08 -8.783112952932916e-14
-        angularVelocity -3.303126790512406e-12 -5.02921876396123e-10 -9.99999637706493
       }
     }
     Solid {
@@ -1377,6 +1354,5 @@ Robot {
     ]
   }
   controller "main_sim"
-  linearVelocity -6.26334526494306e-09 5.906629938533204e-08 1.6090965977856263e-12
-  angularVelocity 4.924760136845352e-11 2.800115277600826e-11 2.473831589772249e-06
+  supervisor TRUE
 }
