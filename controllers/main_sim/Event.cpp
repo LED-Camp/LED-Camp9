@@ -64,8 +64,8 @@ int Event::updateEvent() {
     }
 
     if(color.red != this->colorOld.red
-        && color.green != this->colorOld.green
-        && color.blue != this->colorOld.blue){
+        || color.green != this->colorOld.green
+        || color.blue != this->colorOld.blue){
         this->event |= E_CHANGE_COLOR;
     }else{
 

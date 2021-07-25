@@ -19,7 +19,6 @@ private:
     TwinWheelDriver* twinWheelDriver;
     ColorSensor* colorSensor;
     LineSensor* lineSensor;
-    Camera* cam;
 protected:
     Controller();
     ~Controller(void);
