@@ -16,6 +16,8 @@ Robot {
         }
         Camera {
           name "cam"
+          width 1
+          height 1
         }
         LED {
           translation 0 -0.005 0
@@ -164,8 +166,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 0.059999999999999436 0.068 -0.04
-        rotation 3.600495919555972e-07 3.600492248437039e-07 -0.9999999999998702 1.5707953071797058
+        translation 0.05999999999999941 0.068 -0.04
+        rotation 3.600495919555976e-07 3.6004922484370404e-07 -0.9999999999998704 1.5707953071797045
         children [
           DEF WHEEL_RL Shape {
             geometry Cylinder {
