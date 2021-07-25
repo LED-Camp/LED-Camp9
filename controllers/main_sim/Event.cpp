@@ -1,5 +1,6 @@
 #include "includes/Event.hpp"
 #include "includes/Controller.hpp"
+#include "drivers/includes/ColorSensor.hpp"
 #include "iostream"
 #include "includes/CommonDefine.hpp"
 #include <fcntl.h>
@@ -17,7 +18,7 @@ Event::Event(Controller *controller) {
     keyboard.enable(100);
     this->distanceOld = 0.0F;
     this->angleOld = 0.0F;
-    this->colorOld = 0.0F;
+    this->colorOld = (ColorSensor::ColorValue){0,0,0};
     this->lineLeftOld = 0;
     this->lineCenterOld = 0;
     this->lineRightOld = 0;
@@ -33,7 +34,7 @@ int Event::updateEvent() {
 
     float rangeDistance;
 
-    float color;
+    ColorSensor::ColorValue color;
 
     int lineLeft;
     int lineCenter;
@@ -62,7 +63,9 @@ int Event::updateEvent() {
         this->event &= ~E_CHANGE_RANGING;
     }
 
-    if(color != this->colorOld){
+    if(color.red != this->colorOld.red
+        && color.green != this->colorOld.green
+        && color.blue != this->colorOld.blue){
         this->event |= E_CHANGE_COLOR;
     }else{
 
@@ -127,7 +130,7 @@ int Event::updateEvent() {
     std::cout << "distance=" << distance << " "
               << "angle=" << angle << " " << std::endl;
     std::cout << "range=" << rangeDistance << std::endl;
-    std::cout << "color=" << color << std::endl;
+    std::cout << "color: R=" << color.red << " G=" << color.green << " B=" << color.blue << std::endl;
     std::cout << "line:l=" << lineLeft << " "
               << "line:c=" << lineCenter << " "
               << "line:r=" << lineRight << " " << std::endl;
