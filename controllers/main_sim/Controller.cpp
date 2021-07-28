@@ -46,8 +46,8 @@ void Controller::getPosition(float* distance, float* angle) {
     position->getPosition(distance, angle);
 }
 
-void Controller::changeDriveMode(Mode mode, int pwmDuty) {
-    this->twinWheelDriver->changeDriveMode(mode, pwmDuty);
+void Controller::changeDriveMode(Mode mode, int motorPower) {
+    this->twinWheelDriver->changeDriveMode(mode, motorPower);
 }
 
 bool Controller::clockForward() {
