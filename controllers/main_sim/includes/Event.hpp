@@ -6,6 +6,7 @@
 #include "includes/CommonDefine.hpp"
 #include "drivers/includes/ColorSensor.hpp"
 #include "drivers/includes/LineSensor.hpp"
+#include "drivers/includes/Position.hpp"
 #include <string>
 
 class Controller;
@@ -39,8 +40,7 @@ private:
     int oldKey;
     float rangeDistanceOld;
     unsigned long event;
-    float distanceOld;
-    float angleOld;
+    Position::PositionValue positionOld;
     ColorSensor::ColorValue colorOld;
     LineSensor::LineValue lineValueOld;
 };

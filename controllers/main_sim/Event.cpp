@@ -18,8 +18,7 @@ Event::Event(Controller *controller) {
     this->oldKey = -1;
     this->rangeDistanceOld = 0.0F;
     keyboard.enable(100);
-    this->distanceOld = 0.0F;
-    this->angleOld = 0.0F;
+    this->positionOld = (Position::PositionValue){0.0F, 0.0F};
     this->colorOld = (ColorSensor::ColorValue){0,0,0};
     this->lineValueOld = (LineSensor::LineValue){0,0,0};
 }
@@ -50,8 +49,8 @@ int Event::updateEvent() {
     }
 
     position = controller->getPosition();
-    absDistanceDiff = ABS_FLOAT(this->distanceOld - position.distance);
-    absAngleDiff = ABS_FLOAT(this->angleOld - position.angle);
+    absDistanceDiff = ABS_FLOAT(this->positionOld.distance - position.distance);
+    absAngleDiff = ABS_FLOAT(this->positionOld.angle - position.angle);
 
     // TODO 測距センサの誤差で実質ここ常に発火してしまう
     if(rangeDistance != this->rangeDistanceOld){
@@ -116,8 +115,7 @@ int Event::updateEvent() {
         this->event &= ~E_CHANGE_ANGLE;
     }
 
-    this->distanceOld = position.distance;
-    this->angleOld = position.angle;
+    this->positionOld = position;
     this->rangeDistanceOld = rangeDistance;
     this->colorOld = color;
     this->lineValueOld = lineValue;
