@@ -37,7 +37,7 @@ public:
     // Position系
     Position *position;
     void positionReset(void);
-    void getPosition(float* distance, float* angle);
+    Position::PositionValue getPosition();
     // Color系
     ColorSensor::ColorValue getColorValue();
     //LineSensor系

@@ -1,5 +1,6 @@
 #include "includes/Controller.hpp"
 #include "drivers/includes/ColorSensor.hpp"
+#include "drivers/includes/Position.hpp"
 #include "includes/CommonDefine.hpp"
 #include <webots/Supervisor.hpp>
 
@@ -42,8 +43,8 @@ void Controller::positionReset(void) {
     position->reset();
 }
 
-void Controller::getPosition(float* distance, float* angle) {
-    position->getPosition(distance, angle);
+Position::PositionValue Controller::getPosition() {
+    return position->getPosition();
 }
 
 void Controller::changeDriveMode(Mode mode, int motorPower) {

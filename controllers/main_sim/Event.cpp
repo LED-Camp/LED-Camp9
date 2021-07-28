@@ -1,6 +1,7 @@
 #include "includes/Event.hpp"
 #include "includes/Controller.hpp"
 #include "drivers/includes/ColorSensor.hpp"
+#include "drivers/includes/Position.hpp"
 #include "iostream"
 #include "includes/CommonDefine.hpp"
 #include <fcntl.h>
@@ -26,8 +27,6 @@ Event::Event(Controller *controller) {
 
 int Event::updateEvent() {
     int key = keyboard.getKey();
-    float distance;
-    float angle;
 
     float absDistanceDiff;
     float absAngleDiff;
@@ -35,6 +34,7 @@ int Event::updateEvent() {
     float rangeDistance;
 
     ColorSensor::ColorValue color;
+    Position::PositionValue position;
 
     int lineLeft;
     int lineCenter;
@@ -52,9 +52,9 @@ int Event::updateEvent() {
         return -1;
     }
 
-    controller->getPosition(&distance, &angle);
-    absDistanceDiff = ABS_FLOAT(this->distanceOld - distance);
-    absAngleDiff = ABS_FLOAT(this->angleOld - angle);
+    position = controller->getPosition();
+    absDistanceDiff = ABS_FLOAT(this->distanceOld - position.distance);
+    absAngleDiff = ABS_FLOAT(this->angleOld - position.angle);
 
     // TODO 測距センサの誤差で実質ここ常に発火してしまう
     if(rangeDistance != this->rangeDistanceOld){
@@ -119,16 +119,16 @@ int Event::updateEvent() {
         this->event &= ~E_CHANGE_ANGLE;
     }
 
-    this->distanceOld = distance;
-    this->angleOld = angle;
+    this->distanceOld = position.distance;
+    this->angleOld = position.angle;
     this->rangeDistanceOld = rangeDistance;
     this->colorOld = color;
     this->lineLeftOld = lineLeft;
     this->lineCenterOld = lineCenter;
     this->lineRightOld = lineRight;
 
-    std::cout << "distance=" << distance << " "
-              << "angle=" << angle << " " << std::endl;
+    std::cout << "distance=" << position.distance << " "
+              << "angle=" << position.angle << " " << std::endl;
     std::cout << "range=" << rangeDistance << std::endl;
     std::cout << "color: R=" << color.red << " G=" << color.green << " B=" << color.blue << std::endl;
     std::cout << "line:l=" << lineLeft << " "

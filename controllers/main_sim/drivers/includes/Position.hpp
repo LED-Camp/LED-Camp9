@@ -18,7 +18,8 @@ public:
     PositionSensor* positionSensorR;
     static Position* getInstance(Supervisor* supervisor, std::string psNameL, std::string psNameR);
     void reset(void);
-    void getPosition(float* distance, float* angle);
+    typedef struct {float distance, angle;} PositionValue;
+    Position::PositionValue getPosition();
 };
 
 #endif

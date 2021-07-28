@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "drivers/includes/Position.hpp"
 #include "includes/Event.hpp"
 #include "includes/LEDTank.hpp"
 #include "includes/CommonDefine.hpp"
@@ -8,8 +9,7 @@
 LEDTank::LEDTank(Controller *controller){
   this->state = _STATE_INITIAL;
   this->controller = controller;
-  this->distance = 0.0F;
-  this->angle = 0.0F;
+  this->position = (Position::PositionValue){0.0F, 0.0F};
   this->rangeDistance = 0.0F;
 }
 
@@ -18,7 +18,7 @@ LEDTank::LEDTank(Controller *controller){
  * 実験用
  */
 void LEDTank::execState(){
-  controller->getPosition(&distance, &angle);
+  position = controller->getPosition();
   switch(this->_state){
   case STATE_FORWARD:
     break;

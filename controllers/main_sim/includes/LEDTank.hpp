@@ -2,6 +2,7 @@
 #define __LEDTank__
 
 #include "includes/Controller.hpp"
+#include "drivers/includes/Position.hpp"
 
 #define _STATE_INITIAL 0x00000000
 #define STATE_FORWARD ((unsigned long)1)
@@ -24,8 +25,7 @@ public:
     Controller *controller;
     unsigned long _beforeState;
     unsigned long state;
-    float distance;
-    float angle;
+    Position::PositionValue position;
     float rangeDistance;
 };
 #endif
