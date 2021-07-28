@@ -1,6 +1,7 @@
 #include "includes/Event.hpp"
 #include "includes/Controller.hpp"
 #include "drivers/includes/ColorSensor.hpp"
+#include "drivers/includes/LineSensor.hpp"
 #include "drivers/includes/Position.hpp"
 #include "iostream"
 #include "includes/CommonDefine.hpp"
@@ -20,9 +21,7 @@ Event::Event(Controller *controller) {
     this->distanceOld = 0.0F;
     this->angleOld = 0.0F;
     this->colorOld = (ColorSensor::ColorValue){0,0,0};
-    this->lineLeftOld = 0;
-    this->lineCenterOld = 0;
-    this->lineRightOld = 0;
+    this->lineValueOld = (LineSensor::LineValue){0,0,0};
 }
 
 int Event::updateEvent() {
@@ -36,17 +35,15 @@ int Event::updateEvent() {
     ColorSensor::ColorValue color;
     Position::PositionValue position;
 
-    int lineLeft;
-    int lineCenter;
-    int lineRight;
-
+    LineSensor::LineValue lineValue;
+    
     rangeDistance = controller->getRange();
     color = controller->getColorValue();
-    controller->getLineValue(&lineLeft, &lineCenter, &lineRight);
+    lineValue = controller->getLineValue();
     bool lineSensorChanged =
-        (lineLeft != this->lineLeftOld) ||
-        (lineCenter != this->lineCenterOld) ||
-        (lineRight != this->lineRightOld);
+        (lineValue.left != this->lineValueOld.left) ||
+        (lineValue.center != this->lineValueOld.center) ||
+        (lineValue.right != this->lineValueOld.right);
 
     if(key == 'Q'){
         return -1;
@@ -123,17 +120,14 @@ int Event::updateEvent() {
     this->angleOld = position.angle;
     this->rangeDistanceOld = rangeDistance;
     this->colorOld = color;
-    this->lineLeftOld = lineLeft;
-    this->lineCenterOld = lineCenter;
-    this->lineRightOld = lineRight;
-
+    this->lineValueOld = lineValue;
     std::cout << "distance=" << position.distance << " "
               << "angle=" << position.angle << " " << std::endl;
     std::cout << "range=" << rangeDistance << std::endl;
     std::cout << "color: R=" << color.red << " G=" << color.green << " B=" << color.blue << std::endl;
-    std::cout << "line:l=" << lineLeft << " "
-              << "line:c=" << lineCenter << " "
-              << "line:r=" << lineRight << " " << std::endl;
+    std::cout << "line:l=" << lineValue.left << " "
+              << "line:c=" << lineValue.center << " "
+              << "line:r=" << lineValue.right << " " << std::endl;
     return 0;
 }
 

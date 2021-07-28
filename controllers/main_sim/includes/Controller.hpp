@@ -41,7 +41,7 @@ public:
     // Color系
     ColorSensor::ColorValue getColorValue();
     //LineSensor系
-    void getLineValue(int* left, int* center, int* right);
+    LineSensor::LineValue getLineValue();
 };
 
 #endif

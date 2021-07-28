@@ -1,5 +1,6 @@
 #include "includes/Controller.hpp"
 #include "drivers/includes/ColorSensor.hpp"
+#include "drivers/includes/LineSensor.hpp"
 #include "drivers/includes/Position.hpp"
 #include "includes/CommonDefine.hpp"
 #include <webots/Supervisor.hpp>
@@ -71,6 +72,6 @@ ColorSensor::ColorValue Controller::getColorValue() {
     return this->colorSensor->getColorValue();
 }
 
-void Controller::getLineValue(int* left, int* center, int* right) {
-    this->lineSensor->getLineValue(left, center, right);
+LineSensor::LineValue Controller::getLineValue() {
+    return this->lineSensor->getLineValue();
 }
