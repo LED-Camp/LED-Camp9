@@ -21,10 +21,10 @@ TwinWheelDriver::TwinWheelDriver(Supervisor* supervisor, std::string motorNameL,
   motorR->setPosition(INFINITY);
 }
 
-void TwinWheelDriver::changeDriveMode(Mode mode, int voltageLevel) {
+void TwinWheelDriver::changeDriveMode(Mode mode, int motorPower) {
     //voltage_level : 0〜100
-    double l = ((double) voltageLevel * MAX_SPEED / 100.0) * (L_MOTOR_COFF / 100) ;
-    double r = ((double) voltageLevel * MAX_SPEED / 100.0) * (R_MOTOR_COFF / 100) ;
+    double l = ((double) motorPower * MAX_SPEED / 100.0) * (L_MOTOR_COFF / 100) ;
+    double r = ((double) motorPower * MAX_SPEED / 100.0) * (R_MOTOR_COFF / 100) ;
 
     if (mode == STOP) {
         motorL->setVelocity(0.0);

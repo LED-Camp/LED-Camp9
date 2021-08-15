@@ -5,6 +5,8 @@
 #include <webots/Keyboard.hpp> //キー受け付け; シミュレータ
 #include "includes/CommonDefine.hpp"
 #include "drivers/includes/ColorSensor.hpp"
+#include "drivers/includes/LineSensor.hpp"
+#include "drivers/includes/Position.hpp"
 #include <string>
 
 class Controller;
@@ -38,12 +40,9 @@ private:
     int oldKey;
     float rangeDistanceOld;
     unsigned long event;
-    float distanceOld;
-    float angleOld;
+    Position::PositionValue positionOld;
     ColorSensor::ColorValue colorOld;
-    int lineLeftOld;
-    int lineCenterOld;
-    int lineRightOld;
+    LineSensor::LineValue lineValueOld;
 };
 
 #endif

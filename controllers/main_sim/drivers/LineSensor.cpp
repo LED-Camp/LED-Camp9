@@ -41,20 +41,22 @@ LineSensor* LineSensor::getInstance(
     return _instance;
 }
 
-void LineSensor::getLineValue(int* left, int* center, int* right){
+LineSensor::LineValue LineSensor::getLineValue(){
+    LineSensor::LineValue lineValue;
     if(this->sensorElementLeft->getValue() > THRESHOLD_LINE_VALUE) {
-        *left = LINE_SENSOR_VALUE_BLACK;
+        lineValue.left = LINE_SENSOR_VALUE_BLACK;
     } else {
-        *left = LINE_SENSOR_VALUE_WHITE;
+        lineValue.left = LINE_SENSOR_VALUE_WHITE;
     }
     if(this->sensorElementCenter->getValue() > THRESHOLD_LINE_VALUE) {
-        *center = LINE_SENSOR_VALUE_BLACK;
+        lineValue.center = LINE_SENSOR_VALUE_BLACK;
     } else {
-        *center = LINE_SENSOR_VALUE_WHITE;
+        lineValue.center = LINE_SENSOR_VALUE_WHITE;
     }
     if(this->sensorElementRight->getValue() > THRESHOLD_LINE_VALUE) {
-        *right = LINE_SENSOR_VALUE_BLACK;
+        lineValue.right = LINE_SENSOR_VALUE_BLACK;
     } else {
-        *right = LINE_SENSOR_VALUE_WHITE;
+        lineValue.right = LINE_SENSOR_VALUE_WHITE;
     }
+    return lineValue;
 }

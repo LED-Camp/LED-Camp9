@@ -30,7 +30,8 @@ public:
         std::string sensorNameRight,
         int timeStep
     );
-    void getLineValue(int* left, int* center, int* right);
+    typedef struct{int left, center, right;} LineValue;
+    LineSensor::LineValue getLineValue();
 };
 
 #endif

@@ -1,5 +1,7 @@
 #include "includes/Controller.hpp"
 #include "drivers/includes/ColorSensor.hpp"
+#include "drivers/includes/LineSensor.hpp"
+#include "drivers/includes/Position.hpp"
 #include "includes/CommonDefine.hpp"
 #include <webots/Supervisor.hpp>
 
@@ -42,12 +44,12 @@ void Controller::positionReset(void) {
     position->reset();
 }
 
-void Controller::getPosition(float* distance, float* angle) {
-    position->getPosition(distance, angle);
+Position::PositionValue Controller::getPosition() {
+    return position->getPosition();
 }
 
-void Controller::changeDriveMode(Mode mode, int pwmDuty) {
-    this->twinWheelDriver->changeDriveMode(mode, pwmDuty);
+void Controller::changeDriveMode(Mode mode, int motorPower) {
+    this->twinWheelDriver->changeDriveMode(mode, motorPower);
 }
 
 bool Controller::clockForward() {
@@ -70,6 +72,6 @@ ColorSensor::ColorValue Controller::getColorValue() {
     return this->colorSensor->getColorValue();
 }
 
-void Controller::getLineValue(int* left, int* center, int* right) {
-    this->lineSensor->getLineValue(left, center, right);
+LineSensor::LineValue Controller::getLineValue() {
+    return this->lineSensor->getLineValue();
 }

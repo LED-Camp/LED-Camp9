@@ -1,6 +1,8 @@
 #include "includes/Event.hpp"
 #include "includes/Controller.hpp"
 #include "drivers/includes/ColorSensor.hpp"
+#include "drivers/includes/LineSensor.hpp"
+#include "drivers/includes/Position.hpp"
 #include "iostream"
 #include "includes/CommonDefine.hpp"
 #include <fcntl.h>
@@ -16,18 +18,13 @@ Event::Event(Controller *controller) {
     this->oldKey = -1;
     this->rangeDistanceOld = 0.0F;
     keyboard.enable(100);
-    this->distanceOld = 0.0F;
-    this->angleOld = 0.0F;
+    this->positionOld = (Position::PositionValue){0.0F, 0.0F};
     this->colorOld = (ColorSensor::ColorValue){0,0,0};
-    this->lineLeftOld = 0;
-    this->lineCenterOld = 0;
-    this->lineRightOld = 0;
+    this->lineValueOld = (LineSensor::LineValue){0,0,0};
 }
 
 int Event::updateEvent() {
     int key = keyboard.getKey();
-    float distance;
-    float angle;
 
     float absDistanceDiff;
     float absAngleDiff;
@@ -35,26 +32,25 @@ int Event::updateEvent() {
     float rangeDistance;
 
     ColorSensor::ColorValue color;
+    Position::PositionValue position;
 
-    int lineLeft;
-    int lineCenter;
-    int lineRight;
-
+    LineSensor::LineValue lineValue;
+    
     rangeDistance = controller->getRange();
     color = controller->getColorValue();
-    controller->getLineValue(&lineLeft, &lineCenter, &lineRight);
+    lineValue = controller->getLineValue();
     bool lineSensorChanged =
-        (lineLeft != this->lineLeftOld) ||
-        (lineCenter != this->lineCenterOld) ||
-        (lineRight != this->lineRightOld);
+        (lineValue.left != this->lineValueOld.left) ||
+        (lineValue.center != this->lineValueOld.center) ||
+        (lineValue.right != this->lineValueOld.right);
 
     if(key == 'Q'){
         return -1;
     }
 
-    controller->getPosition(&distance, &angle);
-    absDistanceDiff = ABS_FLOAT(this->distanceOld - distance);
-    absAngleDiff = ABS_FLOAT(this->angleOld - angle);
+    position = controller->getPosition();
+    absDistanceDiff = ABS_FLOAT(this->positionOld.distance - position.distance);
+    absAngleDiff = ABS_FLOAT(this->positionOld.angle - position.angle);
 
     // TODO 測距センサの誤差で実質ここ常に発火してしまう
     if(rangeDistance != this->rangeDistanceOld){
@@ -119,21 +115,17 @@ int Event::updateEvent() {
         this->event &= ~E_CHANGE_ANGLE;
     }
 
-    this->distanceOld = distance;
-    this->angleOld = angle;
+    this->positionOld = position;
     this->rangeDistanceOld = rangeDistance;
     this->colorOld = color;
-    this->lineLeftOld = lineLeft;
-    this->lineCenterOld = lineCenter;
-    this->lineRightOld = lineRight;
-
-    std::cout << "distance=" << distance << " "
-              << "angle=" << angle << " " << std::endl;
+    this->lineValueOld = lineValue;
+    std::cout << "distance=" << position.distance << " "
+              << "angle=" << position.angle << " " << std::endl;
     std::cout << "range=" << rangeDistance << std::endl;
     std::cout << "color: R=" << color.red << " G=" << color.green << " B=" << color.blue << std::endl;
-    std::cout << "line:l=" << lineLeft << " "
-              << "line:c=" << lineCenter << " "
-              << "line:r=" << lineRight << " " << std::endl;
+    std::cout << "line:l=" << lineValue.left << " "
+              << "line:c=" << lineValue.center << " "
+              << "line:r=" << lineValue.right << " " << std::endl;
     return 0;
 }
 
