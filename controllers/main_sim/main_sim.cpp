@@ -29,9 +29,6 @@ int main(int argc, char **argv) {
   lEDTank = new LEDTank(controller);
   event = new Event(controller);
 
-  #ifdef EXPERIMENTAL_USE
-    printf("Experimental use mode; w:↑, a:←, s:↓, d:→\n");
-  #endif
   while (controller->clockForward()) {
     if(event->updateEvent() < 0 || controller->timeUp(COMPETITION_TIME)){
         printf("STOP\n");
@@ -65,10 +62,6 @@ int main(void){
     return 1;
   }
 
-#ifdef EXPERIMENTAL_USE
-    printf("Experimental use mode; w:↑, a:←, s:↓, d:→\n");
-#endif
-
   controller = Controller::getInstance();
   lEDTank = new LEDTank(controller);
   event = new Event(controller);
@@ -85,8 +78,6 @@ int main(void){
         controller->changeDriveMode(STOP, 0);
         break;
      }
-
-
 
 #ifdef EXPERIMENTAL_USE
     lEDTank->execState_for_experiment();
