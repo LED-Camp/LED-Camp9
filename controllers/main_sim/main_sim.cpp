@@ -1,18 +1,9 @@
 #include <iostream>
-#ifdef SIM_USE
 #include <webots/Supervisor.hpp>
 #include <webots/DistanceSensor.hpp>
 #include "includes/Event.hpp"
 #include "includes/Controller.hpp"
 #include "includes/LEDTank.hpp"
-#else
-#include <sys/time.h>
-#include <time.h>
-#include "wiringPi.h"
-#include "Event.h"
-#include "Controller.h"
-#include "LEDTank.h"
-#endif
 
 using namespace webots;
 
