@@ -1,0 +1,11 @@
+#ifndef __${u.name}__
+#define __${u.name}__
+
+typedef struct{
+<% for(var in u.iclass.getAttributes()){%>\
+<% if(var.getAssociation() == null){%>\
+  ${var.getType()} ${var.getName()},
+<%}%>\
+<%}%>\
+;} ${u.name};
+#endif

@@ -12,7 +12,9 @@ ${u.name}::${u.name}(Controller *controller){
 
 <% for(var in u.iclass.getAttributes()){%>\
 <% if(var.getAssociation() == null){%>\
+<% if(var.getType().toString() == "int"){%>\
   this->${var.getName()} = 0;
+<%}%>\
 <%}%>\
 <%}%>\
 }
