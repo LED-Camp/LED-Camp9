@@ -16,10 +16,6 @@
 
 using namespace webots;
 
-#ifdef SIM_USE
-/**
- * sim用main
- */
 int main(int argc, char **argv) {
   Controller *controller;
   LEDTank *lEDTank;
@@ -44,59 +40,3 @@ int main(int argc, char **argv) {
   delete event;
   return 0;
 }
-
-#else
-/**
- * 実機用main
- */
-int main(void){
-  struct timeval now;
-  struct timeval old;
-
-  Controller *controller;
-  Event *event;
-
-  LEDTank *lEDTank;
-
-  if( wiringPiSetupGpio() < 0){ //initialize failed
-    return 1;
-  }
-
-  controller = Controller::getInstance();
-  lEDTank = new LEDTank(controller);
-  event = new Event(controller);
-  gettimeofday(&now, NULL);
-  gettimeofday(&old, NULL);
-
-  while(true){
-    while((now.tv_sec - old.tv_sec) + (now.tv_usec - old.tv_usec)*1.0E-6  < 0.05F){
-      gettimeofday(&now, NULL);
-    }
-    old = now;
-    if(event->updateEvent() < 0){
-        printf("STOP\n");
-        controller->changeDriveMode(STOP, 0);
-        break;
-     }
-
-#ifdef EXPERIMENTAL_USE
-    lEDTank->execState_for_experiment();
-    lEDTank->doTransition_for_experiment(event->getEvent());
-
-#else
-    lEDTank->execState();
-    lEDTank->doTransition(event->getEvent());
-
-#endif
-  }
-  gettimeofday(&now, NULL);
-  gettimeofday(&old, NULL);
-
-  while((now.tv_sec - old.tv_sec) + (now.tv_usec - old.tv_usec)*1.0E-6  < 0.05F){
-    gettimeofday(&now, NULL);
-  }
-  getch();
-  delete lEDTank;
-  delete event;
-}
-#endif
