@@ -103,7 +103,7 @@ int Event::updateEvent() {
     }
     key = -1;
 
-    if (absDistanceDiff > 0.005) {
+    if (absDistanceDiff > 0.001) {
         this->event |= E_CHANGE_DISTANCE;
     } else {
         this->event &= ~E_CHANGE_DISTANCE;

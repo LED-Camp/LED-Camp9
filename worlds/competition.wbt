@@ -1,34 +1,34 @@
-#VRML_SIM R2021a utf8
+#VRML_SIM R2021b utf8
 WorldInfo {
   FPS 30
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation -0.01832162832312695 0.9987961016815526 0.045504562423153226 2.238778515444898
-  position 0.70324310638195 0.18612790090848347 -0.49373381483982204
-}
-TexturedBackground {
-}
-TexturedBackgroundLight {
+  orientation 0.4588200632202163 -0.81398301360095 -0.3562524430171844 4.6574117519088105
+  position 1.7440783422034667 2.1288805977008494 0.2700076775917799
 }
 RectangleArena {
+  name "Competition Arena"
   floorSize 2.5 2.5
   floorTileSize 2.5 2.5
   floorAppearance PBRAppearance {
     baseColorMap ImageTexture {
       url [
-        "../imgs/ledcamp_field_prod.png"
+        "../imgs/color.png"
       ]
     }
     roughness 1
   }
-  name "Competition Arena"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
 }
 Robot {
-  translation -0.0951553023089044 0.053908332094003364 0.07619237292696579
-  rotation -0.39520806350709586 0.6535921030785384 0.6454672333529754 2.3803075343659827
+  translation 1.27883e-06 0.0411838 -0.266976
+  rotation 0.5750413347912737 0.5819406555674752 0.5750413347570482 -2.087523209194689
   children [
-    Solid {
+    DEF COLOR_SENSOR Solid {
       translation 0 -0.115 -0.04
       children [
         SpotLight {
@@ -36,24 +36,18 @@ Robot {
           beamWidth 0.1
           direction 0 1 -1
           location 0 -0.005 0
+          on FALSE
           radius 0.2
         }
         Camera {
           name "cam"
+          width 1
+          height 1
         }
         LED {
           translation 0 -0.005 0
           color [
             1 1 1
-          ]
-        }
-        LightSensor {
-          rotation -0.577349935856137 0.577349935856137 0.5773509358560258 2.09439
-          name "light_R"
-          lookupTable [
-            0 0 0
-            0.001 0 0
-            10 100 0
           ]
         }
         Shape {
@@ -62,9 +56,9 @@ Robot {
           }
         }
       ]
-      name "solid(7)"
+      name "solid(8)"
     }
-    Solid {
+    DEF DISTANCE_SENSOR Solid {
       translation 0 -0.13 0.017
       children [
         DistanceSensor {
@@ -72,9 +66,11 @@ Robot {
           name "RangeSensor"
           lookupTable [
             0 0 0
-            0.1 0 0.1
-            1 10 0.1
-            1.1 9999 0
+            0.1 0 0
+            0.5 50 0.05
+            1 100 0.1
+            1.5 150 0.2
+            5 500 0.5
           ]
         }
         Shape {
@@ -90,9 +86,43 @@ Robot {
       ]
       name "solid(6)"
     }
+    DEF LINE_SENSOR Solid {
+      translation 0 -0.07 -0.043
+      rotation 1 0 0 1.5708
+      children [
+        DistanceSensor {
+          translation -0.06 -6.21882e-08 1.45658e-07
+          rotation 0.5773509358554485 -0.5773509358554485 0.5773489358556708 -2.094395307179586
+          name "LineSensorRight"
+          type "infra-red"
+        }
+        DistanceSensor {
+          translation 0.06 6.21882e-08 -1.45658e-07
+          rotation 0.5773509358554485 -0.5773509358554485 0.5773489358556708 -2.094395307179586
+          name "LineSensorLeft"
+          type "infra-red"
+        }
+        DistanceSensor {
+          rotation 0.5773509358554485 -0.5773509358554485 0.5773489358556708 -2.094395307179586
+          name "LineSensorCenter"
+          type "infra-red"
+        }
+        Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.2 0.2 0.2
+            }
+          }
+          geometry Box {
+            size 0.13 0.001 0.015
+          }
+        }
+      ]
+      name "solid(9)"
+    }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position -2.9984430211273204e-07
+        position 1.8153539538228048e-09
         anchor 0 0.068 -0.04
       }
       device [
@@ -103,7 +133,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.06 0.068 -0.04
-        rotation -1.4992230391936262e-07 -1.4992215105636375e-07 -0.9999999999999775 1.5707953071796052
+        rotation 9.076779023937477e-10 9.076769769113461e-10 -0.9999999999999999 1.570795307179577
         children [
           DEF WHEEL_RR Shape {
             geometry Cylinder {
@@ -116,16 +146,17 @@ Robot {
         boundingObject USE WHEEL_RR
         physics Physics {
         }
-        linearVelocity 0.20852938527688802 7.674496990101425e-06 0.11470947682598898
-        angularVelocity -8.38128231973658e-05 2.311679866846969 -9.285126062642121e-05
       }
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position -8611.863210445063
+        position -8882.294303689125
         anchor 0.06 -0.015 -0.04
       }
       device [
+        PositionSensor {
+          name "positionSensorL"
+        }
         RotationalMotor {
           name "motorL"
           maxVelocity 100
@@ -133,7 +164,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0.06 -0.015 -0.04
-        rotation -0.6806522642982216 -0.6806515702950994 0.27097220329863997 3.670828684122252
+        rotation 0.6583861495049298 0.6583854782046679 -0.3647687489756802 2.442050445884074
         children [
           DEF WHEEL_FL Shape {
             geometry Cylinder {
@@ -146,13 +177,11 @@ Robot {
         boundingObject USE WHEEL_FL
         physics Physics {
         }
-        linearVelocity -0.12748621401311114 -6.830854113160339e-06 0.05564186900875556
-        angularVelocity 3.972141874410808 2.476113317336061 9.177708418929445
       }
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 4.4861230712008767e-07
+        position 7.200984496874698e-07
         anchor 0 0.068 -0.04
       }
       device [
@@ -162,8 +191,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 0.059999999999999984 0.068 -0.04
-        rotation 2.2430638226614228e-07 2.2430615356003634e-07 -0.9999999999999497 1.5707953071796332
+        translation 0.0599999999999991 0.068 -0.04
+        rotation 3.6004959195560023e-07 3.6004922484370457e-07 -0.9999999999998704 1.5707953071796954
         children [
           DEF WHEEL_RL Shape {
             geometry Cylinder {
@@ -176,16 +205,17 @@ Robot {
         boundingObject USE WHEEL_RL
         physics Physics {
         }
-        linearVelocity -0.04645315132421808 2.817170410932002e-06 0.2318852348023111
-        angularVelocity -8.668260367743907e-05 2.311678795585779 -9.904004653926355e-05
       }
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 8619.543089482833
+        position 8317.814881684299
         anchor -0.06 -0.015 -0.04
       }
       device [
+        PositionSensor {
+          name "positionSensorR"
+        }
         RotationalMotor {
           name "motorR"
           maxVelocity 100
@@ -193,7 +223,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.06 -0.015 -0.04
-        rotation -0.4281559847445995 -0.42815554819042095 -0.795842496528768 1.7971901941703934
+        rotation -0.46983018068739246 -0.4698297016415853 -0.7473417242270307 1.857996395006181
         children [
           DEF WHEEL_FR Shape {
             geometry Cylinder {
@@ -206,8 +236,6 @@ Robot {
         boundingObject USE WHEEL_FR
         physics Physics {
         }
-        linearVelocity 0.12748485388306743 -1.9732703025228653e-06 -0.0617469387646901
-        angularVelocity -3.9723177021476674 2.4756026548667105 -9.177906755388118
       }
     }
     Solid {
@@ -1347,11 +1375,34 @@ Robot {
     size 0.1430723372032522 0.26130810687567646 0.1
   }
   physics Physics {
+    mass 1.5
     centerOfMass [
       0 0 0
     ]
   }
   controller "main_sim"
-  linearVelocity 0.012098264110431111 -3.0320431214809186e-06 0.023271854898991733
-  angularVelocity -8.50468838002768e-05 2.3116792887795627 -9.551009728482624e-05
+  supervisor TRUE
+}
+Solid {
+  translation 0 0.46 0.37
+  children [
+    DEF CYLINDER_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        roughness 1
+        metalness 0
+        name "DefaultMaterial"
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+        subdivision 12
+      }
+    }
+  ]
+  name "Competition Cylinder"
+  boundingObject USE CYLINDER_SHAPE
+  physics Physics {
+    mass 0.6
+  }
 }
