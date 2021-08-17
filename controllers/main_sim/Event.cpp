@@ -3,7 +3,6 @@
 #include "drivers/includes/ColorSensor.hpp"
 #include "drivers/includes/LineSensor.hpp"
 #include "drivers/includes/Position.hpp"
-#include "iostream"
 #include "includes/CommonDefine.hpp"
 #include <fcntl.h>
 
@@ -119,13 +118,10 @@ int Event::updateEvent() {
     this->rangeDistanceOld = rangeDistance;
     this->colorOld = color;
     this->lineValueOld = lineValue;
-    std::cout << "distance=" << position.distance << " "
-              << "angle=" << position.angle << " " << std::endl;
-    std::cout << "range=" << rangeDistance << std::endl;
-    std::cout << "color: R=" << color.red << " G=" << color.green << " B=" << color.blue << std::endl;
-    std::cout << "line:l=" << lineValue.left << " "
-              << "line:c=" << lineValue.center << " "
-              << "line:r=" << lineValue.right << " " << std::endl;
+    printf("distance=%f, angle=%f \n", position.distance, position.angle);
+    printf("range=%f \n", rangeDistance);
+    printf("color: R=%u, G=%u, B=%u \n", color.red, color.green, color.blue);
+    printf("line: l=%d, c=%d, r=%d \n", lineValue.left, lineValue.center, lineValue.right);
     return 0;
 }
 
