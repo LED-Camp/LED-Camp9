@@ -10,7 +10,7 @@ CXX_SOURCES += $(SRC_DIR)/drivers/RangeSensor.cpp
 CXX_SOURCES += $(SRC_DIR)/drivers/ColorSensor.cpp
 CXX_SOURCES += $(SRC_DIR)/drivers/LineSensor.cpp
 #CFLAGS := -Wall -O0
-CFLAGS := -Wall -O0 -D 'SIM_USE'
+CFLAGS := -Wall -O0 
 
 null :=
 space := $(null) $(null)
