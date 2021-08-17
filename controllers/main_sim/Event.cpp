@@ -121,7 +121,7 @@ int Event::updateEvent() {
     printf("distance=%f, angle=%f \n", position.distance, position.angle);
     printf("range=%f \n", rangeDistance);
     printf("color: R=%u, G=%u, B=%u \n", color.red, color.green, color.blue);
-    printf("line: l=%d c=%d r=%d \n", lineValue.left, lineValue.center, lineValue.right);
+    printf("line: l=%d, c=%d, r=%d \n", lineValue.left, lineValue.center, lineValue.right);
     return 0;
 }
 
