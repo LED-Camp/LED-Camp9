@@ -68,7 +68,7 @@ float Controller::getRange() {
     return this->rangeSensor->getRange();
 }
 
-ColorSensor::ColorValue Controller::getColorValue() {
+ColorValue Controller::getColorValue() {
     return this->colorSensor->getColorValue();
 }
 

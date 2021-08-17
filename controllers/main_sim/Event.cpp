@@ -18,7 +18,7 @@ Event::Event(Controller *controller) {
     this->rangeDistanceOld = 0.0F;
     keyboard.enable(100);
     this->positionOld = (Position::PositionValue){0.0F, 0.0F};
-    this->colorOld = (ColorSensor::ColorValue){0,0,0};
+    this->colorOld = (ColorValue){0,0,0};
     this->lineValueOld = (LineValue){0,0,0};
 }
 
@@ -30,7 +30,7 @@ int Event::updateEvent() {
 
     float rangeDistance;
 
-    ColorSensor::ColorValue color;
+    ColorValue color;
     Position::PositionValue position;
 
     LineValue lineValue;
@@ -120,7 +120,7 @@ int Event::updateEvent() {
     this->lineValueOld = lineValue;
     printf("distance=%f, angle=%f \n", position.distance, position.angle);
     printf("range=%f \n", rangeDistance);
-    printf("color: R=%u, G=%u, B=%u \n", color.red, color.green, color.blue);
+    printf("color: R=%d, G=%d, B=%d \n", color.red, color.green, color.blue);
     printf("line: l=%d, c=%d, r=%d \n", lineValue.left, lineValue.center, lineValue.right);
     return 0;
 }

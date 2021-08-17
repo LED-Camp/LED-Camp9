@@ -10,6 +10,7 @@
 #include "drivers/includes/ColorSensor.hpp"
 #include "drivers/includes/LineSensor.hpp"
 #include <webots/Camera.hpp>
+#include "ColorValue.hpp"
 #include "LineValue.hpp"
 
 using namespace webots;
@@ -40,7 +41,7 @@ public:
     void positionReset(void);
     Position::PositionValue getPosition();
     // Color系
-    ColorSensor::ColorValue getColorValue();
+    ColorValue getColorValue();
     //LineSensor系
     LineValue getLineValue();
 };

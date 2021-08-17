@@ -18,7 +18,7 @@ void LEDTank::execState(){
     rangeDistance = controller->getRange();
     break;
   case STATE_FORWARD:
-    lineValue = controller->getLineValue();
+    colorValue = controller->getColorValue();
     break;
   case STATE_BACKWARD:
     
@@ -58,7 +58,8 @@ printf("FORWARD\n");
     }
     break;
   case STATE_FORWARD:
-    if(((event & E_CHANGE_AREA) != 0) && (lineValue.center == 0)){
+    if(((event & E_CHANGE_COLOR) != 0) && (colorValue.red - colorValue.green > 40
+&& colorValue.red - colorValue.blue > 40)){
       // exit
       
 
