@@ -4,8 +4,8 @@
 typedef struct{
 <% for(var in u.iclass.getAttributes()){%>\
 <% if(var.getAssociation() == null){%>\
-  ${var.getType()} ${var.getName()},
+  ${var.getType()} ${var.getName()};
 <%}%>\
 <%}%>\
-;} ${u.name};
+} ${u.name};
 #endif

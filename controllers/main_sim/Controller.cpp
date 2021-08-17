@@ -72,6 +72,6 @@ ColorSensor::ColorValue Controller::getColorValue() {
     return this->colorSensor->getColorValue();
 }
 
-LineSensor::LineValue Controller::getLineValue() {
+LineValue Controller::getLineValue() {
     return this->lineSensor->getLineValue();
 }

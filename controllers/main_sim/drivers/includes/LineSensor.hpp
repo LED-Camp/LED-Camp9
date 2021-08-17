@@ -2,6 +2,7 @@
 #include <webots/DistanceSensor.hpp>
 #include <string>
 #include <cstdint>
+#include "LineValue.hpp"
 
 #ifndef __LINE_SENSOR_H__
 #define __LINE_SENSOR_H__
@@ -30,8 +31,7 @@ public:
         std::string sensorNameRight,
         int timeStep
     );
-    typedef struct{int left, center, right;} LineValue;
-    LineSensor::LineValue getLineValue();
+    LineValue getLineValue();
 };
 
 #endif

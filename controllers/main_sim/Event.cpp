@@ -19,7 +19,7 @@ Event::Event(Controller *controller) {
     keyboard.enable(100);
     this->positionOld = (Position::PositionValue){0.0F, 0.0F};
     this->colorOld = (ColorSensor::ColorValue){0,0,0};
-    this->lineValueOld = (LineSensor::LineValue){0,0,0};
+    this->lineValueOld = (LineValue){0,0,0};
 }
 
 int Event::updateEvent() {
@@ -33,7 +33,7 @@ int Event::updateEvent() {
     ColorSensor::ColorValue color;
     Position::PositionValue position;
 
-    LineSensor::LineValue lineValue;
+    LineValue lineValue;
     
     rangeDistance = controller->getRange();
     color = controller->getColorValue();

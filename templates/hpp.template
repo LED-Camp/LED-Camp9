@@ -2,6 +2,8 @@
 #define __${u.name}__
 
 #include "includes/Controller.hpp"
+#include "ColorValue.hpp"
+#include "LineValue.hpp"
 
 #define _STATE_INITIAL 0x00000000
 <% def stateNo = 0x00000001 %>\
