@@ -4,11 +4,11 @@
 #include "includes/Controller.hpp"
 #include "ColorValue.hpp"
 #include "LineValue.hpp"
+#include "PositionValue.hpp"
 
 #define _STATE_INITIAL 0x00000000
-#define STATE_TURN ((unsigned long)1)
-#define STATE_FORWARD ((unsigned long)2)
-#define STATE_BACKWARD ((unsigned long)3)
+#define STATE_FORWARD ((unsigned long)1)
+#define STATE_BACKWARD ((unsigned long)2)
 
 class LEDTank{
  public:
@@ -29,6 +29,7 @@ class LEDTank{
   int lineRight;
   ColorValue colorValue;
   LineValue lineValue;
+  PositionValue positionValue;
 
 };
 

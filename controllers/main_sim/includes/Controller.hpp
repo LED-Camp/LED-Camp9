@@ -12,6 +12,7 @@
 #include <webots/Camera.hpp>
 #include "ColorValue.hpp"
 #include "LineValue.hpp"
+#include "PositionValue.hpp"
 
 using namespace webots;
 class Controller {
@@ -39,7 +40,7 @@ public:
     // Position系
     Position *position;
     void positionReset(void);
-    Position::PositionValue getPosition();
+    PositionValue getPosition();
     // Color系
     ColorValue getColorValue();
     //LineSensor系

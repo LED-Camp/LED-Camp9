@@ -17,7 +17,7 @@ Event::Event(Controller *controller) {
     this->oldKey = -1;
     this->rangeDistanceOld = 0.0F;
     keyboard.enable(100);
-    this->positionOld = (Position::PositionValue){0.0F, 0.0F};
+    this->positionOld = (PositionValue){0.0F, 0.0F};
     this->colorOld = (ColorValue){0,0,0};
     this->lineValueOld = (LineValue){0,0,0};
 }
@@ -31,7 +31,7 @@ int Event::updateEvent() {
     float rangeDistance;
 
     ColorValue color;
-    Position::PositionValue position;
+    PositionValue position;
 
     LineValue lineValue;
     

@@ -10,6 +10,7 @@
 #include <string>
 #include "ColorValue.hpp"
 #include "LineValue.hpp"
+#include "PositionValue.hpp"
 
 class Controller;
 using namespace webots;
@@ -42,7 +43,7 @@ private:
     int oldKey;
     float rangeDistanceOld;
     unsigned long event;
-    Position::PositionValue positionOld;
+    PositionValue positionOld;
     ColorValue colorOld;
     LineValue lineValueOld;
 };

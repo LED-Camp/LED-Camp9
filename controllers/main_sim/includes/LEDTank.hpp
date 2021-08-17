@@ -3,6 +3,7 @@
 
 #include "includes/Controller.hpp"
 #include "drivers/includes/Position.hpp"
+#include "PositionValue.hpp"
 
 #define _STATE_INITIAL 0x00000000
 #define STATE_FORWARD ((unsigned long)1)
@@ -25,7 +26,7 @@ public:
     Controller *controller;
     unsigned long _beforeState;
     unsigned long state;
-    Position::PositionValue position;
+    PositionValue position;
     float rangeDistance;
 };
 #endif

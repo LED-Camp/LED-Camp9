@@ -44,7 +44,7 @@ void Controller::positionReset(void) {
     position->reset();
 }
 
-Position::PositionValue Controller::getPosition() {
+PositionValue Controller::getPosition() {
     return position->getPosition();
 }
 
