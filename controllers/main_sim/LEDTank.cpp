@@ -101,7 +101,7 @@ lineValue.left == 0 ||
 lineValue.right == 0 ))){
       // exit
       controller->changeDriveMode(STOP, 0);
-sleep(1);
+//sleep(1);
 
       //action
       
@@ -152,7 +152,7 @@ printf("STOP!!!\n");
       // exit
       controller->changeDriveMode(STOP, 0);
 cnt_turn = 0;
-sleep(1);
+//sleep(1);
 
       //action
       
@@ -168,7 +168,7 @@ printf("STOP!!!\n");
       // exit
       controller->changeDriveMode(STOP, 0);
 cnt_turn = 0;
-sleep(1);
+//sleep(1);
 
       //action
       
@@ -224,7 +224,7 @@ lineValue.left == 0 ||
 lineValue.right == 0 ))){
       // exit
       controller->changeDriveMode(STOP, 0);
-sleep(1);
+//sleep(1);
 
       //action
       
@@ -257,7 +257,7 @@ printf("RETURN\n");
 ) != 0) && (positionValue.distance < 0)){
       // exit
       controller->changeDriveMode(STOP, 0);
-sleep(1);
+//sleep(1);
 
       //action
       
