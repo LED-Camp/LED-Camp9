@@ -102,7 +102,11 @@ int Event::updateEvent() {
     }
     key = -1;
 
+<<<<<<< HEAD
     if (absDistanceDiff > 0.001) {
+=======
+    if (absDistanceDiff > 0.00005) {
+>>>>>>> fix: 距離エンコーダの変化を検出するイベントが発火しない現象を解消
         this->event |= E_CHANGE_DISTANCE;
     } else {
         this->event &= ~E_CHANGE_DISTANCE;
