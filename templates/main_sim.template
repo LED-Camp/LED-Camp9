@@ -5,7 +5,7 @@
 #include <webots/DistanceSensor.hpp>
 #include "includes/Event.hpp"
 #include "includes/Controller.hpp"
-#include "${className}.h"
+#include "${className}.hpp"
 
 using namespace webots;
 
@@ -22,15 +22,15 @@ int main(int argc, char **argv) {
   event = new Event(controller);
 
   while (controller->clockForward()) {
-    if(event->updateEvent() < 0){
+    if(event->updateEvent() < 0 || controller->timeUp(COMPETITION_TIME)){
         controller->changeDriveMode(STOP, 0);
+        controller->clockForward();
         break;
      }
     lEDTank->execState();
     lEDTank->doTransition(event->getEvent());
-    //controller->outputSensorValues(); //
-  };
-
+  }
+  controller->stopSimuration();
   delete lEDTank;
   delete event;
   return 0;
