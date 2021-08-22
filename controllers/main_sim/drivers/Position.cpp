@@ -32,7 +32,7 @@ void Position::reset(void) {
     referPositionR  = positionSensorR->getValue();
 }
 
-Position::PositionValue Position::getPosition() {
+PositionValue Position::getPosition() {
     float l;
     float r;
     float radNowL;
@@ -43,7 +43,7 @@ Position::PositionValue Position::getPosition() {
     l = (radNowL - referPositionL) * RADIUS;
     r = (radNowR - referPositionR) * RADIUS;
 
-    return (Position::PositionValue){
+    return (PositionValue){
         (float)((l + r) / 2.0), //distance
         (float)((( l - r ) / TREAD) * 180.0 / PI) //angle
     };

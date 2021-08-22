@@ -41,8 +41,8 @@ LineSensor* LineSensor::getInstance(
     return _instance;
 }
 
-LineSensor::LineValue LineSensor::getLineValue(){
-    LineSensor::LineValue lineValue;
+LineValue LineSensor::getLineValue(){
+    LineValue lineValue;
     if(this->sensorElementLeft->getValue() > THRESHOLD_LINE_VALUE) {
         lineValue.left = LINE_SENSOR_VALUE_BLACK;
     } else {

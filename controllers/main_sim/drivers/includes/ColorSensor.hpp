@@ -2,6 +2,7 @@
 #include <webots/DistanceSensor.hpp>
 #include <webots/Camera.hpp>
 #include <cstdint>
+#include "ColorValue.hpp"
 
 #ifndef __COLOER_SENSOR__
 #define __COLOER_SENSOR__
@@ -17,8 +18,8 @@ public:
     static ColorSensor* _instance;
     static ColorSensor* getInstance(Supervisor* supervisor, std::string sensorName, int timeStep);
     void Initialize();
-    typedef struct {unsigned int red, green, blue;} ColorValue;
-    ColorSensor::ColorValue getColorValue();
+    //typedef struct {unsigned int red, green, blue;} ColorValue;
+    ColorValue getColorValue();
 };
 
 

@@ -1,5 +1,7 @@
 #include <webots/PositionSensor.hpp>
 #include <webots/Supervisor.hpp>
+#include "PositionValue.hpp"
+
 
 #ifndef __POSITION_H__
 #define __POSITION_H__
@@ -18,8 +20,7 @@ public:
     PositionSensor* positionSensorR;
     static Position* getInstance(Supervisor* supervisor, std::string psNameL, std::string psNameR);
     void reset(void);
-    typedef struct {float distance, angle;} PositionValue;
-    Position::PositionValue getPosition();
+    PositionValue getPosition();
 };
 
 #endif

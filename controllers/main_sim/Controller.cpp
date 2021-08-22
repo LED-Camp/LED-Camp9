@@ -44,7 +44,7 @@ void Controller::positionReset(void) {
     position->reset();
 }
 
-Position::PositionValue Controller::getPosition() {
+PositionValue Controller::getPosition() {
     return position->getPosition();
 }
 
@@ -68,10 +68,10 @@ float Controller::getRange() {
     return this->rangeSensor->getRange();
 }
 
-ColorSensor::ColorValue Controller::getColorValue() {
+ColorValue Controller::getColorValue() {
     return this->colorSensor->getColorValue();
 }
 
-LineSensor::LineValue Controller::getLineValue() {
+LineValue Controller::getLineValue() {
     return this->lineSensor->getLineValue();
 }

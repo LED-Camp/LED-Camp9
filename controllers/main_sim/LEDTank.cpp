@@ -1,32 +1,24 @@
 #include <stdio.h>
-#include "drivers/includes/Position.hpp"
 #include "includes/Event.hpp"
-#include "includes/LEDTank.hpp"
-#include "includes/CommonDefine.hpp"
+#include "LEDTank.hpp"
 #include <unistd.h>
-#define OUTPUT_ 100
 
 LEDTank::LEDTank(Controller *controller){
   this->state = _STATE_INITIAL;
   this->controller = controller;
-  this->position = (Position::PositionValue){0.0F, 0.0F};
-  this->rangeDistance = 0.0F;
+
+  this->lineLeft = 0;
+  this->lineCenter = 0;
+  this->lineRight = 0;
 }
 
 void LEDTank::execState(){
-  position = controller->getPosition();
-  switch(this->_state){
+  switch(this->state){
   case STATE_FORWARD:
-    break;
-  case STATE_INIT:
-    break;
-  case STATE_STOP:
+    positionValue = controller->getPosition();
     break;
   case STATE_BACKWARD:
-    break;
-  case STATE_LEFT:
-    break;
-  case STATE_RIGHT:
+    positionValue = controller->getPosition();
     break;
   default:
     break;
@@ -38,107 +30,48 @@ void LEDTank::doTransition(unsigned long event){
 
   switch(this->state){
   case _STATE_INITIAL:
-    this->state = STATE_STOP;
+    this->state = STATE_FORWARD;
 
     //entry
     controller->positionReset();
-    controller->changeDriveMode(STOP, 0);
+controller->changeDriveMode(FORWARD,100);
+printf("FORWARD\n");
 
-    printf("STOP\n");
-
-    break;
+    break;  
   case STATE_FORWARD:
-    if(((event & E_DOWN) != 0) ){
-      this->state = STATE_STOP;
-      controller->changeDriveMode(STOP, OUTPUT_);
-      printf("STOP\n");
-    }
-    else if(((event & E_LEFT) != 0) ){
-      this->state = STATE_LEFT;
-      controller->changeDriveMode(CCW, OUTPUT_);
-      printf("LEFT\n");
-    }
-    else if(((event & E_RIGHT) != 0) ){
-      this->state = STATE_RIGHT;
-      controller->changeDriveMode(CW, OUTPUT_);
-      printf("RIGHT\n");
+    if(((event & E_CHANGE_DISTANCE) != 0) && (positionValue.distance > 0.5)){
+      // exit
+      
+
+      //action
+      
+
+      this->state = STATE_BACKWARD;
+
+      //entry
+      controller->positionReset();
+controller->changeDriveMode(BACKWARD,100);
+printf("BACKWARD\n");
     }
     break;
   case STATE_BACKWARD:
-    if(((event & E_RIGHT) != 0) ){
-      this->state = STATE_RIGHT;
-      controller->changeDriveMode(CW, OUTPUT_);
-      printf("RIGHT\n");
-    }
-    else if(((event & E_LEFT) != 0) ){
-      this->state = STATE_LEFT;
-      controller->changeDriveMode(CCW, OUTPUT_);
-      printf("LEFT\n");
-    }
-    else if(((event & E_UP) != 0) ){
-      this->state = STATE_STOP;
-      controller->changeDriveMode(STOP, OUTPUT_);
-      printf("STOP\n");
-    }
-    break;
-  case STATE_LEFT:
-    if(((event & E_UP) != 0) ){
+    if(((event & E_CHANGE_DISTANCE) != 0) && (positionValue.distance < -0.5
+)){
+      // exit
+      
+
+      //action
+      
+
       this->state = STATE_FORWARD;
-      controller->changeDriveMode(FORWARD, OUTPUT_);
-      printf("FORWARD\n");
-    }
-    if(((event & E_DOWN) != 0) ){
-      this->state = STATE_BACKWARD;
-      controller->changeDriveMode(BACKWARD, OUTPUT_);
-      printf("BACKWARD\n");
-    }
-    else if(((event & E_RIGHT) != 0) ){
-      this->state = STATE_STOP;
-      controller->changeDriveMode(STOP, OUTPUT_);
-      printf("STOP\n");
-    }
-    break;
-  case STATE_RIGHT:
-    if(((event & E_UP) != 0) ){
-      this->state = STATE_FORWARD;
-      controller->changeDriveMode(FORWARD, OUTPUT_);
-      printf("FORWARD\n");
-    }
-    if(((event & E_DOWN) != 0) ){
-      this->state = STATE_BACKWARD;
-      controller->changeDriveMode(BACKWARD, OUTPUT_);
-      printf("BACKWARD\n");
-    }
-    else if(((event & E_LEFT) != 0) ){
-      this->state = STATE_STOP;
-      controller->changeDriveMode(STOP, OUTPUT_);
-      printf("STOP\n");
-    }
-    break;
-  case STATE_STOP:
-    if(((event & E_UP) != 0) ){
-      this->state = STATE_FORWARD;
-      controller->changeDriveMode(FORWARD, OUTPUT_);
-      printf("FORWARD\n");
-    }
-    else if(((event & E_DOWN) != 0) ){
-      this->state = STATE_BACKWARD;
-      controller->changeDriveMode(BACKWARD, OUTPUT_);
-      printf("BACKWARD\n");
-    }
-    else if(((event & E_RIGHT) != 0) ){
-      this->state = STATE_RIGHT;
-      controller->changeDriveMode(CW, OUTPUT_);
-      printf("RIGHT\n");
-    }
-    else if(((event & E_LEFT) != 0) ){
-      this->state = STATE_LEFT;
-      controller->changeDriveMode(CCW, OUTPUT_);
-      printf("LEFT\n");
+
+      //entry
+      controller->positionReset();
+controller->changeDriveMode(FORWARD,100);
+printf("FORWARD\n");
     }
     break;
   default:
     break;
   }
 }
-

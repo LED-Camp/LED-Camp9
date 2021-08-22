@@ -24,11 +24,11 @@ ColorSensor* ColorSensor::getInstance(Supervisor* supervisor, std::string sensor
     return _instance;
 }
 
-ColorSensor::ColorValue ColorSensor::getColorValue() {
+ColorValue ColorSensor::getColorValue() {
     const unsigned char *image = this->sensorElement->getImage();
-    return (ColorSensor::ColorValue){
-        (unsigned int)(this->sensorElement->imageGetRed(image, 0,0,0)) ,
-        (unsigned int)(this->sensorElement->imageGetGreen(image, 0,0,0)) ,
-        (unsigned int)(this->sensorElement->imageGetBlue(image, 0,0,0)) 
+    return (ColorValue){
+        (int)(this->sensorElement->imageGetRed(image, 0,0,0)),
+        (int)(this->sensorElement->imageGetGreen(image, 0,0,0)),
+        (int)(this->sensorElement->imageGetBlue(image, 0,0,0))
     };
 }
