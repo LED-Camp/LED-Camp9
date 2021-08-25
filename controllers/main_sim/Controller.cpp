@@ -4,6 +4,7 @@
 #include "drivers/includes/Position.hpp"
 #include "includes/CommonDefine.hpp"
 #include <webots/Supervisor.hpp>
+#include <webots/Robot.hpp>
 
 using namespace webots;
 
@@ -74,4 +75,8 @@ ColorValue Controller::getColorValue() {
 
 LineValue Controller::getLineValue() {
     return this->lineSensor->getLineValue();
+}
+
+void Controller::tankSleep(int msec) {
+    this->supervisor->step( msec);
 }

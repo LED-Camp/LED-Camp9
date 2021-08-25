@@ -45,6 +45,8 @@ public:
     ColorValue getColorValue();
     //LineSensor系
     LineValue getLineValue();
+
+    void tankSleep(int msec);
 };
 
 #endif
