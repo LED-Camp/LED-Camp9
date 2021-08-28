@@ -2,13 +2,30 @@
 WorldInfo {
   FPS 30
   coordinateSystem "NUE"
+  contactProperties [
+    ContactProperties {
+      material1 "arenaGround"
+      material2 "cylinder"
+      coulombFriction [
+        0.7
+      ]
+    }
+    ContactProperties {
+      material1 "tankWheel"
+      material2 "arenaGround"
+      coulombFriction [
+        2
+      ]
+    }
+  ]
 }
 Viewpoint {
-  orientation 0.4588200632202163 -0.81398301360095 -0.3562524430171844 4.6574117519088105
-  position 1.7440783422034667 2.1288805977008494 0.2700076775917799
+  orientation 0.3621288721844936 -0.8781957931180362 -0.3124657243285571 4.96006951095377
+  position 2.827890363055166 2.2959514690309586 1.2383104630287742
 }
 RectangleArena {
   name "Competition Arena"
+  contactMaterial "arenaGround"
   floorSize 2.5 2.5
   floorTileSize 2.5 2.5
   floorAppearance PBRAppearance {
@@ -25,7 +42,7 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 Robot {
-  translation 1.27883e-06 0.0411838 -0.266976
+  translation 0.779945 0.0504867 -0.166976
   rotation 0.5750413347912737 0.5819406555674752 0.5750413347570482 -2.087523209194689
   children [
     DEF COLOR_SENSOR Solid {
@@ -43,6 +60,7 @@ Robot {
           name "cam"
           width 1
           height 1
+          noise 0.03
         }
         LED {
           translation 0 -0.005 0
@@ -67,10 +85,10 @@ Robot {
           lookupTable [
             0 0 0
             0.1 0 0
-            0.5 50 0.05
-            1 100 0.1
-            1.5 150 0.2
-            5 500 0.5
+            0.5 50 0.1
+            1 100 0.045
+            1.5 150 0.04
+            5 500 0.06
           ]
         }
         Shape {
@@ -87,7 +105,7 @@ Robot {
       name "solid(6)"
     }
     DEF LINE_SENSOR Solid {
-      translation 0 -0.07 -0.043
+      translation 0 -0.08 -0.033
       rotation 1 0 0 1.5708
       children [
         DistanceSensor {
@@ -132,8 +150,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation -0.06 0.068 -0.04
-        rotation 9.076779023937477e-10 9.076769769113461e-10 -0.9999999999999999 1.570795307179577
+        translation -0.05999999999999997 0.068 -0.04
+        rotation 9.076779808978819e-10 9.076768984067372e-10 -0.9999999999999999 1.5707953071795764
         children [
           DEF WHEEL_RR Shape {
             geometry Cylinder {
@@ -143,6 +161,7 @@ Robot {
           }
         ]
         name "solid(5)"
+        contactMaterial "tankWheel"
         boundingObject USE WHEEL_RR
         physics Physics {
         }
@@ -156,6 +175,7 @@ Robot {
       device [
         PositionSensor {
           name "positionSensorL"
+          noise 0.02
         }
         RotationalMotor {
           name "motorL"
@@ -164,7 +184,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0.06 -0.015 -0.04
-        rotation 0.6583861495049298 0.6583854782046679 -0.3647687489756802 2.442050445884074
+        rotation 0.6583861495049307 0.6583854782046674 -0.3647687489756797 2.442050445884074
         children [
           DEF WHEEL_FL Shape {
             geometry Cylinder {
@@ -174,6 +194,7 @@ Robot {
           }
         ]
         name "solid(4)"
+        contactMaterial "tankWheel"
         boundingObject USE WHEEL_FL
         physics Physics {
         }
@@ -191,8 +212,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 0.0599999999999991 0.068 -0.04
-        rotation 3.6004959195560023e-07 3.6004922484370457e-07 -0.9999999999998704 1.5707953071796954
+        translation 0.059999999999998326 0.068 -0.04
+        rotation 3.600495917200931e-07 3.600492248437048e-07 -0.9999999999998702 1.570795307179671
         children [
           DEF WHEEL_RL Shape {
             geometry Cylinder {
@@ -202,6 +223,7 @@ Robot {
           }
         ]
         name "solid(2)"
+        contactMaterial "tankWheel"
         boundingObject USE WHEEL_RL
         physics Physics {
         }
@@ -215,6 +237,7 @@ Robot {
       device [
         PositionSensor {
           name "positionSensorR"
+          noise 0.02
         }
         RotationalMotor {
           name "motorR"
@@ -223,7 +246,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.06 -0.015 -0.04
-        rotation -0.46983018068739246 -0.4698297016415853 -0.7473417242270307 1.857996395006181
+        rotation -0.4698301806873958 -0.4698297016415853 -0.7473417242270284 1.8579963950061724
         children [
           DEF WHEEL_FR Shape {
             geometry Cylinder {
@@ -233,6 +256,7 @@ Robot {
           }
         ]
         name "solid(3)"
+        contactMaterial "tankWheel"
         boundingObject USE WHEEL_FR
         physics Physics {
         }
@@ -1375,7 +1399,7 @@ Robot {
     size 0.1430723372032522 0.26130810687567646 0.1
   }
   physics Physics {
-    mass 1.5
+    mass 0.7
     centerOfMass [
       0 0 0
     ]
@@ -1384,7 +1408,7 @@ Robot {
   supervisor TRUE
 }
 Solid {
-  translation 0 0.46 0.37
+  translation 0 0.72 0.37
   children [
     DEF CYLINDER_SHAPE Shape {
       appearance PBRAppearance {
@@ -1400,9 +1424,136 @@ Solid {
       }
     }
   ]
-  name "Competition Cylinder"
+  name "Competition Cylinder(1)"
+  contactMaterial "cylinder"
   boundingObject USE CYLINDER_SHAPE
   physics Physics {
+    density -1
+    mass 0.6
+  }
+}
+Solid {
+  translation 0.15 0.72 -0.44
+  children [
+    DEF CYLINDER_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        roughness 1
+        metalness 0
+        name "DefaultMaterial"
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+        subdivision 12
+      }
+    }
+  ]
+  name "Competition Cylinder(2)"
+  contactMaterial "cylinder"
+  boundingObject USE CYLINDER_SHAPE
+  physics Physics {
+    density -1
+    mass 0.6
+  }
+}
+Solid {
+  translation 0.58 0.72 0.25
+  children [
+    DEF CYLINDER_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        roughness 1
+        metalness 0
+        name "DefaultMaterial"
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+        subdivision 12
+      }
+    }
+  ]
+  name "Competition Cylinder(3)"
+  contactMaterial "cylinder"
+  boundingObject USE CYLINDER_SHAPE
+  physics Physics {
+    density -1
+    mass 0.6
+  }
+}
+Solid {
+  translation 0.48 0.72 -0.42
+  children [
+    DEF CYLINDER_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        roughness 1
+        metalness 0
+        name "DefaultMaterial"
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+        subdivision 12
+      }
+    }
+  ]
+  name "Competition Cylinder(4)"
+  contactMaterial "cylinder"
+  boundingObject USE CYLINDER_SHAPE
+  physics Physics {
+    density -1
+    mass 0.6
+  }
+}
+Solid {
+  translation -0.1 0.72 -0.16
+  children [
+    DEF CYLINDER_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        roughness 1
+        metalness 0
+        name "DefaultMaterial"
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+        subdivision 12
+      }
+    }
+  ]
+  name "Competition Cylinder(5)"
+  contactMaterial "cylinder"
+  boundingObject USE CYLINDER_SHAPE
+  physics Physics {
+    density -1
+    mass 0.6
+  }
+}
+Solid {
+  translation 0.77 0.72 0.47
+  children [
+    DEF CYLINDER_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        roughness 1
+        metalness 0
+        name "DefaultMaterial"
+      }
+      geometry Cylinder {
+        height 0.2
+        radius 0.08
+        subdivision 12
+      }
+    }
+  ]
+  name "Competition Cylinder(6)"
+  contactMaterial "cylinder"
+  boundingObject USE CYLINDER_SHAPE
+  physics Physics {
+    density -1
     mass 0.6
   }
 }

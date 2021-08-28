@@ -1,5 +1,7 @@
-#VRML_OBJ R2021a utf8
+#VRML_OBJ R2021b utf8
 RectangleArena {
+  name "Competition Arena"
+  contactMaterial "arenaGround"
   floorSize 2.5 2.5
   floorTileSize 2.5 2.5
   floorAppearance PBRAppearance {
@@ -10,5 +12,4 @@ RectangleArena {
     }
     roughness 1
   }
-  name "Competition Arena"
 }
