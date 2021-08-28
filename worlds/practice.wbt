@@ -20,8 +20,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.972786687278801 -0.053948453424511864 -0.2253344745622375 5.990040179732646
-  position 0.05524852235470207 1.645045999481973 4.647904456617497
+  orientation 0.9998908818435163 -0.01183237901168493 0.00884416265790315 5.738186993184566
+  position -0.013009668557766758 2.566374992881707 4.1896440745279815
 }
 RectangleArena {
   name "Competition Arena"
@@ -151,7 +151,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.0599999999999999 0.068 -0.04
-        rotation -3.068908860836189e-08 -3.0689057474322105e-08 -0.999999999999999 1.5707953071795762
+        rotation -3.06890886083619e-08 -3.0689057474322105e-08 -0.999999999999999 1.570795307179576
         children [
           DEF WHEEL_RR Shape {
             geometry Cylinder {
@@ -165,8 +165,6 @@ Robot {
         boundingObject USE WHEEL_RR
         physics Physics {
         }
-        linearVelocity 8.117664541577944e-10 -9.469851800203078e-09 -1.1832607042032893e-07
-        angularVelocity -3.2907902233865847e-06 4.389654401001578e-09 -1.0040749836043869e-08
       }
     }
     HingeJoint {
@@ -186,7 +184,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0.06 -0.015 -0.04
-        rotation 0.35258037315668755 0.3525800136605176 0.8668185591182507 4.569948528288698
+        rotation 0.35258037315668767 0.3525800136605176 0.8668185591182507 4.569948528288698
         children [
           DEF WHEEL_FL Shape {
             geometry Cylinder {
@@ -200,8 +198,6 @@ Robot {
         boundingObject USE WHEEL_FL
         physics Physics {
         }
-        linearVelocity -4.930683410722089e-10 -2.8219495354186565e-07 1.9094498935025213e-08
-        angularVelocity -3.2882579098859867e-06 2.8504275649241105e-10 -1.0036616088455835e-08
       }
     }
     HingeJoint {
@@ -217,7 +213,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0.05999999999999882 0.068 -0.04
-        rotation 3.862522422208701e-07 3.862518486278678e-07 -0.9999999999998508 1.5707953071796878
+        rotation 3.8625224222087e-07 3.862518486278677e-07 -0.9999999999998508 1.5707953071796878
         children [
           DEF WHEEL_RL Shape {
             geometry Cylinder {
@@ -231,8 +227,6 @@ Robot {
         boundingObject USE WHEEL_RL
         physics Physics {
         }
-        linearVelocity 7.793582381846379e-10 -9.373318117542158e-09 -1.1829268049786947e-07
-        angularVelocity -3.2839518429467006e-06 -3.819589091377873e-09 -1.0002165199693346e-08
       }
     }
     HingeJoint {
@@ -252,7 +246,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.06 -0.015 -0.04
-        rotation -0.5965989068445723 -0.5965982985434851 -0.536786935875753 2.1563072829218006
+        rotation -0.5965989068445725 -0.596598298543485 -0.536786935875753 2.1563072829218006
         children [
           DEF WHEEL_FR Shape {
             geometry Cylinder {
@@ -266,8 +260,6 @@ Robot {
         boundingObject USE WHEEL_FR
         physics Physics {
         }
-        linearVelocity -4.963758700122761e-10 -2.8229227820098956e-07 2.027726759724936e-08
-        angularVelocity -3.288222439736046e-06 2.850424237661988e-10 -1.0036108242443755e-08
       }
     }
     Solid {
@@ -1415,8 +1407,6 @@ Robot {
   rotationStep 0.261793
   controller "main_sim"
   supervisor TRUE
-  linearVelocity 5.394955708895126e-10 -2.6852219377815343e-07 -1.8034262591815063e-07
-  angularVelocity -3.2903105164517406e-06 2.8504116515673103e-10 -1.0035859343716106e-08
 }
 Solid {
   translation -0.0150719487981241 0.09976457092527867 0.011383701266231366
@@ -1443,6 +1433,4 @@ Solid {
     density -1
     mass 0.6
   }
-  linearVelocity 3.901362087128018e-07 -8.54789840333196e-08 -1.0123395441134311e-08
-  angularVelocity -1.0123277101439045e-07 2.7808586634411436e-17 -3.901316477077717e-06
 }
