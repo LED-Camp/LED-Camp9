@@ -19,6 +19,7 @@ class ${u.name}{
   void execState();
   void doTransition(unsigned long event);
   unsigned long _state;
+  void printValues();
 
  private:
    Controller *controller;
