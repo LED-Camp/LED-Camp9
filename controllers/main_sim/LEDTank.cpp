@@ -7,18 +7,20 @@ LEDTank::LEDTank(Controller *controller){
   this->state = _STATE_INITIAL;
   this->controller = controller;
 
-  this->lineLeft = 0;
-  this->lineCenter = 0;
-  this->lineRight = 0;
+  this->turnTimes = 0;
 }
 
 void LEDTank::execState(){
   switch(this->state){
-  case STATE_FORWARD:
-    positionValue = controller->getPosition();
+  case STATE_INIT:
+    
     break;
-  case STATE_BACKWARD:
+  case STATE_FOWARD:
     positionValue = controller->getPosition();
+
+    break;
+  case STATE_STOP:
+    
     break;
   default:
     break;
@@ -30,48 +32,55 @@ void LEDTank::doTransition(unsigned long event){
 
   switch(this->state){
   case _STATE_INITIAL:
-    this->state = STATE_FORWARD;
+    this->state = STATE_INIT;
 
     //entry
-    controller->positionReset();
-controller->changeDriveMode(FORWARD,100);
-printf("FORWARD\n");
+    printf("STOP\n");
+controller->changeDriveMode(STOP,0);
+turnTimes = 0;
 
     break;  
-  case STATE_FORWARD:
-    if(((event & E_CHANGE_DISTANCE) != 0) && (positionValue.distance > 0.5)){
+  case STATE_INIT:
+    if(((event & E_TRUE) != 0) ){
       // exit
       
 
       //action
       
 
-      this->state = STATE_BACKWARD;
+      this->state = STATE_FOWARD;
 
       //entry
-      controller->positionReset();
-controller->changeDriveMode(BACKWARD,100);
-printf("BACKWARD\n");
+      controller->changeDriveMode(FORWARD,50);
+printf("FORWARD\n");
+controller->positionReset();
     }
     break;
-  case STATE_BACKWARD:
-    if(((event & E_CHANGE_DISTANCE) != 0) && (positionValue.distance < -0.5
-)){
+  case STATE_FOWARD:
+    if(((event & E_CHANGE_DISTANCE) != 0) && (positionValue.distance >= 0.3)){
       // exit
       
 
       //action
       
 
-      this->state = STATE_FORWARD;
+      this->state = STATE_STOP;
 
       //entry
-      controller->positionReset();
-controller->changeDriveMode(FORWARD,100);
-printf("FORWARD\n");
+      printf("STOP\n");
+controller->changeDriveMode(STOP,0);
     }
+    break;
+  case STATE_STOP:
     break;
   default:
     break;
   }
+}
+
+void LEDTank::printValues(){
+    printf("distance=%f, angle=%f \n", positionValue.distance, positionValue.angle);
+    printf("range=%f \n", rangeDistance);
+    printf("color: R=%d, G=%d, B=%d \n", colorValue.red, colorValue.green, colorValue.blue);
+    printf("line: l=%d, c=%d, r=%d \n", lineValue.left, lineValue.center, lineValue.right);
 }
