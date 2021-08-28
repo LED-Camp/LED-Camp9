@@ -118,10 +118,6 @@ int Event::updateEvent() {
     this->rangeDistanceOld = rangeDistance;
     this->colorOld = color;
     this->lineValueOld = lineValue;
-    printf("distance=%f, angle=%f \n", position.distance, position.angle);
-    printf("range=%f \n", rangeDistance);
-    printf("color: R=%d, G=%d, B=%d \n", color.red, color.green, color.blue);
-    printf("line: l=%d, c=%d, r=%d \n", lineValue.left, lineValue.center, lineValue.right);
     return 0;
 }
 
