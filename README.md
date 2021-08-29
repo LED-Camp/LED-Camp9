@@ -34,7 +34,7 @@ controller->positionReset();
 ### **`Controller::changeDriveMoode`**
 
 
-引数: Mode mode, int pwmDuty  
+引数: Mode mode, int motorPower  
 返値: なし  
 振舞: Mode (FORWARD, BACK, STOP, CW, CCW) のパターンにpwmDutyの回転速度でモータを回転させる  
 
@@ -44,9 +44,8 @@ controller->changeDriveMode(FORWARD,100);
 
 ## 距離センサ
 
-```sh
 ### **`Controller::getRange`**
-```
+
 引数: なし  
 返値: float  
 振舞: 距離センサから取得した値を返す  
@@ -85,6 +84,28 @@ lineValue = Controller::getLineValue();
 ColorSensor::ColorValue colorValue;
 coLorvalue = controller->getColorValue();
 printf("color red = %u", colorValue.red);
+```
+
+## その他
+
+### **`Controller::tankSleep`**
+
+引数: int msec
+返値: なし
+振舞: msecミリ秒間sleepする（シミュレーションの時間は流れたまま）
+
+```cpp
+controller->tankSleep(1000); // 1秒間sleepする
+```
+
+### **`printValues`**
+
+引数: なし
+返値: なし
+振舞: 取得しているセンサ値をコンソールに出力する
+
+```cpp
+printValues();
 ```
 
 ## 競技会練習用環境へのブロック追加
