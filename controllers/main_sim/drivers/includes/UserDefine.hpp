@@ -16,6 +16,6 @@
 #define L_ENCODER_COFF ((float)100.0)
 
 // ラインセンサで色判定する際に使用する閾値
-#define THRESHOLD_LINE_VALUE 900.0
+#define THRESHOLD_LINE_VALUE 400.0
 
 #endif
