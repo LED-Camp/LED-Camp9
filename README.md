@@ -13,9 +13,8 @@
 返値: Position::PositionValue{float distance, angle}  
 振舞: 現在の進んだ距離・角度を格納するPositionValue型変数を返す  
 
-```sh
-Position::PositionValue positionValue;
-positionValue = Controller::getPosition();
+```cpp
+positionValue = controller->getPosition();
 ```
 
 ### **`Controller::positionReset`**
@@ -24,35 +23,33 @@ positionValue = Controller::getPosition();
 返値: なし  
 振舞: 走行距離をリセットする  
 
-```sh
+```cpp
 controller->positionReset();
 ```
 
 
 ## モータ制御
 
-### **`Controller::changeDriveMoode`**
+### **`Controller::changeDriveMode`**
 
 
-引数: Mode mode, int pwmDuty  
+引数: Mode mode, int motorPower  
 返値: なし  
 振舞: Mode (FORWARD, BACK, STOP, CW, CCW) のパターンにpwmDutyの回転速度でモータを回転させる  
 
-```sh
+```cpp
 controller->changeDriveMode(FORWARD,100);
 ```
 
 ## 距離センサ
 
-```sh
 ### **`Controller::getRange`**
-```
+
 引数: なし  
 返値: float  
 振舞: 距離センサから取得した値を返す  
 
-```sh
-float range;
+```cpp
 range = controller->getRange();
 ```
 
@@ -65,9 +62,8 @@ range = controller->getRange();
 返値: LineSensor::LineValue{int left, center, right}  
 振舞: ラインセンサの白黒判定（0or1）を格納するLineValue型変数を返す  
 
-```sh
-LineSensor::LineValue lineValue;
-lineValue = Controller::getLineValue();
+```cpp
+lineValue = controller->getLineValue();
 ```
 
 
@@ -79,12 +75,30 @@ lineValue = Controller::getLineValue();
 返値: struct ColorValue{unsigned int red, green, blue}  
 振舞: カラーセンサの読み取る色の値（R,G,B, 0-255）を構造体に入れて返す  
 
-```sh
-#include"drivers/includes/ColorSensor.hpp"
-...
-ColorSensor::ColorValue colorValue;
-coLorvalue = controller->getColorValue();
-printf("color red = %u", colorValue.red);
+```cpp
+colorValue = controller->getColorValue();
+```
+
+## その他
+
+### **`Controller::tankSleep`**
+
+引数: int msec
+返値: なし
+振舞: msecミリ秒間sleepする（シミュレーションの時間は流れたまま）
+
+```cpp
+controller->tankSleep(1000); // 1秒間sleepする
+```
+
+### **`printValues`**
+
+引数: なし
+返値: なし
+振舞: 取得しているセンサ値をコンソールに出力する
+
+```cpp
+printValues();
 ```
 
 ## 競技会練習用環境へのブロック追加
