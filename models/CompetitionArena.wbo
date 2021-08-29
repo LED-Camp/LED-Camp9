@@ -12,4 +12,5 @@ RectangleArena {
     }
     roughness 1
   }
+  wallThickness 0.1
 }
