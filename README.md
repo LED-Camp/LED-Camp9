@@ -9,9 +9,9 @@
 
 ### **`Controller::getPosition`**
 
-引数: なし
-返値: Position::PositionValue{float distance, angle}
-振舞: 現在の進んだ距離・角度を格納するPositionValue型変数を返す
+引数: なし  
+返値: Position::PositionValue{float distance, angle}  
+振舞: 現在の進んだ距離・角度を格納するPositionValue型変数を返す  
 
 ```sh
 Position::PositionValue positionValue;
@@ -20,9 +20,9 @@ positionValue = Controller::getPosition();
 
 ### **`Controller::positionReset`**
 
-引数: なし
-返値: なし
-振舞: 走行距離をリセットする
+引数: なし  
+返値: なし  
+振舞: 走行距離をリセットする  
 
 ```sh
 controller->positionReset();
@@ -34,9 +34,9 @@ controller->positionReset();
 ### **`Controller::changeDriveMoode`**
 
 
-引数: Mode mode, int pwmDuty
-返値: なし
-振舞: Mode (FORWARD, BACK, STOP, CW, CCW) のパターンにpwmDutyの回転速度でモータを回転させる
+引数: Mode mode, int pwmDuty  
+返値: なし  
+振舞: Mode (FORWARD, BACK, STOP, CW, CCW) のパターンにpwmDutyの回転速度でモータを回転させる  
 
 ```sh
 controller->changeDriveMode(FORWARD,100);
@@ -47,9 +47,9 @@ controller->changeDriveMode(FORWARD,100);
 ```sh
 ### **`Controller::getRange`**
 ```
-引数: なし
-返値: float
-振舞: 距離センサから取得した値を返す
+引数: なし  
+返値: float  
+振舞: 距離センサから取得した値を返す  
 
 ```sh
 float range;
@@ -61,9 +61,9 @@ range = controller->getRange();
 ### **`Controller::getLineValue`**
 
 
-引数 なし
-返値: LineSensor::LineValue{int left, center, right}
-振舞: ラインセンサの白黒判定（0or1）を格納するLineValue型変数を返す
+引数 なし  
+返値: LineSensor::LineValue{int left, center, right}  
+振舞: ラインセンサの白黒判定（0or1）を格納するLineValue型変数を返す  
 
 ```sh
 LineSensor::LineValue lineValue;
@@ -75,9 +75,9 @@ lineValue = Controller::getLineValue();
 
 ### **`Controller::getColorValue`**
 
-引数: なし
-返値: struct ColorValue{unsigned int red, green, blue}
-振舞: カラーセンサの読み取る色の値（R,G,B, 0-255）を構造体に入れて返す
+引数: なし  
+返値: struct ColorValue{unsigned int red, green, blue}  
+振舞: カラーセンサの読み取る色の値（R,G,B, 0-255）を構造体に入れて返す  
 
 ```sh
 #include"drivers/includes/ColorSensor.hpp"
@@ -90,7 +90,7 @@ printf("color red = %u", colorValue.red);
 ## 競技会練習用環境へのブロック追加
 
 競技会練習用環境は、初期環境としてLED-Tankと円柱ブロックが1つ存在した状態である。
-実際の競技会ではブロック数が7個のためブロックを適宜追加しながらの開発が考えられる。
+実際の競技会ではブロック数が7個のためブロックを適宜追加しながらの開発が考えられる。 
 以下にブロックの追加方法を示す。
 
 1. webots を起動し、File＞open world から開発用環境(practice.wbt)を選択して開く。
