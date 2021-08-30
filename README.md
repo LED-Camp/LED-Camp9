@@ -12,7 +12,7 @@
 引数: なし  
 返値: PositionValue{float distance, angle}  
 振舞: 現在の進んだ距離・角度を格納するPositionValue型変数を返す  
-(`distance`は**m単位の**非負浮動小数点数，`angle`は**時計回り方向を**正とする度数単位の浮動小数点数)
+(`distance`は**m単位の**正の浮動小数点数，`angle`は**時計回り方向を**正とする度数単位の浮動小数点数)
 
 ```cpp
 positionValue = controller->getPosition(); //回転角センサから移動距離・角度を取得し代入
@@ -52,7 +52,7 @@ controller->changeDriveMode(FORWARD,100); //パワー100で前進する移動モ
 引数: なし  
 返値: float  
 振舞: 距離センサから取得した値を返す    
-(値は**cm単位**の非負浮動小数点数)
+(値は**cm単位**の正の浮動小数点数)
 
 ```cpp
 range = controller->getRange(); //距離センサから値を取得・代入
