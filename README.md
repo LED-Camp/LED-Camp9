@@ -12,6 +12,7 @@
 引数: なし  
 返値: Position::PositionValue{float distance, angle}  
 振舞: 現在の進んだ距離・角度を格納するPositionValue型変数を返す  
+(`distance`はm単位の非負浮動小数点数，`angle`は浮動小数点数)
 
 ```cpp
 positionValue = controller->getPosition();
@@ -35,7 +36,8 @@ controller->positionReset();
 
 引数: Mode mode, int motorPower  
 返値: なし  
-振舞: Mode (FORWARD, BACK, STOP, CW, CCW) のパターンにpwmDutyの回転速度でモータを回転させる  
+振舞: Mode (FORWARD, BACK, STOP, CW, CCW) のパターンにmotorPowerの回転速度でモータを回転させる  
+(motorPowerは0-100の範囲の整数値)
 
 ```cpp
 controller->changeDriveMode(FORWARD,100);
@@ -47,7 +49,8 @@ controller->changeDriveMode(FORWARD,100);
 
 引数: なし  
 返値: float  
-振舞: 距離センサから取得した値を返す  
+振舞: 距離センサから取得した値を返す    
+(値はcm単位の非負浮動小数点数)
 
 ```cpp
 range = controller->getRange();
@@ -60,7 +63,7 @@ range = controller->getRange();
 
 引数 なし  
 返値: LineSensor::LineValue{int left, center, right}  
-振舞: ラインセンサの白黒判定（0or1）を格納するLineValue型変数を返す  
+振舞: ラインセンサの白黒判定（0or1, 黒が0）を格納するLineValue型変数を返す  
 
 ```cpp
 lineValue = controller->getLineValue();
@@ -73,7 +76,7 @@ lineValue = controller->getLineValue();
 
 引数: なし  
 返値: struct ColorValue{unsigned int red, green, blue}  
-振舞: カラーセンサの読み取る色の値（R,G,B, 0-255）を構造体に入れて返す  
+振舞: カラーセンサの読み取る色の値（R,G,B, それぞれ0-255の範囲の整数値）を構造体に入れて返す  
 
 ```cpp
 colorValue = controller->getColorValue();
