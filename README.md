@@ -37,7 +37,7 @@ controller->positionReset(); //センサから取得する距離・回転角の�
 
 引数: Mode mode, int motorPower  
 返値: なし  
-振舞: Mode (FORWARD, BACK, STOP, CW, CCWのいずれか) のパターンにmotorPowerの回転速度でモータを回転させる  
+振舞: Mode (FORWARD, BACKWARD, STOP, CW, CCWのいずれか) のパターンにmotorPowerの回転速度でモータを回転させる  
 (引数motorPowerには0-100の範囲の整数値をとる)
 ※CWはclockwise（時計回り），CCWはcounterclockwise（反時計回り）の略である
 
