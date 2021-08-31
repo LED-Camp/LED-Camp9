@@ -10,21 +10,23 @@
 ### **`Controller::getPosition`**
 
 引数: なし  
-返値: Position::PositionValue{float distance, angle}  
+返値: PositionValue{float distance, angle}  
 振舞: 現在の進んだ距離・角度を格納するPositionValue型変数を返す  
+(`distance`は**m単位の**正の浮動小数点数，`angle`は**時計回り方向を**正とする度数単位の浮動小数点数)
 
 ```cpp
-positionValue = controller->getPosition();
+positionValue = controller->getPosition(); //回転角センサから移動距離・角度を取得し代入
 ```
 
 ### **`Controller::positionReset`**
 
 引数: なし  
 返値: なし  
-振舞: 走行距離をリセットする  
+振舞: 回転角センサの保持する取得値をリセットする  
+(= `distance`および`angle`をともに0に戻す)
 
 ```cpp
-controller->positionReset();
+controller->positionReset(); //センサから取得する距離・回転角の値を0にリセット
 ```
 
 
@@ -35,10 +37,12 @@ controller->positionReset();
 
 引数: Mode mode, int motorPower  
 返値: なし  
-振舞: Mode (FORWARD, BACK, STOP, CW, CCW) のパターンにpwmDutyの回転速度でモータを回転させる  
+振舞: Mode (FORWARD, BACK, STOP, CW, CCWのいずれか) のパターンにmotorPowerの回転速度でモータを回転させる  
+(引数motorPowerには0-100の範囲の整数値をとる)
+※CWはclockwise（時計回り），CCWはcounterclockwise（反時計回り）の略である
 
 ```cpp
-controller->changeDriveMode(FORWARD,100);
+controller->changeDriveMode(FORWARD,100); //パワー100で前進する移動モードに切り替え
 ```
 
 ## 距離センサ
@@ -47,10 +51,11 @@ controller->changeDriveMode(FORWARD,100);
 
 引数: なし  
 返値: float  
-振舞: 距離センサから取得した値を返す  
+振舞: 距離センサから取得した値を返す    
+(値は**cm単位**の正の浮動小数点数)
 
 ```cpp
-range = controller->getRange();
+range = controller->getRange(); //距離センサから値を取得・代入
 ```
 
 ## ラインセンサ
@@ -59,11 +64,11 @@ range = controller->getRange();
 
 
 引数 なし  
-返値: LineSensor::LineValue{int left, center, right}  
-振舞: ラインセンサの白黒判定（0or1）を格納するLineValue型変数を返す  
+返値: LineValue{int left, center, right}  
+振舞: ラインセンサの白黒判定（0or1, 黒が0）を格納するLineValue型変数を返す  
 
 ```cpp
-lineValue = controller->getLineValue();
+lineValue = controller->getLineValue(); //ラインセンサから値を取得・代入
 ```
 
 
@@ -72,11 +77,11 @@ lineValue = controller->getLineValue();
 ### **`Controller::getColorValue`**
 
 引数: なし  
-返値: struct ColorValue{unsigned int red, green, blue}  
-振舞: カラーセンサの読み取る色の値（R,G,B, 0-255）を構造体に入れて返す  
+返値: ColorValue{unsigned int red, green, blue}  
+振舞: カラーセンサの読み取る色の値（R,G,B, それぞれ0~255の範囲の整数値）を構造体に入れて返す  
 
 ```cpp
-colorValue = controller->getColorValue();
+colorValue = controller->getColorValue(); //カラーセンサから値を取得・代入
 ```
 
 ## その他
@@ -98,7 +103,7 @@ controller->tankSleep(1000); // 1秒間sleepする
 振舞: 取得しているセンサ値をコンソールに出力する
 
 ```cpp
-printValues();
+printValues();　//LEDTankが保持するセンサの値をコンソールに出力する
 ```
 
 ## 発生イベント一覧
