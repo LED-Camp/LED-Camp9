@@ -28,8 +28,8 @@ Position::Position(Supervisor* supervisor, std::string psNameL, std::string psNa
 }
 
 void Position::reset(void) {
-    referPositionL  = positionSensorL->getValue();
-    referPositionR  = positionSensorR->getValue();
+    referPositionL  = positionSensorL->getValue() * 100;
+    referPositionR  = positionSensorR->getValue() * 100;
 }
 
 PositionValue Position::getPosition() {
