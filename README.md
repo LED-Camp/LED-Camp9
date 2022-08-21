@@ -12,7 +12,7 @@
 引数: なし  
 返値: PositionValue{float distance, angle}  
 振舞: 現在の進んだ距離・角度を格納するPositionValue型変数を返す  
-(`distance`は**m単位の**浮動小数点数，`angle`は**時計回り方向を**正とする度数単位の浮動小数点数)
+(`distance`は**cm単位の**浮動小数点数，`angle`は**時計回り方向を**正とする度数単位の浮動小数点数)
 
 ```cpp
 positionValue = controller->getPosition(); //回転角センサから移動距離・角度を取得し代入
