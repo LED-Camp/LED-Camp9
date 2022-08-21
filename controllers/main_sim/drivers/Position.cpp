@@ -40,6 +40,10 @@ PositionValue Position::getPosition() {
 
     radNowL = positionSensorL->getValue();
     radNowR = positionSensorR->getValue();
+    //m単位→cm単位（実機との整合のため）
+    radNowL = radNowL * 100;
+    radNowR = radNowR * 100;
+
     l = (radNowL - referPositionL) * RADIUS;
     r = (radNowR - referPositionR) * RADIUS;
 
