@@ -6,7 +6,7 @@
 
 using namespace webots;
 
-#define MAX_SPEED 50
+#define MAX_SPEED 33.3
 
 typedef enum {
   STOP, FORWARD, BACKWARD, CW, CCW,BRAKE
