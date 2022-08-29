@@ -86,6 +86,7 @@ Robot {
           radius 0.2
         }
         Camera {
+          translation 0 0 0.01
           name "cam"
           width 1
           height 1
@@ -251,8 +252,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 0.059999999999998326 0.068 -0.04
-        rotation 3.600495917200929e-07 3.600492248437046e-07 -0.9999999999998702 1.5707953071796723
+        translation 0.05999999999999827 0.068 -0.04
+        rotation 3.600495917200931e-07 3.6004922484370473e-07 -0.9999999999998702 1.570795307179671
         children [
           DEF WHEEL_RL Shape {
             appearance Appearance {
