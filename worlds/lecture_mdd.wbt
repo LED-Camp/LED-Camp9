@@ -14,8 +14,9 @@ WorldInfo {
       material1 "tankWheel"
       material2 "arenaGround"
       coulombFriction [
-        2
+        4.5
       ]
+      bounce 0.07
     }
   ]
 }
@@ -262,7 +263,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.06 -0.015 -0.04
-        rotation -0.7070999783892311 -0.7070992574196152 0.004501190795534871 3.150594983562143
+        rotation -0.7070999783892341 -0.7070992574196122 0.004501190795534841 3.150594983562143
         children [
           DEF WHEEL_FR Shape {
             appearance Appearance {
@@ -1420,6 +1421,7 @@ Robot {
     size 0.1430723372032522 0.26130810687567646 0.1
   }
   physics Physics {
+    density -1
     mass 0.7
     centerOfMass [
       0 0 0
