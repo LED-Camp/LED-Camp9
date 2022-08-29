@@ -6,7 +6,7 @@
 #ifndef __POSITION_H__
 #define __POSITION_H__
 #define RADIUS 0.015
-#define TREAD 0.12
+#define TREAD 12.0
 #define PI 3.1415926535897932384626433F
 using namespace webots;
 

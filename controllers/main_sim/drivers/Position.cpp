@@ -28,8 +28,8 @@ Position::Position(Supervisor* supervisor, std::string psNameL, std::string psNa
 }
 
 void Position::reset(void) {
-    referPositionL  = positionSensorL->getValue();
-    referPositionR  = positionSensorR->getValue();
+    referPositionL  = positionSensorL->getValue() * 100;
+    referPositionR  = positionSensorR->getValue() * 100;
 }
 
 PositionValue Position::getPosition() {
@@ -40,6 +40,10 @@ PositionValue Position::getPosition() {
 
     radNowL = positionSensorL->getValue();
     radNowR = positionSensorR->getValue();
+    //m単位→cm単位（実機との整合のため）
+    radNowL = radNowL * 100;
+    radNowR = radNowR * 100;
+
     l = (radNowL - referPositionL) * RADIUS;
     r = (radNowR - referPositionR) * RADIUS;
 
