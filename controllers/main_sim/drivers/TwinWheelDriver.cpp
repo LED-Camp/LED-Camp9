@@ -37,9 +37,9 @@ void TwinWheelDriver::changeDriveMode(Mode mode, int motorPower) {
         motorR->setVelocity(-r);
     } else if (mode == CW) {
         motorL->setVelocity(l);
-        motorR->setVelocity(-r);
+        motorR->setVelocity(0);
     } else if (mode == CCW) {
-        motorL->setVelocity(-l);
+        motorL->setVelocity(0);
         motorR->setVelocity(r);
     }
 }
