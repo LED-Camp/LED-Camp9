@@ -1,4 +1,4 @@
-#VRML_SIM R2021b utf8
+#VRML_SIM R2022a utf8
 WorldInfo {
   FPS 30
   coordinateSystem "NUE"
@@ -16,18 +16,24 @@ WorldInfo {
       coulombFriction [
         2
       ]
+      frictionRotation 1 1
+      bounce 0.2
+      forceDependentSlip [
+        0.007
+      ]
     }
   ]
 }
 Viewpoint {
-  orientation 0.9625632721289217 -0.26705197129236075 -0.046424043095443096 5.64076187130698
-  position 0.5369598835473759 2.1794961636246093 3.1096139536873917
+  orientation -0.2625075903065098 0.6672468050843142 0.6970448092742997 3.631376047412495
+  position 3.8349218337244366 3.0628138170538044 -0.15195926212843458
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 RectangleArena {
+  rotation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0943951023931957
   name "Competition Arena"
   contactMaterial "arenaGround"
   floorSize 1.86 1.86
@@ -45,7 +51,7 @@ RectangleArena {
 }
 Solid {
   translation 0.2 0.0992216 0.458799
-  rotation 1 -2.920995089588056e-14 3.824779719369951e-14 0.000864325063303881
+  rotation 1 3.90413e-18 2.91401e-17 1.57166
   scale 0.8 0.8 0.8
   children [
     DEF CYLINDER_SHAPE Shape {
@@ -72,7 +78,7 @@ Solid {
 }
 Solid {
   translation 0.23 0.0999216 -0.351201
-  rotation 1 -2.920995089588056e-14 3.824779719369951e-14 0.000864325063303881
+  rotation 1 3.90413e-18 2.91401e-17 1.57166
   scale 0.8 0.8 0.8
   children [
     DEF CYLINDER_SHAPE Shape {
@@ -99,7 +105,7 @@ Solid {
 }
 Solid {
   translation -0.16 0.0995418 0.088799
-  rotation 1 -2.920995089588056e-14 3.824779719369951e-14 0.000864325063303881
+  rotation 1 3.90413e-18 2.91401e-17 1.57166
   scale 0.8 0.8 0.8
   children [
     DEF CYLINDER_SHAPE Shape {
@@ -125,8 +131,8 @@ Solid {
   }
 }
 Robot {
-  translation -0.000116841 0.0511902 0.563024
-  rotation -0.0042165929523935814 0.7071004951008993 0.7071004951008993 -3.133155307179586
+  translation 0.519841 0.0573937 0.053024
+  rotation -0.5750421061398442 -0.5819411074132447 -0.575040106139475 2.08752
   scale 0.8 0.8 0.8
   children [
     DEF COLOR_SENSOR Solid {
@@ -142,6 +148,7 @@ Robot {
         }
         Camera {
           translation 0 0 0.01
+          rotation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0943951023931957
           name "cam"
           width 1
           height 1
@@ -236,7 +243,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.059999999999999984 0.068 -0.04
-        rotation 9.07677980897884e-10 9.076768984067396e-10 -0.9999999999999999 1.5707953071795764
+        rotation 0 1 0 1.5708
         children [
           DEF WHEEL_RR Shape {
             appearance Appearance {
@@ -274,7 +281,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0.06 -0.015 -0.04
-        rotation 0.6583861495049298 0.6583854782046679 -0.3647687489756802 2.442050445884074
+        rotation 3.1401791501118063e-16 1 -2.3551343625838547e-16 1.5708
         children [
           DEF WHEEL_FL Shape {
             appearance Appearance {
@@ -307,8 +314,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 0.05999999999999787 0.068 -0.04
-        rotation 3.6004959172009627e-07 3.600492248437054e-07 -0.9999999999998704 1.5707953071796588
+        translation 0.05999999999999767 0.068 -0.04
+        rotation -2.246031153282027e-22 1 0 1.5708
         children [
           DEF WHEEL_RL Shape {
             appearance Appearance {
@@ -346,7 +353,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.06 -0.015 -0.04
-        rotation -0.4698301806873954 -0.4698297016415852 -0.7473417242270287 1.857996395006174
+        rotation 7.850447875279516e-17 1 -3.1401791501118063e-16 1.5708
         children [
           DEF WHEEL_FR Shape {
             appearance Appearance {
